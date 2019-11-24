@@ -1,6 +1,6 @@
 # shadertoy_api
 A Shadertoy API client definition for Dart compatible with all platforms
-
+[![Build Status](https://github.com/ivoleitao/shadertoy_api/workflows/develop/badge.svg)]
 ## Usage
 
 ## Features and bugs

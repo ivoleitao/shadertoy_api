@@ -1,6 +1,9 @@
-name: Shadertoy API CI
+name: develop
 
-on: [push]
+on:
+  push:
+    branches:
+      - develop
 
 jobs:
   build:
