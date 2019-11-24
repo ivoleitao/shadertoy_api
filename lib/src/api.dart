@@ -264,7 +264,8 @@ abstract class ShadertoySite extends ShadertoyExtendedClient {
 /// A base implementation class for Shadertoy clients
 ///
 /// It assumes a basic implementation of the client with only the
-/// REST base API operations. It provides a contextual base through
+/// REST base API operations. It provides a contextual object to get
+/// Shadertoy website information
 abstract class ShadertoyBaseClient implements ShadertoyClient {
   /// Default base URL for Shadertoy website
   static const String _DefaultBaseUrl = 'https://www.shadertoy.com';
