@@ -215,7 +215,7 @@ abstract class ShadertoyExtendedClient extends ShadertoyClient {
 ///
 /// This class is marker interface that should be used for
 /// base implementations of Shadertoy REST API clients. It should be preferred
-/// to [ShadertoyClient] but exists only as a natural counterpart to
+/// to [ShadertoyClient] since it provides a natural counterpart to
 /// [ShadertoySite] class
 abstract class ShadertoyWS extends ShadertoyClient {}
 

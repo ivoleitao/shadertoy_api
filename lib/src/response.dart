@@ -196,6 +196,13 @@ abstract class APIResponse {
   ///
   /// An optional [error] can be provided
   APIResponse({this.error});
+
+  /// Checks if the response has an error
+  ///
+  /// Simply check if [error] is not null
+  bool hasError() {
+    return this.error != null;
+  }
 }
 
 @JsonSerializable()
