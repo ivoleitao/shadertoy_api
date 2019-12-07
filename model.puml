@@ -141,7 +141,7 @@ Input .. InputType
 RenderPass .. RenderPassType
 
 Shader "info" o-- "1" Info
-Shader "     renderPasses" o-- "1..*" RenderPass
+Shader "     renderPasses" o-- "1..*  " RenderPass
 RenderPass "inputs  " o-- "1..*" Input
 RenderPass "outputs" o-- "1..*" Output
 Input "sampler " o-- "1" Sampler

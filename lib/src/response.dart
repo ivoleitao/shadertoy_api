@@ -291,7 +291,7 @@ class FindShaderResponse extends APIResponse with EquatableMixin {
 /// The response returned from a call to the Shadertoy comments endpoint
 /// When [CommentsResponse.error] is *not null* there was an error while fetching the comments
 /// When [CommentsResponse.error] is *null* the [CommentsResponse] has a individual list of
-/// text, date, username and userpicture all with the same size. The first index of
+/// text, date, user id's and user picture all with the same size. The first index of
 /// of the text list corresponds to the first index of the date list and so on. This is a structure
 /// used for the intermediary storage of the response. It is transformed in [FindCommentsResponse] later
 class CommentsResponse extends APIResponse with EquatableMixin {
@@ -307,8 +307,8 @@ class CommentsResponse extends APIResponse with EquatableMixin {
 
   @JsonKey(name: 'username')
 
-  /// The list of user's that posted the comment
-  final List<String> userName;
+  /// The list of user id's that posted the comment
+  final List<String> userIds;
 
   @JsonKey(name: 'userpicture')
 
@@ -319,13 +319,13 @@ class CommentsResponse extends APIResponse with EquatableMixin {
   ///
   /// [text]: The list of text comments
   /// [date]: The list of dates for each comment
-  /// [userName]: The list of user for each comment
+  /// [userIds]: The list of user id's for each comment
   /// [userPicture]: The list user pictures for each comment
   /// [error]: An error if there was error while fetching the comments
   CommentsResponse(
       {this.text,
       this.date,
-      this.userName,
+      this.userIds,
       this.userPicture,
       ResponseError error})
       : super(error: error);
@@ -335,15 +335,12 @@ class CommentsResponse extends APIResponse with EquatableMixin {
   /// The [List] of `props` (properties) which will be used to determine whether
   /// two [Equatables] are equal.
   List get props {
-    return [text, date, userName, userPicture, error];
+    return [text, date, userIds, userPicture, error];
   }
 
   /// Creates a [CommentsResponse] from json list
   factory CommentsResponse.fromList(List<dynamic> json) => CommentsResponse(
-      text: const [],
-      date: const [],
-      userName: const [],
-      userPicture: const []);
+      text: const [], date: const [], userIds: const [], userPicture: const []);
 
   /// Creates a [CommentsResponse] from json map
   factory CommentsResponse.fromMap(Map<String, dynamic> json) =>

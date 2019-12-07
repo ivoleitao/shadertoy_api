@@ -7,7 +7,7 @@ main() {
 
   // Create a user
   User user = User(
-      id: 'username',
+      id: 'userid',
       about: 'About this user',
       memberSince: DateTime.now(),
       shaders: 1,
@@ -21,7 +21,7 @@ main() {
 
   // Creates a registered site account
   Account registeredSiteAccount = Account.registered(
-      name: 'username',
+      name: 'userId',
       displayName: 'Registered site account',
       password: 'password');
   print(encoder.convert(registeredSiteAccount));
@@ -39,7 +39,7 @@ main() {
           date: DateTime.fromMillisecondsSinceEpoch(1360495251),
           views: 131083,
           name: 'Example',
-          username: 'example',
+          userId: 'example',
           description: 'A shader example',
           likes: 570,
           publishStatus: PublishStatus.public_api,
@@ -105,7 +105,7 @@ main() {
   // Creates a shader comment
   Comment comment = Comment(
       shaderId: 'AaA0Aa',
-      userId: 'username',
+      userId: 'userId',
       date: DateTime.now(),
       text: 'Great shader!');
   print(encoder.convert(comment));

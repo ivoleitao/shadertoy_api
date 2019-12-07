@@ -56,7 +56,7 @@ class Info extends Equatable {
   @JsonKey(name: 'username')
 
   /// The name of the user that created the shader
-  final String username;
+  final String userId;
 
   @JsonKey(name: 'description')
 
@@ -95,7 +95,7 @@ class Info extends Equatable {
   /// * [date]: The publish date of the shader
   /// * [views]: The shader views
   /// * [name]: The shader name
-  /// * [username]: The name of the user that created the shader
+  /// * [userId]: The id of the user that created the shader
   /// * [description]: The shader description
   /// * [likes]: The number of likes
   /// * [publishStatus]: The publish status
@@ -107,7 +107,7 @@ class Info extends Equatable {
       this.date,
       this.views,
       this.name,
-      this.username,
+      this.userId,
       this.description,
       this.likes,
       this.publishStatus,
@@ -124,7 +124,7 @@ class Info extends Equatable {
         date,
         views,
         name,
-        username,
+        userId,
         description,
         likes,
         publishStatus,
