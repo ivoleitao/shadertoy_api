@@ -1,0 +1,155 @@
+@startuml Shadertoy
+
+hide methods
+
+class User {
+ +String id
+ +String picture
+ +String memberSince
+ +int shaders
+ +int comments 
+ +String about
+}
+
+enum AccountType {
+    site
+    api
+}
+
+class Account {
+    +String name
+    +AccountType type
+    +bool system
+    +String credentials
+    +String displayName
+    +String picture
+}
+
+class Comment {
+    +String shaderId
+    +String userId
+    +DateTime date
+    +String text
+}
+
+enum PublishStatus {
+    private
+    unlisted
+    public
+    public_api
+}
+
+class Info {
+    +String id
+    +DateTime date
+    +int views 
+    +String name
+    +String userId
+    +String description
+    +int likes
+    +PublishStatus publishStatus
+    +int flags
+    +List<String> tags
+    +bool hasLiked
+}
+
+enum FilterType {
+    none
+    nearest
+    linear
+    mipmap
+}
+
+enum WrapType {
+    none
+    clamp
+    repeat
+    mirror
+}
+
+class Sampler {
+    +FilterType filter
+    +WrapType wrap
+    +bool vflip
+    +bool srgb
+    +String internal
+}
+
+enum InputType {
+    texture
+    volume
+    cubemap
+    music
+    musicstream
+    mic
+    buffer
+    keyboard
+    video
+    webcam
+}
+
+class Input {
+    +String id
+    +String src
+    +InputType ctype
+    +int channel
+    +Sampler sampler
+    +int published
+}
+
+class Output {
+    +String id
+    +int channel
+}
+
+enum RenderPassType {
+    sound
+    common
+    image
+    buffer
+    cubemap
+}
+
+class RenderPass {
+    +String name
+    +RenderPassType type
+    +String description
+    +String code
+    +List<Input> inputs
+    +List<Output> outputs
+
+}
+
+class Shader {
+    +String version
+    +Info Info
+    +List<RenderPass> renderPasses
+}
+
+class Playlist {
+    +String id
+    +String name
+    +int count
+    +List<String> shaders
+}
+
+Account .. AccountType
+Info  .. PublishStatus
+Sampler .. FilterType
+Sampler .. WrapType
+Input .. InputType
+RenderPass .. RenderPassType
+
+Shader "info" o-- "1" Info
+Shader "     renderPasses" o-- "1..*" RenderPass
+RenderPass "inputs  " o-- "1..*" Input
+RenderPass "outputs" o-- "1..*" Output
+Input "sampler " o-- "1" Sampler
+
+Shader -- User
+Playlist -- Shader
+Comment -- Shader
+Comment -- User
+
+
+@enduml

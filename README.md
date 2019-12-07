@@ -6,14 +6,13 @@ A Shadertoy client API definition for Dart compatible with all platforms
 
 ## Introduction
 
-As a standalone package does not provide access to the Shadertoy API. Instead it provides as basic definition of the contracts and the entities needed to create a dart client to the Shadertoy API.
+Provides a basic definition of the contracts and the entities needed to create a dart client to the Shadertoy API.
 
 The contracts defined in this library allow the creation of clients for:
-* Shadertoy REST API as presented in the [howto](https://www.shadertoy.com/howto#q2) which provides a number of operations over the Shadertoy database that albeit limited allows browsing the Shadertoy catalog. To use this type of client a API key should be obtained for a properly registered user on
-the [apps](https://www.shadertoy.com/myapps) page of the user and the client implementation should support providing it at the time of the construction
-* Shadertoy Site API which allow access to more detailed data but needs a client implementation leveraging web scrapping techniques to obtain the data. The client implementation should support the usage of a suitable user and password thus supporting logging in and out of the site or in alternative a complete anonymous access that does not imply providing user and pass.
+* Shadertoy REST API (as presented in the [howto](https://www.shadertoy.com/howto#q2)) which provides a number of operations that allow the user to browse the shaders currently available with public+api privacy settings. The number of operations available on this client, are limited but enough for simple browsing usage. To start use this type of client a API key should be obtained for a properly registered user on the [apps](https://www.shadertoy.com/myapps) page of the user and the client implementation should support providing it at the time of the construction
+* Shadertoy Site API which allow access to more data (not constrained by the public+api privacy settings) but needs a client implementation leveraging web scrapping techniques to obtain the data. The client implementation should support the usage of a suitable user and password thus supporting logging in and out of the site or in alternative allows complete anonymous access, naturally not implying user and pass.
 
-Additionally it defines contracts supporting the creation of data stores for the Shadertoy data thus providing a way to work offline with the donwloaded shaders instead of hitting the REST or Site APIs
+Additionally this library defines contracts supporting the creation of data stores for the Shadertoy data thus providing a way to work offline with the donwloaded shaders instead of hitting the REST or Site APIs
 
 ## Getting Started
 
@@ -44,7 +43,7 @@ if (!response.hasError) {
     print('Error: ${response.error.message}')
 }
 ```
-To create a database providing the same set of read operations and also the ability to save shaders as well as other entities a contract, `ShadertoyStore` is also provided that allows the creation of database backed clients. The user should instantiate a `ShadertoyStore` providing the appriate configurations for the implementation:
+To create a database providing the same set of read operations as the previous contracts but also the ability to save shaders as well as other entities a `ShadertoyStore` contract is also provided. The user should instantiate a `ShadertoyStore` providing the apropiate configurations for the implementation:
 ```
 ShadertoyStore store = ...
 ```
