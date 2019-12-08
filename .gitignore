@@ -12,6 +12,10 @@ pubspec.lock
 # If you don't generate documentation locally you can remove this line.
 doc/api/
 
+# Directory generated with the coverage tool
+coverage/
+test/.test_coverage.dart
+
 # Avoid committing generated Javascript files:
 *.dart.js
 *.info.json      # Produced by the --dump-info flag.
