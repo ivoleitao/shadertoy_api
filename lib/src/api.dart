@@ -272,6 +272,7 @@ abstract class ShadertoyBaseClient implements ShadertoyClient {
 
   /// The [ShadertoyContext] object stores Shadertoy website contextual
   /// information
+  @override
   final ShadertoyContext context;
 
   /// Builds a [ShadertoyBaseClient] object

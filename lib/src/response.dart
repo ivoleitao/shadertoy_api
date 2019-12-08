@@ -201,7 +201,7 @@ abstract class APIResponse {
   ///
   /// Simply check if [error] is not null
   bool hasError() {
-    return this.error != null;
+    return error != null;
   }
 }
 

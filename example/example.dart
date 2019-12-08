@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:shadertoy_api/shadertoy_api.dart';
 
-main() {
-  JsonEncoder encoder = JsonEncoder.withIndent('  ');
+void main() {
+  var encoder = JsonEncoder.withIndent('  ');
 
   // Create a user
-  User user = User(
+  var user = User(
       id: 'userid',
       about: 'About this user',
       memberSince: DateTime.now(),
@@ -15,24 +15,23 @@ main() {
   print(encoder.convert(user));
 
   // Creates a anonymous site account
-  Account anonymousSiteAccount =
+  var anonymousSiteAccount =
       Account.anonymous(displayName: 'Anonymous site user');
   print(encoder.convert(anonymousSiteAccount));
 
   // Creates a registered site account
-  Account registeredSiteAccount = Account.registered(
+  var registeredSiteAccount = Account.registered(
       name: 'userId',
       displayName: 'Registered site account',
       password: 'password');
   print(encoder.convert(registeredSiteAccount));
 
   // Creates a api account
-  Account apiAccount =
-      Account.api(displayName: 'API account', apiKey: 'apikey');
+  var apiAccount = Account.api(displayName: 'API account', apiKey: 'apikey');
   print(encoder.convert(apiAccount));
 
   // Creates a Shader with two render passes
-  Shader shader = Shader(
+  var shader = Shader(
       version: '0.1',
       info: Info(
           id: 'ZzZ0Zz',
@@ -103,7 +102,7 @@ main() {
   print(encoder.convert(shader));
 
   // Creates a shader comment
-  Comment comment = Comment(
+  var comment = Comment(
       shaderId: 'AaA0Aa',
       userId: 'userId',
       date: DateTime.now(),
@@ -111,7 +110,7 @@ main() {
   print(encoder.convert(comment));
 
   // Creates a playlist
-  Playlist playlist =
+  var playlist =
       Playlist(id: 'ZzZ0Zz', name: 'Playlist', count: 1, shaders: ['ZzZ0Zz']);
   print(encoder.convert(playlist));
 }

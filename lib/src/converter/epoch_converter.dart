@@ -30,9 +30,9 @@ abstract class EpochConverter {
   ///
   /// * [value]: the epoch
   DateTime from(int value) {
-    if (this.unit == EpochUnit.seconds) {
+    if (unit == EpochUnit.seconds) {
       return DateTime.fromMillisecondsSinceEpoch(value * 1000, isUtc: isUtc);
-    } else if (this.unit == EpochUnit.miliseconds) {
+    } else if (unit == EpochUnit.miliseconds) {
       return DateTime.fromMillisecondsSinceEpoch(value, isUtc: isUtc);
     }
 
@@ -43,9 +43,9 @@ abstract class EpochConverter {
   ///
   /// * [value]: the datetime
   int to(DateTime value) {
-    if (this.unit == EpochUnit.seconds) {
+    if (unit == EpochUnit.seconds) {
       return value.millisecondsSinceEpoch ~/ 1000;
-    } else if (this.unit == EpochUnit.miliseconds) {
+    } else if (unit == EpochUnit.miliseconds) {
       return value.millisecondsSinceEpoch;
     }
 
@@ -91,11 +91,13 @@ abstract class StringEpochConverter extends EpochConverter
   /// Converts [json] to a epoch using the configured [unit] and [isUtc] indicator
   ///
   /// * [json]: the epoch
+  @override
   DateTime fromJson(String json) => super.from(int.parse(json));
 
   /// Converts [object] to a String value using the configured [unit]
   ///
   /// * [object]: the datetime
+  @override
   String toJson(DateTime object) => super.to(object).toString();
 }
 
