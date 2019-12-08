@@ -1,4 +1,8 @@
 
+## 1.0.0-dev.4
+
+- Finished the CI process
+
 ## 1.0.0-dev.3
 
 - Several changes in the github repo configuration
