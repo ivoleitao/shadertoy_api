@@ -3,7 +3,7 @@ name: build
 on:
   push:
     branches:
-      - master
+      - develop
 
 jobs:
   build:
@@ -23,10 +23,3 @@ jobs:
         run: dartanalyzer . --fatal-warnings
       - name: Run tests
         run: pub run test
-      - name: Run Code Coverage
-        run: pub run test_coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: coverage/lcov.info
