@@ -57,9 +57,6 @@ if (!response.hasError) {
     print('Error: ${response.error.message}')
 }
 ```
-## Class Model
-
-![diagram](https://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/ivoleitao/shadertoy_api/develop/model.puml)
 
 ## Features and bugs
 
