@@ -1,7 +1,7 @@
 name: shadertoy_api
 version: 1.0.0-dev.2
 description: >-
-  A library of the main entities supported by the shadertoy REST and WEB APIs. 
+  Main entities and contracts supported by the shadertoy REST and WEB APIs. 
   Can be used to create shadertoy web or persistent clients.
 author: Ivo Leitão <ivo.leitao@gmail.com>
 homepage: https://github.com/ivoleitao/shadertoy_api
