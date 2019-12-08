@@ -1,5 +1,7 @@
 ## 1.0.0-dev.5
 
+- Updated badges
+
 ## 1.0.0-dev.4
 
 - Finished the CI process
