@@ -1,14 +1,33 @@
-### New Pull Request Checklist
+## Status
+**READY/IN DEVELOPMENT/HOLD**
 
-- [ ] I have read the [Documentation](https://pub.dartlang.org/packages/shadertoy_api)
-- [ ] I have searched for a similar pull request in the [project](https://github.com/ivoleitao/shadertoy_api/pulls) and found none
-- [ ] I have updated this branch with the latest master to avoid conflicts (via merge from master or rebase)
-- [ ] I have added the required tests to prove the fix/feature I am adding
-- [ ] I have updated the documentation (if necessary)
-- [ ] I have run the tests and they pass
+## Breaking Changes
+YES | NO
 
-This merge request fixes / refers to the following issues: ...
+## Description
+A few sentences describing the overall goals of the pull request's commits.
 
-### Pull Request Description
+## Related PRs
+List related PRs against other branches:
 
-...
+branch | PR
+------ | ------
+other_pr_production | [link]()
+other_pr_master | [link]()
+
+
+## Todos
+- [ ] Tests
+- [ ] Documentation
+- [ ] Examples
+
+## Steps to Test or Reproduce
+Outline the steps to test or reproduce the PR here.
+
+```
+```
+
+## Impact to Remaining Code Base
+This PR will affect:
+
+* 
