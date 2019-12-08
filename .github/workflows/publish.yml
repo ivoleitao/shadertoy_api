@@ -33,4 +33,4 @@ jobs:
       - name: Add Pub Credentials
         run: echo "$PUB_CREDENTIALS" > ~/.pub-cache/credentials.json
       - name: Publish to Pub
-        run: echo y | pub publish --dry-run
+        run: echo y | pub publish

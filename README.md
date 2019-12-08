@@ -61,6 +61,10 @@ if (!response.hasError) {
 }
 ```
 
+## Model
+
+![Shadertoy API Model](doc/media/model.png?raw=true)
+
 ## Features and bugs
 
 Please file feature requests and bugs at the [issue tracker][tracker].
