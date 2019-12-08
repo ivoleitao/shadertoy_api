@@ -31,6 +31,6 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: coverage/lcov.info
       - name: Add Pub Credentials
-        run: echo "$PUB_CREDENTIALS" > ~/.pub-cache/credentials.json
+        run: echo "${{ secrets.PUB_CREDENTIALS }}" > ~/.pub-cache/credentials.json
       - name: Publish to Pub
         run: echo y | pub publish
