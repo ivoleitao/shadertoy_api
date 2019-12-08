@@ -59,7 +59,7 @@ if (!response.hasError) {
 ```
 ## Class Model
 
-![diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/ivoleitao/shadertoy_api/develop/model.puml)
+![diagram](https://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/ivoleitao/shadertoy_api/develop/model.puml)
 
 ## Features and bugs
 
