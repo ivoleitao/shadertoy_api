@@ -4,8 +4,8 @@ A Shadertoy client API definition for Dart compatible with all platforms
 [![Pub Package](https://img.shields.io/pub/v/shadertoy_api.svg?style=flat-square)](https://pub.dartlang.org/packages/shadertoy_api)
 [![Build Status](https://github.com/ivoleitao/shadertoy_api/workflows/build/badge.svg)](https://github.com/ivoleitao/shadertoy_api/actions)
 [![Coverage Status](https://codecov.io/gh/ivoleitao/shadertoy_api/graph/badge.svg)](https://codecov.io/gh/ivoleitao/shadertoy_api)
-[![GitHub Issues](https://img.shields.io/github/issues/ivoleitao/shadertoy_api.svg)](https://github.com/ivoleitao/shadertoy_api/issues)
-[![GitHub License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Package Documentation](https://img.shields.io/badge/doc-shadertoy_api-blue.svg)](https://www.dartdocs.org/documentation/shadertoy_api/latest)
+[![GitHub License](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Introduction
 
