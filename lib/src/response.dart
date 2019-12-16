@@ -192,17 +192,17 @@ abstract class APIResponse {
     return [error];
   }
 
+  /// Returns `true` if there is not error
+  ///
+  /// Simply check if [error] is null
+  bool get ok {
+    return error == null;
+  }
+
   /// Builds an [APIResponse]
   ///
   /// An optional [error] can be provided
   APIResponse({this.error});
-
-  /// Checks if the response has an error
-  ///
-  /// Simply check if [error] is not null
-  bool hasError() {
-    return error != null;
-  }
 }
 
 @JsonSerializable()

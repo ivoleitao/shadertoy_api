@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:shadertoy_api/src/converter/epoch_converter.dart';
 
 part 'comment.g.dart';
 
@@ -18,7 +17,6 @@ class Comment extends Equatable {
   /// The user who posted the comment
   final String userId;
 
-  @StringEpochInSecondsConverter()
   @JsonKey(name: 'date')
 
   /// The date the comment was posted

@@ -12,10 +12,10 @@ A Shadertoy client API definition for Dart compatible with all platforms
 Provides a definition of the contracts and entities needed to create a dart client to the Shadertoy API.
 
 The contracts defined in this library allow the creation of clients to the:
-* **Shadertoy REST API**, (as presented in the [howto](https://www.shadertoy.com/howto#q2)) provides a number of operations that allow the user to browse the shaders currently available with `public+api` privacy settings. Note that the number of operations available on this contract are limited but enough for simple browsing usage. To start using this type of client a API key should be obtained for a properly registered user on the [apps](https://www.shadertoy.com/myapps) page and the client implementation should support providing it at the time of the construction
-* **Shadertoy Site API**, providing access to more data namely users, playlists, shader comments and Shadertoy website media. The shaders returned by this API are not constrained by the `public+api` privacy settings. The client implementation should support the usage of a suitable user and password providing sign in and out methods or, in alternative, anonymous access.
+* **Shadertoy REST API**, wich as presented in the [howto](https://www.shadertoy.com/howto#q2), provides a number of operations that allow the user to browse the shaders currently available with `public+api` privacy settings. Note that the number of operations available with this API are limited albeit enough for simple browsing usage. To start using this type of client a API key should be obtained for a properly registered user on the [apps](https://www.shadertoy.com/myapps) page and the client implementation should support providing it at the time of the construction
+* **Shadertoy Site API**, provides access to the same methods as the previous API but adds more data namely users, playlists, shader comments and website media. Not that The shaders returned by this API should are not constrained by the `public+api` privacy settings. With that said, the client implementation should support the usage of a suitable user and password providing sign in and out methods or, in alternative, anonymous access.
 
-Additionally this library defines contracts supporting the creation of data stores thus providing a way to work offline with the donwloaded shaders instead of hitting the REST or Site APIs
+Finally, this library defines contracts supporting the creation of data stores thus providing a way to work offline with the donwloaded shaders instead of hitting the REST or Site APIs
 
 ## Features
 
@@ -30,7 +30,7 @@ Additionally this library defines contracts supporting the creation of data stor
 **Site API**
 
 All the REST API features plus the following:
-* [`Login`](http://www.github.com/ivoleitao)
+* `Login`
 * `Logout`
 * `Find user` by id
 * `Find shaders by user id`
@@ -39,8 +39,8 @@ All the REST API features plus the following:
 * `Find playlist` by id.
 * `Query shaders by playlist id`. All the query results are paginated.
 * `Query shader ids by playlist id`. All the query results are paginated. 
-* `Download preview`
-* `Download media`
+* `Download preview`, i.e. the the shader thumbnails
+* `Download media`, any other media provided by the Shadertoy website
 
 **Store API**
 
@@ -63,7 +63,7 @@ ShadertoyWS ws = ...
 and execute one of the methods provided, for example to obtain a shader by id execute `findShaderById` providing the id of the shader as parameter:
 ```
 FindShaderResponse response = await ws.findShaderById('...');
-if (!response.hasError) {
+if (response.ok) {
     print(response.shader);
 } else {
     print('Error: ${response.error.message}')
@@ -76,7 +76,7 @@ ShadertoySite site = ...
 and execute one of the methods provided, for example to obtain the shader comments by shader id execute `findCommentsByShaderId` providing the id of the shader as parameter:
 ```
 FindCommentsResponse response = await site.findCommentsByShaderId('...');
-if (!response.hasError) {
+if (response.ok) {
     response.comments.forEach((c)=> print(c.text));
 } else {
     print('Error: ${response.error.message}')
