@@ -57,6 +57,33 @@ All the REST and Site API features except `login`, `logout`, `download preview` 
 
 ## Getting Started
 
+Add this to your `pubspec.yaml` (or create it):
+
+```dart
+dependencies:
+    shadertoy_api: ^1.0.0-dev.6
+```
+
+Run the following command to install dependencies:
+
+```dart
+pub install
+```
+
+Optionally use the following command to run the tests:
+
+```dart
+pub run test
+```
+
+Finaly, to start developing import the library:
+
+```dart
+import 'package:shadertoy_api/shadertoy_api.dart';
+```
+
+## Usage
+
 Instantiate a `ShadertoyWS` implementation, for example the one provided by the package [shadertoy_client](https://pub.dev/packages/shadertoy_client), to access the REST API:
 
 ```dart
