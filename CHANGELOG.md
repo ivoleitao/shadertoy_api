@@ -1,3 +1,7 @@
+## 1.0.0-dev.7
+
+- Updated documentation
+
 ## 1.0.0-dev.6
 
 - Updated documentation
