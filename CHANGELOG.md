@@ -1,6 +1,13 @@
+## 1.0.0-dev.6
+
+- Updated documentation
+
 ## 1.0.0-dev.5
 
 - Updated badges
+- Update minimum sdk to 2.7
+- Added model tests
+- Updated dependencies
 
 ## 1.0.0-dev.4
 

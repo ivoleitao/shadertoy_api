@@ -17,7 +17,9 @@ The contracts defined in this library allow the creation of clients to the:
 
 Finally, this library defines contracts supporting the creation of data stores thus providing a way to work offline with the donwloaded shaders instead of hitting the REST or Site APIs
 
-## Features
+## Capabilties
+
+This package provides a number of operations through two types of clients:
 
 **REST API**
 
@@ -55,42 +57,48 @@ All the REST and Site API features except `login`, `logout`, `download preview` 
 
 ## Getting Started
 
-Instantiate a `ShadertoyWS` implementation, for example the one provided by the package [shadertoy_client](https://wwww.github.com/ivoleitao/shadertoy_client), to access the REST API:
+Instantiate a `ShadertoyWS` implementation, for example the one provided by the package [shadertoy_client](https://pub.dev/packages/shadertoy_client), to access the REST API:
 
-```
+```dart
 ShadertoyWS ws = ...
 ```
 and execute one of the methods provided, for example to obtain a shader by id execute `findShaderById` providing the id of the shader as parameter:
-```
-FindShaderResponse response = await ws.findShaderById('...');
-if (response.ok) {
-    print(response.shader);
+
+```dart
+var fsr = await ws.findShaderById('...');
+if (fsr.ok) {
+    print(fsr?.shader);
 } else {
-    print('Error: ${response.error.message}')
+    print('Error: ${fsr.error.message}')
 }
 ```
-In alternative instantiate a `ShadertoySite` implementation, for example the one provided by the package [shadertoy_client](https://wwww.github.com/ivoleitao/shadertoy_client), to access the Site API:
-```
+In alternative instantiate a `ShadertoySite` implementation, for example the one provided by the package [shadertoy_client](https://pub.dev/packages/shadertoy_client), to access the Site API:
+```dart
 ShadertoySite site = ...
 ```
 and execute one of the methods provided, for example to obtain the shader comments by shader id execute `findCommentsByShaderId` providing the id of the shader as parameter:
-```
-FindCommentsResponse response = await site.findCommentsByShaderId('...');
-if (response.ok) {
-    response.comments.forEach((c)=> print(c.text));
+
+```dart
+var fsr = await site.findCommentsByShaderId('...');
+if (fsr.ok) {
+    fsr.comments.forEach((c)=> print(c.text));
 } else {
-    print('Error: ${response.error.message}')
+    print('Error: ${fsr.error.message}')
 }
 ```
+
 To create a database providing the same set of read operations as the previous contracts but also the ability to save shaders as well as other entities a `ShadertoyStore` contract is also provided. The user should instantiate a `ShadertoyStore` providing the apropiate configurations for the implementation:
-```
+
+```dart
 ShadertoyStore store = ...
 ```
+
 and execute persitent operations, for example storing the definition of a shader in the store with:
-```
-Shader shader = Shader(...);
-SaveShaderResponse response = await store.saveShader(shader);
-if (!response.hasError) {
+
+```dart
+var shader = Shader(...);
+var ssr = await store.saveShader(shader);
+if (ssr.ok) {
     print('Shader stored');
 } else {
     print('Error: ${response.error.message}')
@@ -101,8 +109,21 @@ if (!response.hasError) {
 
 ![Shadertoy API Model](doc/media/model.png?raw=true)
 
-## Features and bugs
+## Contributing
+
+This a unofficial [Shadertoy](https://www.shadertoy.com) client library API. It is developed by best effort, in the motto of "Scratch your own itch!", meaning APIs that are meaningful for the author use cases.
+
+If you would like to contribute with other parts of the API, feel free to make a [Github pull request](https://github.com/ivoleitao/shadertoy_api/pulls) as I'm always looking for contributions for:
+* Tests
+* Documentation
+* New APIs
+
+## Features and Bugs
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
 [tracker]: http://github.com/ivoleitao/shadertoy_api/issues/new
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
