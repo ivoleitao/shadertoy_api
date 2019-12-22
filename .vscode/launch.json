@@ -9,7 +9,8 @@
             "program": "example/example.dart",
             "args": [],
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "console": "debugConsole"
         },
     ]
 }
