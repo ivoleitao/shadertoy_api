@@ -20,6 +20,9 @@ class ShadertoyContext extends Equatable {
   /// The relative path to the signout url
   static const String SignOutPath = 'signout';
 
+  /// The relative path to the shader embedding
+  static const String EmbedPath = 'embed';
+
   /// The relative path to the browse url
   static const String BrowsePath = 'browse';
 
@@ -41,52 +44,58 @@ class ShadertoyContext extends Equatable {
   @override
   List<Object> get props => [baseUrl];
 
-  /// The relative path of the signin url
-  String get signInPath {
-    return SignInPath;
-  }
-
   /// The signin url
   String get signInUrl {
-    return '$baseUrl/${signInPath}';
-  }
-
-  /// The relative path of the signout url
-  String get signOutPath {
-    return SignOutPath;
+    return '$baseUrl/${SignInPath}';
   }
 
   /// The signout url
   String get signOutUrl {
-    return '$baseUrl/${signOutPath}';
-  }
-
-  /// The relative path of the browse url
-  String get shaderBrowsePath {
-    return BrowsePath;
+    return '$baseUrl/${SignOutPath}';
   }
 
   /// The browse url
   String get shaderBrowseUrl {
-    return '$baseUrl/${shaderBrowsePath}';
+    return '$baseUrl/${BrowsePath}';
   }
 
   /// The relative path of the shader view url
+  /// * [shaderId]: The shader id
   String getShaderViewPath(String shaderId) {
     return '${ViewPath}/$shaderId';
   }
 
   /// The shader view url
+  /// * [shaderId]: The shader id
   String getShaderViewUrl(String shaderId) {
     return '$baseUrl/${getShaderViewPath(shaderId)}';
   }
 
+  /// The relative path of the shader embed url
+  /// * [shaderId]: The shader id
+  String getShaderEmbedPath(String shaderId) {
+    return '${EmbedPath}/$shaderId';
+  }
+
+  /// The shader embed url
+  /// * [shaderId]: The shader id
+  /// * [gui]: If the GUI should be presented or hidden
+  /// * [t]: The starting point in seconds
+  /// * [paused]: If the shader should start paused
+  /// * [muted]: If the sound should be muted
+  String getShaderEmbedUrl(String shaderId,
+      {bool gui = false, int t = 10, bool paused = false, bool muted = false}) {
+    return '$baseUrl/${getShaderViewPath(shaderId)}?gui=$gui&t=$t&paused=$paused&muted=$muted';
+  }
+
   /// The relative path of the shader picture url
+  /// * [shaderId]: The shader id
   String getShaderPicturePath(String shaderId) {
     return '${ShaderMediaPath}/$shaderId.jpg';
   }
 
   /// The shader picture url
+  /// * [shaderId]: The shader id
   String getShaderPictureUrl(String shaderId) {
     return '$baseUrl/${getShaderPicturePath(shaderId)}';
   }
