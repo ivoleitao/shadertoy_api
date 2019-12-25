@@ -85,7 +85,7 @@ class ShadertoyContext extends Equatable {
   /// * [muted]: If the sound should be muted
   String getShaderEmbedUrl(String shaderId,
       {bool gui = false, int t = 10, bool paused = false, bool muted = false}) {
-    return '$baseUrl/${getShaderViewPath(shaderId)}?gui=$gui&t=$t&paused=$paused&muted=$muted';
+    return '$baseUrl/${getShaderEmbedPath(shaderId)}?gui=$gui&t=$t&paused=$paused&muted=$muted';
   }
 
   /// The relative path of the shader picture url
