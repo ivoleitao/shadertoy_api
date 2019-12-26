@@ -11,7 +11,7 @@ void main() {
       comments: 1,
       about: 'about1');
 
-  test('Create a user', () {
+  test('Test a user', () {
     expect(user1.id, 'id1');
     expect(user1.picture, 'picture1');
     expect(user1.memberSince, memberSince);

@@ -298,12 +298,12 @@ class CommentsResponse extends APIResponse with EquatableMixin {
   @JsonKey(name: 'text')
 
   /// The list of comment texts
-  final List<String> text;
+  final List<String> texts;
 
   @JsonKey(name: 'date')
 
   /// The list of date for each comment
-  final List<String> date;
+  final List<String> dates;
 
   @JsonKey(name: 'username')
 
@@ -313,20 +313,20 @@ class CommentsResponse extends APIResponse with EquatableMixin {
   @JsonKey(name: 'userpicture')
 
   /// The list of user pictures for each comment
-  final List<String> userPicture;
+  final List<String> userPictures;
 
   /// Builds a [CommentsResponse]
   ///
-  /// [text]: The list of text comments
-  /// [date]: The list of dates for each comment
-  /// [userIds]: The list of user id's for each comment
-  /// [userPicture]: The list user pictures for each comment
-  /// [error]: An error if there was error while fetching the comments
+  /// * [texts]: The list of text comments
+  /// * [dates]: The list of dates for each comment
+  /// * [userIds]: The list of user id's for each comment
+  /// * [userPictures]: The list user pictures for each comment
+  /// * [error]: An error if there was error while fetching the comments
   CommentsResponse(
-      {this.text,
-      this.date,
+      {this.texts,
+      this.dates,
       this.userIds,
-      this.userPicture,
+      this.userPictures,
       ResponseError error})
       : super(error: error);
 
@@ -335,12 +335,15 @@ class CommentsResponse extends APIResponse with EquatableMixin {
   /// The [List] of `props` (properties) which will be used to determine whether
   /// two [Equatables] are equal.
   List get props {
-    return [text, date, userIds, userPicture, error];
+    return [texts, dates, userIds, userPictures, error];
   }
 
   /// Creates a [CommentsResponse] from json list
   factory CommentsResponse.fromList(List<dynamic> json) => CommentsResponse(
-      text: const [], date: const [], userIds: const [], userPicture: const []);
+      texts: const [],
+      dates: const [],
+      userIds: const [],
+      userPictures: const []);
 
   /// Creates a [CommentsResponse] from json map
   factory CommentsResponse.fromMap(Map<String, dynamic> json) =>

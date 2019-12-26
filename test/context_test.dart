@@ -5,7 +5,7 @@ void main() {
   var BaseUrl = 'https://www.shadertoy.com';
   var context1 = ShadertoyContext(BaseUrl);
 
-  test('Create a context', () {
+  test('Test a context', () {
     expect(context1.baseUrl, BaseUrl);
     expect(context1.signInUrl, '$BaseUrl/${ShadertoyContext.SignInPath}');
     expect(context1.signOutUrl, '$BaseUrl/${ShadertoyContext.SignOutPath}');

@@ -16,7 +16,7 @@ void main() {
       tags: ['test1'],
       hasLiked: true);
 
-  test('Create a info', () {
+  test('Test a info', () {
     expect(info1.id, 'id1');
     expect(info1.date, date);
     expect(info1.views, 1);

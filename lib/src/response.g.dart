@@ -45,10 +45,10 @@ Map<String, dynamic> _$FindShaderResponseToJson(FindShaderResponse instance) =>
 
 CommentsResponse _$CommentsResponseFromJson(Map<String, dynamic> json) {
   return CommentsResponse(
-    text: (json['text'] as List)?.map((e) => e as String)?.toList(),
-    date: (json['date'] as List)?.map((e) => e as String)?.toList(),
+    texts: (json['text'] as List)?.map((e) => e as String)?.toList(),
+    dates: (json['date'] as List)?.map((e) => e as String)?.toList(),
     userIds: (json['username'] as List)?.map((e) => e as String)?.toList(),
-    userPicture:
+    userPictures:
         (json['userpicture'] as List)?.map((e) => e as String)?.toList(),
     error: const ResponseErrorConverter().fromJson(json['Error'] as String),
   );
@@ -57,10 +57,10 @@ CommentsResponse _$CommentsResponseFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$CommentsResponseToJson(CommentsResponse instance) =>
     <String, dynamic>{
       'Error': const ResponseErrorConverter().toJson(instance.error),
-      'text': instance.text,
-      'date': instance.date,
+      'text': instance.texts,
+      'date': instance.dates,
       'username': instance.userIds,
-      'userpicture': instance.userPicture,
+      'userpicture': instance.userPictures,
     };
 
 FindUserResponse _$FindUserResponseFromJson(Map<String, dynamic> json) {

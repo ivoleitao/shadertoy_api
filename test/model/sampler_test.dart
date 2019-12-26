@@ -9,7 +9,7 @@ void main() {
       srgb: true,
       internal: 'internal1');
 
-  test('Create a sampler', () {
+  test('Test a sampler', () {
     expect(sampler1.filter, FilterType.linear);
     expect(sampler1.wrap, WrapType.clamp);
     expect(sampler1.vflip, true);

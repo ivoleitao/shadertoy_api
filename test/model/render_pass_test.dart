@@ -27,7 +27,7 @@ void main() {
       inputs: [input],
       outputs: [output]);
 
-  test('Create a render pass', () {
+  test('Test a render pass', () {
     expect(renderPass1.name, 'name1');
     expect(renderPass1.type, RenderPassType.buffer);
     expect(renderPass1.description, 'description1');

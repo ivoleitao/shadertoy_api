@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 void main() {
   var output1 = Output(id: 'id1', channel: 1);
-  test('Create a output', () {
+  test('Test a output', () {
     expect(output1.id, 'id1');
     expect(output1.channel, 1);
   });

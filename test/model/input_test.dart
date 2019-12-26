@@ -16,7 +16,7 @@ void main() {
       channel: 1,
       sampler: sampler,
       published: 1);
-  test('Create a input', () {
+  test('Test a input', () {
     expect(input1.id, 'id1');
     expect(input1.src, 'src1');
     expect(input1.type, InputType.buffer);

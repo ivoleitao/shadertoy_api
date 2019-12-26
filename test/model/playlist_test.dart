@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 void main() {
   var playlist1 = Playlist(id: 'id1', name: 'name1', count: 1, shaders: ['1']);
-  test('Create a playlist', () {
+  test('Test a playlist', () {
     expect(playlist1.id, 'id1');
     expect(playlist1.name, 'name1');
     expect(playlist1.count, 1);

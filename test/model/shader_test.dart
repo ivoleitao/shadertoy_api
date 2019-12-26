@@ -43,7 +43,7 @@ void main() {
       outputs: [output]);
   var shader1 = Shader(version: '1', info: info, renderPasses: [renderPass]);
 
-  test('Create a shader', () {
+  test('Test a shader', () {
     expect(shader1.version, '1');
     expect(shader1.info, info);
     expect(shader1.renderPasses, [renderPass]);
