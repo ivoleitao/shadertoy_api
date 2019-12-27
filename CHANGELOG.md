@@ -1,6 +1,9 @@
 ## 1.0.0-dev.7
 
 - Updated documentation
+- Improved test coverage
+- Pluralized CommentsResponse field names
+- Added embeded URLs construction method in the Context class
 
 ## 1.0.0-dev.6
 

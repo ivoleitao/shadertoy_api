@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:shadertoy_api/shadertoy_api.dart';
 import 'package:shadertoy_api/src/response.dart';
 import 'package:test/test.dart';
@@ -284,5 +286,74 @@ void main() {
     var json = findPlaylistResponse1.toJson();
     var findPlaylistResponse2 = FindPlaylistResponse.fromJson(json);
     expect(findPlaylistResponse1, equals(findPlaylistResponse2));
+  });
+
+  var ids = ['wtd3zs', 'XlcBRX'];
+  var findShaderIdsResponse1 = FindShaderIdsResponse(ids: ids, error: null);
+
+  test('Test a find shader ids response', () {
+    expect(findShaderIdsResponse1.ids, ids);
+    expect(findShaderIdsResponse1.error, isNull);
+  });
+
+  test('Convert a find shader ids response to a JSON serializable map and back',
+      () {
+    var json = findShaderIdsResponse1.toJson();
+    var findShaderIdsResponse2 = FindShaderIdsResponse.fromJson(json);
+    expect(findShaderIdsResponse1, equals(findShaderIdsResponse2));
+  });
+
+  var shaders = [findShaderResponse1];
+  var findShadersResponse1 =
+      FindShadersResponse(total: 1, shaders: shaders, error: null);
+
+  test('Test find shaders response', () {
+    expect(findShadersResponse1.total, 1);
+    expect(findShadersResponse1.shaders, shaders);
+    expect(findShadersResponse1.error, isNull);
+  });
+
+  test('Convert find shaders response to a JSON serializable map and back', () {
+    var json = findShadersResponse1.toJson();
+    var findShadersResponse2 = FindShadersResponse.fromJson(json);
+    expect(findShadersResponse1, equals(findShadersResponse2));
+  });
+
+  var bytes = utf8.encode('bytes');
+  var donwloadFileResponse1 = DownloadFileResponse(bytes: bytes, error: null);
+
+  test('Test download file response', () {
+    expect(donwloadFileResponse1.bytes, bytes);
+    expect(donwloadFileResponse1.error, isNull);
+  });
+
+  var saveUserResponse1 = SaveUserResponse(error: null);
+
+  test('Test save account response', () {
+    expect(saveUserResponse1.error, isNull);
+  });
+
+  var saveAccountResponse1 = SaveAccountResponse(error: null);
+
+  test('Test save account response', () {
+    expect(saveAccountResponse1.error, isNull);
+  });
+
+  var saveShaderResponse1 = SaveShaderResponse(error: null);
+
+  test('Test save shader response', () {
+    expect(saveShaderResponse1.error, isNull);
+  });
+
+  var saveShaderCommentsResponse1 = SaveShaderCommentsResponse(error: null);
+
+  test('Test save shader comments response', () {
+    expect(saveShaderCommentsResponse1.error, isNull);
+  });
+
+  var savePlaylistResponse1 = SavePlaylistResponse(error: null);
+
+  test('Test save playlist response', () {
+    expect(savePlaylistResponse1.error, isNull);
   });
 }
