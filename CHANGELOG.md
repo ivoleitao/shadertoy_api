@@ -4,7 +4,7 @@
 
 ## 1.0.0-dev.8
 
-- Updated sdk
+- Updated sdk to 2.8
 - Updated dependencies 
 
 ## 1.0.0-dev.7
