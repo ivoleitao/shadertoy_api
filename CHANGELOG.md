@@ -1,3 +1,7 @@
+## 1.0.0
+
+- Released 1.0.0 version
+
 ## 1.0.0-dev.8
 
 - Updated sdk
