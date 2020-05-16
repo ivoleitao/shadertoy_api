@@ -12,12 +12,12 @@ A Shadertoy client API definition for Dart compatible with all platforms
 Provides a definition of the contracts and entities needed to create a dart client to the Shadertoy API.
 
 The contracts defined in this library allow the creation of clients to the:
-* **Shadertoy REST API**, wich as presented in the [howto](https://www.shadertoy.com/howto#q2), provides a number of operations that allow the user to browse the shaders currently available with `public+api` privacy settings. Note that the number of operations available with this API are limited albeit enough for simple browsing usage. To start using this type of client a API key should be obtained for a properly registered user on the [apps](https://www.shadertoy.com/myapps) page and the client implementation should support providing it at the time of the construction
+* **Shadertoy REST API**, which as presented in the [howto](https://www.shadertoy.com/howto#q2), provides a number of operations that allow the user to browse the shaders currently available with `public+api` privacy settings. Note that the number of operations available with this API are limited albeit enough for simple browsing usage. To start using this type of client a API key should be obtained for a properly registered user on the [apps](https://www.shadertoy.com/myapps) page and the client implementation should support providing it at the time of the construction
 * **Shadertoy Site API**, provides access to the same methods as the previous API but adds more data namely users, playlists, shader comments and website media. Not that The shaders returned by this API should are not constrained by the `public+api` privacy settings. With that said, the client implementation should support the usage of a suitable user and password providing sign in and out methods or, in alternative, anonymous access.
 
-Finally, this library defines contracts supporting the creation of data stores thus providing a way to work offline with the donwloaded shaders instead of hitting the REST or Site APIs
+Finally, this library defines contracts supporting the creation of data stores thus providing a way to work offline with the downloaded shaders instead of hitting the REST or Site APIs
 
-## Capabilties
+## Capabilities
 
 This package provides a number of operations through two types of clients:
 
@@ -25,9 +25,9 @@ This package provides a number of operations through two types of clients:
 
 * `Find shader` by id
 * `Find shaders` from a list of id's
-* `Query shaders by term`, tags and sort them by *name*, *likes*, *views*, *neweness* and by *hotness* (proportional to popularity and inversly propostional to lifetime). All the query results are paginated.
+* `Query shaders by term`, tags and sort them by *name*, *likes*, *views*, *newness* and by *hotness* (proportional to popularity and inversely proportional to lifetime). All the query results are paginated.
 * `Find all shader ids`
-* `Find shaders ids by term`, tags and sort them by *name*, *likes*, *views*, *neweness* and by *hotness* (proportional to popularity and inversly propostional to lifetime). All the query results are paginated.
+* `Find shaders ids by term`, tags and sort them by *name*, *likes*, *views*, *newness* and by *hotness* (proportional to popularity and inversely proportional to lifetime). All the query results are paginated.
 
 **Site API**
 
@@ -36,7 +36,7 @@ All the REST API features plus the following:
 * `Logout`
 * `Find user` by id
 * `Find shaders by user id`
-* `Query shaders by user id`, tags and sort them by *name*, *likes*, *views*, *neweness* and by *hotness* (proportional to popularity and inversly propotional to lifetime). All the query results are paginated as well.
+* `Query shaders by user id`, tags and sort them by *name*, *likes*, *views*, *newness* and by *hotness* (proportional to popularity and inversely proportional to lifetime). All the query results are paginated as well.
 * `Find comments` by shader id
 * `Find playlist` by id.
 * `Query shaders by playlist id`. All the query results are paginated.
@@ -76,7 +76,7 @@ Optionally use the following command to run the tests:
 pub run test
 ```
 
-Finaly, to start developing import the library:
+Finally, to start developing import the library:
 
 ```dart
 import 'package:shadertoy_api/shadertoy_api.dart';
@@ -114,13 +114,13 @@ if (fsr.ok) {
 }
 ```
 
-To create a database providing the same set of read operations as the previous contracts but also the ability to save shaders as well as other entities a `ShadertoyStore` contract is also provided. The user should instantiate a `ShadertoyStore` providing the apropiate configurations for the implementation:
+To create a database providing the same set of read operations as the previous contracts but also the ability to save shaders as well as other entities a `ShadertoyStore` contract is also provided. The user should instantiate a `ShadertoyStore` providing the appropriate configurations for the implementation:
 
 ```dart
 ShadertoyStore store = ...
 ```
 
-and execute persitent operations, for example storing the definition of a shader in the store with:
+and execute persistent operations, for example storing the definition of a shader in the store with:
 
 ```dart
 var shader = Shader(...);
@@ -134,7 +134,7 @@ if (ssr.ok) {
 
 ## Model
 
-![Shadertoy API Model](extras/media/model.png?raw=true)
+![Shadertoy API Model](extras/media/model.svg?raw=true)
 
 ## Contributing
 
