@@ -134,7 +134,7 @@ if (ssr.ok) {
 
 ## Model
 
-![Shadertoy API Model](extras/media/model.svg?raw=true)
+![Shadertoy API Model](model.svg?raw=true)
 
 ## Contributing
 
