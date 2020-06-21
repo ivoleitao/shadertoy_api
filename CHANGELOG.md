@@ -1,6 +1,10 @@
-## 1.0.2
+## 1.0.3
 
 - TODO
+
+## 1.0.2
+
+- Removed meta dependency
 
 ## 1.0.1
 
