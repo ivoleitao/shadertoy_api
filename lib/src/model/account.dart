@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:meta/meta.dart';
 
 part 'account.g.dart';
 
@@ -63,7 +62,7 @@ class Account extends Equatable {
   /// * [picture]: The picture URL
   const Account(
       {this.name,
-      @required this.type,
+      this.type,
       this.system = false,
       this.credentials,
       this.displayName,
@@ -89,9 +88,9 @@ class Account extends Equatable {
   /// * [displayName]: The display name of the user
   /// * [picture]: The picture URL
   Account.registered(
-      {@required String name,
+      {String name,
       bool system = false,
-      @required String password,
+      String password,
       String displayName,
       String picture})
       : this(
@@ -109,10 +108,7 @@ class Account extends Equatable {
   /// * [displayName]: The display name of the user
   /// * [picture]: The picture URL
   Account.api(
-      {bool system = false,
-      @required String apiKey,
-      String displayName,
-      String picture})
+      {bool system = false, String apiKey, String displayName, String picture})
       : this(
             type: AccountType.api,
             system: system,
