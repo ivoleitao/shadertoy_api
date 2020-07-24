@@ -149,7 +149,7 @@ If you would like to contribute with other parts of the API, feel free to make a
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: http://github.com/ivoleitao/shadertoy_api/issues/new
+[tracker]: https://github.com/ivoleitao/shadertoy_api/issues/new
 
 ## License
 
