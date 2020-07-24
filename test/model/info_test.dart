@@ -35,4 +35,40 @@ void main() {
     var info2 = Info.fromJson(json);
     expect(info1, equals(info2));
   });
+
+  test('Create a info from a json map', () {
+    var json = {
+      'id': 'id1',
+      'date': '123123123',
+      'viewed': 1,
+      'name': 'name1',
+      'username': 'userId1',
+      'description': 'description1',
+      'likes': 1,
+      'published': 2,
+      'flags': 1,
+      'tags': ['test1'],
+      'hasliked': 1
+    };
+
+    expect(() => Info.fromJson(json), returnsNormally);
+  });
+
+  test('Create a info from a json map with a invalid type', () {
+    var json = {
+      'id': 'id1',
+      'date': '123123123',
+      'viewed': 1,
+      'name': 'name1',
+      'username': 'userId1',
+      'description': 'description1',
+      'likes': 1,
+      'published': 4,
+      'flags': 1,
+      'tags': ['test1'],
+      'hasliked': 1
+    };
+
+    expect(() => Info.fromJson(json), throwsArgumentError);
+  });
 }

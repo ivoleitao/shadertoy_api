@@ -70,4 +70,30 @@ void main() {
     var account2 = Account.fromJson(json);
     expect(account1, equals(account2));
   });
+
+  test('Create a account from a json map', () {
+    var json = {
+      'name': 'account1',
+      'type': 'api',
+      'system': false,
+      'credentials': 'password1',
+      'displayName': 'Account1',
+      'picture': 'Picture1'
+    };
+
+    expect(() => Account.fromJson(json), returnsNormally);
+  });
+
+  test('Create a account from a json map with a invalid type', () {
+    var json = {
+      'name': 'account1',
+      'type': 'xx',
+      'system': false,
+      'credentials': 'password1',
+      'displayName': 'Account1',
+      'picture': 'Picture1'
+    };
+
+    expect(() => Account.fromJson(json), throwsArgumentError);
+  });
 }

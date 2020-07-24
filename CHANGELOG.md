@@ -1,6 +1,8 @@
 ## 1.0.3
 
-- TODO
+- Updated dependencies
+- Corrected insecure link in the README
+- Increased coverage
 
 ## 1.0.2
 
