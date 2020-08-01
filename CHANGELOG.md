@@ -3,6 +3,7 @@
 - Updated dependencies
 - Corrected insecure link in the README
 - Increased coverage
+- Removed generated files from coverage report using remove_from_coverage tool
 
 ## 1.0.2
 

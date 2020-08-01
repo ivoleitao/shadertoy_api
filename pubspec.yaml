@@ -6,10 +6,11 @@ description: >-
 homepage: https://github.com/ivoleitao/shadertoy_api
 
 environment:
-  sdk: ">=2.8.0 <3.0.0"
+  sdk: ">=2.8.4 <3.0.0"
 
 dependencies:
   equatable: ^1.2.2
+  meta: ^1.1.8
   json_annotation: ^3.0.1
 
 dev_dependencies:
