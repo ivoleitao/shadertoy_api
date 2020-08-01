@@ -28,7 +28,7 @@ jobs:
       - name: Run Code Coverage
         run: pub run test_coverage
       - name: Remove generated files from lconv
-        run: remove_from_coverage -f coverage/lcov.info -r '.g.dart$'
+        run: pub global run remove_from_coverage:remove_from_coverage -f coverage/lcov.info -r '.g.dart$'
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
