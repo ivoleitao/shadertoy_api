@@ -1,6 +1,6 @@
 ## 1.0.4
 
-- TODO
+- Downgraded to the pub sdk 2.8.1
 
 ## 1.0.3
 
