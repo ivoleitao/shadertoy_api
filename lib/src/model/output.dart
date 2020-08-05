@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 
 part 'output.g.dart';
 
@@ -24,7 +25,9 @@ class Output extends Equatable {
   ///
   /// * [id]: The input id
   /// * [channel]: the channel number
-  const Output({this.id, this.channel});
+  const Output({@required this.id, @required this.channel})
+      : assert(id != null),
+        assert(channel != null);
 
   @override
 

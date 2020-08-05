@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 
 part 'account.g.dart';
 
@@ -61,12 +62,15 @@ class Account extends Equatable {
   /// * [displayName]: The display name of the user
   /// * [picture]: The picture URL
   const Account(
-      {this.name,
-      this.type,
+      {@required this.name,
+      @required this.type,
       this.system = false,
       this.credentials,
       this.displayName,
-      this.picture});
+      this.picture})
+      : assert(name != null),
+        assert(type != null),
+        assert(system != null);
 
   /// Creates a anonymous site account
   ///
@@ -75,6 +79,7 @@ class Account extends Equatable {
   /// * [picture]: The picture URL
   Account.anonymous({bool system = true, String displayName, String picture})
       : this(
+            name: 'anonymous',
             type: AccountType.site,
             system: system,
             displayName: displayName,
@@ -82,19 +87,19 @@ class Account extends Equatable {
 
   /// Builds a registered site account
   ///
-  /// * [name]: The name of the user
+  /// * [user]: The name of the user
   /// * [system]: If the user is preconfigured
   /// * [password]: The user password
   /// * [displayName]: The display name of the user
   /// * [picture]: The picture URL
   Account.registered(
-      {String name,
+      {@required String user,
       bool system = false,
-      String password,
+      @required String password,
       String displayName,
       String picture})
       : this(
-            name: name,
+            name: user,
             type: AccountType.site,
             system: system,
             credentials: password,
@@ -103,13 +108,19 @@ class Account extends Equatable {
 
   /// Builds a site account
   ///
-  /// * [system]: If the user is preconfigured
+  /// * [user]: The name of the user
   /// * [apiKey]: The api key
+  /// * [system]: If the user is preconfigured
   /// * [displayName]: The display name of the user
   /// * [picture]: The picture URL
   Account.api(
-      {bool system = false, String apiKey, String displayName, String picture})
+      {@required String user,
+      @required String apiKey,
+      bool system = false,
+      String displayName,
+      String picture})
       : this(
+            name: user,
             type: AccountType.api,
             system: system,
             credentials: apiKey,

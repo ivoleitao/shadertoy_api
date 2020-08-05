@@ -21,7 +21,7 @@ void main() {
   test('Create a anonymous account', () {
     var account = Account.anonymous(
         system: false, displayName: 'Account1', picture: 'Picture1');
-    expect(account.name, isNull);
+    expect(account.name, 'anonymous');
     expect(account.type, AccountType.site);
     expect(account.system, false);
     expect(account.credentials, isNull);
@@ -31,7 +31,7 @@ void main() {
 
   test('Create a registered account', () {
     var account = Account.registered(
-        name: 'account1',
+        user: 'account1',
         system: false,
         password: 'password1',
         displayName: 'Account1',
@@ -46,11 +46,12 @@ void main() {
 
   test('Create a api account', () {
     var account = Account.api(
+        user: 'api1',
         system: false,
         apiKey: 'apiKey1',
         displayName: 'Account1',
         picture: 'Picture1');
-    expect(account.name, isNull);
+    expect(account.name, 'api1');
     expect(account.type, AccountType.api);
     expect(account.system, false);
     expect(account.credentials, 'apiKey1');

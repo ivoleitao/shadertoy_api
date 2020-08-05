@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 
 part 'user.g.dart';
 
@@ -46,12 +47,16 @@ class User extends Equatable {
   /// * [comments]: The number of comments
   /// * [about]: More about the user
   const User(
-      {this.id,
+      {@required this.id,
       this.picture,
-      this.memberSince,
-      this.shaders,
-      this.comments,
-      this.about});
+      @required this.memberSince,
+      this.shaders = 0,
+      this.comments = 0,
+      this.about})
+      : assert(id != null),
+        assert(memberSince != null),
+        assert(shaders != null),
+        assert(comments != null);
 
   @override
 

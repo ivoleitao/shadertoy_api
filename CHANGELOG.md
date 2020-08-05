@@ -1,6 +1,8 @@
 ## 1.0.5
 
-- TODO
+- Upgrade sdk to 2.9.0
+- Improved coverage
+- Updated dependencies
 
 ## 1.0.4
 

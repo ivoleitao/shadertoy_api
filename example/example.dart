@@ -21,13 +21,14 @@ void main() {
 
   // Creates a registered site account
   var registeredSiteAccount = Account.registered(
-      name: 'userId',
+      user: 'user',
       displayName: 'Registered site account',
       password: 'password');
   print(encoder.convert(registeredSiteAccount));
 
   // Creates a api account
-  var apiAccount = Account.api(displayName: 'API account', apiKey: 'apikey');
+  var apiAccount =
+      Account.api(user: 'user', apiKey: 'apikey', displayName: 'API account');
   print(encoder.convert(apiAccount));
 
   // Creates a Shader with two render passes

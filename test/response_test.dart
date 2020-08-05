@@ -11,6 +11,12 @@ void main() {
       context: CONTEXT_SHADER,
       target: 'wtd3zs');
 
+  test('Convert a response error to a JSON serializable map and back', () {
+    var json = genericResponseError1.toJson();
+    var genericResponseError2 = ResponseError.fromJson(json);
+    expect(genericResponseError1, equals(genericResponseError2));
+  });
+
   test('Test a generic response error', () {
     expect(genericResponseError1.code, ErrorCode.UNKNOWN);
     expect(genericResponseError1.message, 'Unknown error');
@@ -87,6 +93,15 @@ void main() {
         message: 'Aborted error', context: CONTEXT_SHADER, target: 'wtd3zs');
     expect(responseError.code, ErrorCode.ABORTED);
     expect(responseError.message, 'Aborted error');
+    expect(responseError.context, CONTEXT_SHADER);
+    expect(responseError.target, 'wtd3zs');
+  });
+
+  test('Create a unknown response error', () {
+    var responseError = ResponseError.unknown(
+        message: 'Unknown error', context: CONTEXT_SHADER, target: 'wtd3zs');
+    expect(responseError.code, ErrorCode.UNKNOWN);
+    expect(responseError.message, 'Unknown error');
     expect(responseError.context, CONTEXT_SHADER);
     expect(responseError.target, 'wtd3zs');
   });

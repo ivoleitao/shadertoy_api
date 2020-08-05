@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 import 'package:shadertoy_api/src/converter/epoch_converter.dart';
 import 'package:shadertoy_api/src/converter/value_converter.dart';
 
@@ -103,17 +104,27 @@ class Info extends Equatable {
   /// * [tags]: The shader tags
   /// * [hasLiked]: If the current logged user liked the shader
   const Info(
-      {this.id,
-      this.date,
-      this.views,
-      this.name,
-      this.userId,
+      {@required this.id,
+      @required this.date,
+      this.views = 0,
+      @required this.name,
+      @required this.userId,
       this.description,
-      this.likes,
-      this.publishStatus,
-      this.flags,
-      this.tags,
-      this.hasLiked});
+      this.likes = 0,
+      @required this.publishStatus,
+      this.flags = 0,
+      this.tags = const <String>[],
+      this.hasLiked = false})
+      : assert(id != null),
+        assert(date != null),
+        assert(views != null),
+        assert(name != null),
+        assert(userId != null),
+        assert(likes != null),
+        assert(publishStatus != null),
+        assert(flags != null),
+        assert(tags != null),
+        assert(hasLiked != null);
 
   @override
 

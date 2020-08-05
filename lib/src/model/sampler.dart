@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 import 'package:shadertoy_api/src/converter/value_converter.dart';
 
 part 'sampler.g.dart';
@@ -72,7 +73,17 @@ class Sampler extends Equatable {
   /// * [vflip]: Vertical flip
   /// * [srgb]: Srgb color space
   /// * [internal]: Internal
-  const Sampler({this.filter, this.wrap, this.vflip, this.srgb, this.internal});
+  const Sampler(
+      {@required this.filter,
+      @required this.wrap,
+      @required this.vflip,
+      @required this.srgb,
+      @required this.internal})
+      : assert(filter != null),
+        assert(wrap != null),
+        assert(vflip != null),
+        assert(srgb != null),
+        assert(internal != null);
 
   @override
 

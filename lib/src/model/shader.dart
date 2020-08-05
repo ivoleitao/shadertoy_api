@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 import 'package:shadertoy_api/src/model/info.dart';
 import 'package:shadertoy_api/src/model/render_pass.dart';
 
@@ -29,7 +30,13 @@ class Shader extends Equatable {
   /// * [version]: The shader version
   /// * [info]: The shader meta information
   /// * [renderPasses]: The shader render passes
-  const Shader({this.version, this.info, this.renderPasses});
+  const Shader(
+      {@required this.version,
+      @required this.info,
+      @required this.renderPasses})
+      : assert(version != null),
+        assert(info != null),
+        assert(renderPasses != null);
 
   @override
 

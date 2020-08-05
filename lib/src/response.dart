@@ -172,6 +172,14 @@ class ResponseError with EquatableMixin {
         'context': context,
         'target': target
       };
+
+  /// Creates a [ResponseError] from json map
+  factory ResponseError.fromJson(Map<String, dynamic> json) => ResponseError(
+      code: ErrorCode.values.firstWhere(
+          (e) => e.toString() == 'ErrorCode.' + (json['code'] as String)),
+      message: json['message'] as String,
+      context: json['context'] as String,
+      target: json['target'] as String);
 }
 
 /// Base API response class

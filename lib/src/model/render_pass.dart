@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 import 'package:shadertoy_api/src/model/input.dart';
 import 'package:shadertoy_api/src/model/output.dart';
 
@@ -66,12 +67,17 @@ class RenderPass extends Equatable {
   /// * [inputs]: The list of [Input]
   /// * [outputs]: The list of [Output]
   const RenderPass(
-      {this.name,
-      this.type,
+      {@required this.name,
+      @required this.type,
       this.description,
-      this.code,
-      this.inputs,
-      this.outputs});
+      @required this.code,
+      @required this.inputs,
+      @required this.outputs})
+      : assert(name != null),
+        assert(type != null),
+        assert(code != null),
+        assert(inputs != null),
+        assert(outputs != null);
 
   @override
 

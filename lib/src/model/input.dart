@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 import 'package:shadertoy_api/src/model/sampler.dart';
 
 part 'input.g.dart';
@@ -84,12 +85,16 @@ class Input extends Equatable {
   /// * [sampler]: The sampler
   /// * [published]: The published
   const Input(
-      {this.id,
+      {@required this.id,
       this.src,
       this.type,
-      this.channel,
-      this.sampler,
-      this.published});
+      @required this.channel,
+      @required this.sampler,
+      @required this.published})
+      : assert(id != null),
+        assert(channel != null),
+        assert(sampler != null),
+        assert(published != null);
 
   @override
 

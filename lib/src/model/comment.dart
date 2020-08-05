@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 
 part 'comment.g.dart';
 
@@ -33,7 +34,15 @@ class Comment extends Equatable {
   /// [userId]: The user id of user that posted the comment
   /// [date]: The date the comment was posted
   /// [text]: The text of the comment
-  const Comment({this.shaderId, this.userId, this.date, this.text});
+  const Comment(
+      {@required this.shaderId,
+      @required this.userId,
+      @required this.date,
+      @required this.text})
+      : assert(shaderId != null),
+        assert(userId != null),
+        assert(date != null),
+        assert(text != null);
 
   @override
 
