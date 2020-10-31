@@ -14,10 +14,12 @@ class User {
 }
 
 class Comment {
-    +String shaderId
+    +String id
     +String userId
+    +String userPicture
     +DateTime date
     +String text
+    +boolean hidden
 }
 
 enum PublishStatus {
