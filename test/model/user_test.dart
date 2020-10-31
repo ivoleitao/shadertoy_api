@@ -9,6 +9,8 @@ void main() {
       memberSince: memberSince,
       shaders: 1,
       comments: 1,
+      following: 1,
+      followers: 1,
       about: 'about1');
 
   test('Test a user', () {
@@ -17,6 +19,8 @@ void main() {
     expect(user1.memberSince, memberSince);
     expect(user1.shaders, 1);
     expect(user1.comments, 1);
+    expect(user1.following, 1);
+    expect(user1.followers, 1);
     expect(user1.about, 'about1');
   });
 

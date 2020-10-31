@@ -49,4 +49,21 @@ class Shader extends Equatable {
 
   /// Creates a json map from a [Shader]
   Map<String, dynamic> toJson() => _$ShaderToJson(this);
+
+  /// Builds a copy of a [Shader]
+  ///
+  /// * [version]: The shader version
+  /// * [info]: The shader meta information
+  /// * [renderPasses]: The shader render passes
+  Shader copyWith({
+    String version,
+    Info info,
+    List<RenderPass> renderPasses,
+  }) {
+    return Shader(
+      version: version ?? this.version,
+      info: info ?? this.info,
+      renderPasses: renderPasses ?? this.renderPasses,
+    );
+  }
 }

@@ -50,6 +50,8 @@ CommentsResponse _$CommentsResponseFromJson(Map<String, dynamic> json) {
     userIds: (json['username'] as List)?.map((e) => e as String)?.toList(),
     userPictures:
         (json['userpicture'] as List)?.map((e) => e as String)?.toList(),
+    ids: (json['id'] as List)?.map((e) => e as String)?.toList(),
+    hidden: (json['hidden'] as List)?.map((e) => e as int)?.toList(),
     error: const ResponseErrorConverter().fromJson(json['Error'] as String),
   );
 }
@@ -61,6 +63,8 @@ Map<String, dynamic> _$CommentsResponseToJson(CommentsResponse instance) =>
       'date': instance.dates,
       'username': instance.userIds,
       'userpicture': instance.userPictures,
+      'id': instance.ids,
+      'hidden': instance.hidden,
     };
 
 FindUserResponse _$FindUserResponseFromJson(Map<String, dynamic> json) {
@@ -76,40 +80,6 @@ Map<String, dynamic> _$FindUserResponseToJson(FindUserResponse instance) =>
     <String, dynamic>{
       'Error': const ResponseErrorConverter().toJson(instance.error),
       'User': instance.user?.toJson(),
-    };
-
-FindAccountResponse _$FindAccountResponseFromJson(Map<String, dynamic> json) {
-  return FindAccountResponse(
-    account: json['Account'] == null
-        ? null
-        : Account.fromJson(json['Account'] as Map<String, dynamic>),
-    error: const ResponseErrorConverter().fromJson(json['Error'] as String),
-  );
-}
-
-Map<String, dynamic> _$FindAccountResponseToJson(
-        FindAccountResponse instance) =>
-    <String, dynamic>{
-      'Error': const ResponseErrorConverter().toJson(instance.error),
-      'Account': instance.account?.toJson(),
-    };
-
-FindAccountsResponse _$FindAccountsResponseFromJson(Map<String, dynamic> json) {
-  return FindAccountsResponse(
-    accounts: (json['Accounts'] as List)
-        ?.map((e) => e == null
-            ? null
-            : FindAccountResponse.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    error: const ResponseErrorConverter().fromJson(json['Error'] as String),
-  );
-}
-
-Map<String, dynamic> _$FindAccountsResponseToJson(
-        FindAccountsResponse instance) =>
-    <String, dynamic>{
-      'Error': const ResponseErrorConverter().toJson(instance.error),
-      'Accounts': instance.accounts?.map((e) => e?.toJson())?.toList(),
     };
 
 FindCommentsResponse _$FindCommentsResponseFromJson(Map<String, dynamic> json) {

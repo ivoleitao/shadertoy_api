@@ -4,9 +4,7 @@ import 'package:shadertoy_api/src/converter/error_converter.dart';
 import 'package:shadertoy_api/src/model/comment.dart';
 import 'package:shadertoy_api/src/model/playlist.dart';
 import 'package:shadertoy_api/src/model/shader.dart';
-
-import 'model/account.dart';
-import 'model/user.dart';
+import 'package:shadertoy_api/src/model/user.dart';
 
 part 'response.g.dart';
 
@@ -55,7 +53,7 @@ class ResponseError with EquatableMixin {
   /// The target entity of the API that triggered this error
   String target;
 
-  /// Builds a [ResponseError] with:
+  /// Builds a [ResponseError]
   ///
   /// * [code]: The error code
   /// * [message]: The error message
@@ -180,6 +178,21 @@ class ResponseError with EquatableMixin {
       message: json['message'] as String,
       context: json['context'] as String,
       target: json['target'] as String);
+
+  /// Builds a copy of a [ResponseError]
+  ///
+  /// * [code]: The error code
+  /// * [message]: The error message
+  /// * [context]: The context of execution when the error ocurred
+  /// * [target]: The target entity of the API that triggered this error
+  ResponseError copyWith(
+      {ErrorCode code, String message, String context, String target}) {
+    return ResponseError(
+        code: code ?? this.code,
+        message: message ?? this.message,
+        context: context ?? this.context,
+        target: target ?? this.target);
+  }
 }
 
 /// Base API response class
@@ -323,18 +336,32 @@ class CommentsResponse extends APIResponse with EquatableMixin {
   /// The list of user pictures for each comment
   final List<String> userPictures;
 
+  @JsonKey(name: 'id')
+
+  /// A list of the comment ids
+  final List<String> ids;
+
+  @JsonKey(name: 'hidden')
+
+  /// A list with a hidden flag for each comment
+  final List<int> hidden;
+
   /// Builds a [CommentsResponse]
   ///
   /// * [texts]: The list of text comments
   /// * [dates]: The list of dates for each comment
   /// * [userIds]: The list of user id's for each comment
   /// * [userPictures]: The list user pictures for each comment
+  /// * [ids]: A list of the comment ids
+  /// * [hidden]: A list with a hidden flag for each comment
   /// * [error]: An error if there was error while fetching the comments
   CommentsResponse(
       {this.texts,
       this.dates,
       this.userIds,
       this.userPictures,
+      this.ids,
+      this.hidden,
       ResponseError error})
       : super(error: error);
 
@@ -343,7 +370,7 @@ class CommentsResponse extends APIResponse with EquatableMixin {
   /// The [List] of `props` (properties) which will be used to determine whether
   /// two [Equatables] are equal.
   List get props {
-    return [texts, dates, userIds, userPictures, error];
+    return [texts, dates, userIds, userPictures, ids, hidden, error];
   }
 
   /// Creates a [CommentsResponse] from json list
@@ -351,7 +378,9 @@ class CommentsResponse extends APIResponse with EquatableMixin {
       texts: const [],
       dates: const [],
       userIds: const [],
-      userPictures: const []);
+      userPictures: const [],
+      ids: const [],
+      hidden: const []);
 
   /// Creates a [CommentsResponse] from json map
   factory CommentsResponse.fromMap(Map<String, dynamic> json) =>
@@ -403,78 +432,6 @@ class FindUserResponse extends APIResponse with EquatableMixin {
 
 @JsonSerializable()
 
-/// Find account API response
-///
-/// The response returned upon the execution of a find account API call
-/// When [FindAccountResponse.error] is *not null* there was an error in the find account call
-/// When [FindAccountResponse.error] is *null* the [FindAccountResponse.account] has the returned account
-class FindAccountResponse extends APIResponse with EquatableMixin {
-  @JsonKey(name: 'Account')
-
-  /// The account returned, null when there is an error
-  final Account account;
-
-  @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
-  List get props {
-    return [account, error];
-  }
-
-  /// Builds a [FindAccountResponse]
-  ///
-  /// [account]: The account
-  /// [error]: An error if there was error while fetching the account
-  FindAccountResponse({this.account, ResponseError error})
-      : super(error: error);
-
-  /// Creates a [FindAccountResponse] from json map
-  factory FindAccountResponse.fromJson(Map<String, dynamic> json) =>
-      _$FindAccountResponseFromJson(json);
-
-  /// Creates a json map from a [FindAccountResponse]
-  Map<String, dynamic> toJson() => _$FindAccountResponseToJson(this);
-}
-
-@JsonSerializable()
-
-/// Find accounts API response
-///
-/// The response returned upon the execution of a find accounts API call
-/// When [FindAccountsResponse.error] is *not null* there was an error in the find accounts call
-/// When [FindAccountsResponse.error] is *null* the [FindAccountsResponse.accounts] has the returned accounts
-class FindAccountsResponse extends APIResponse with EquatableMixin {
-  @JsonKey(name: 'Accounts')
-
-  /// The list of returned account or null when error
-  final List<FindAccountResponse> accounts;
-
-  @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
-  List get props {
-    return [accounts, error];
-  }
-
-  /// Builds a [FindAccountsResponse]
-  ///
-  /// [accounts]: The list of accounts
-  /// [error]: An error if there was error while fetching the accounts
-  FindAccountsResponse({this.accounts, ResponseError error})
-      : super(error: error);
-
-  /// Creates a [FindAccountsResponse] from json map
-  factory FindAccountsResponse.fromJson(Map<String, dynamic> json) =>
-      _$FindAccountsResponseFromJson(json);
-
-  /// Creates a json map from a [FindAccountsResponse]
-  Map<String, dynamic> toJson() => _$FindAccountsResponseToJson(this);
-}
-
-@JsonSerializable()
-
 /// Find comments API response
 ///
 /// The response returned upon the execution of a find comments API call
@@ -499,7 +456,7 @@ class FindCommentsResponse extends APIResponse with EquatableMixin {
     return [total, comments, error];
   }
 
-  /// Builds a [FindAccountsResponse]
+  /// Builds a [FindCommentsResponse]
   ///
   /// [total]: The total number of comments returned
   /// [comments]: The list of [Comment]

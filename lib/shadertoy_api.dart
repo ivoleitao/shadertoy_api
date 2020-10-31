@@ -4,7 +4,6 @@ library shadertoy_api;
 
 export 'src/api.dart';
 export 'src/context.dart';
-export 'src/model/account.dart';
 export 'src/model/comment.dart';
 export 'src/model/info.dart';
 export 'src/model/input.dart';

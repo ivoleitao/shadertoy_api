@@ -6,7 +6,6 @@ import 'package:shadertoy_api/src/converter/value_converter.dart';
 
 part 'info.g.dart';
 
-/// How the content is shared in Shadertoy
 enum PublishStatus {
   @JsonValue(0)
 
@@ -149,4 +148,45 @@ class Info extends Equatable {
 
   /// Creates a json map from a [Info]
   Map<String, dynamic> toJson() => _$InfoToJson(this);
+
+  /// Builds a copy of a [Info]
+  ///
+  /// * [id]: The shader id
+  /// * [date]: The publish date of the shader
+  /// * [views]: The shader views
+  /// * [name]: The shader name
+  /// * [userId]: The id of the user that created the shader
+  /// * [description]: The shader description
+  /// * [likes]: The number of likes
+  /// * [publishStatus]: The publish status
+  /// * [flags]: The shader flags
+  /// * [tags]: The shader tags
+  /// * [hasLiked]: If the current logged user liked the shader
+  Info copyWith({
+    String id,
+    DateTime date,
+    int views,
+    String name,
+    String userId,
+    String description,
+    int likes,
+    PublishStatus publishStatus,
+    int flags,
+    List<String> tags,
+    bool hasLiked,
+  }) {
+    return Info(
+      id: id ?? this.id,
+      date: date ?? this.date,
+      views: views ?? this.views,
+      name: name ?? this.name,
+      userId: userId ?? this.userId,
+      description: description ?? this.description,
+      likes: likes ?? this.likes,
+      publishStatus: publishStatus ?? this.publishStatus,
+      flags: flags ?? this.flags,
+      tags: tags ?? this.tags,
+      hasLiked: hasLiked ?? this.hasLiked,
+    );
+  }
 }

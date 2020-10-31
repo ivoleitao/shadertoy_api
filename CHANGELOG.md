@@ -3,6 +3,15 @@
 - Upgrade sdk to 2.9.0
 - Improved coverage
 - Updated dependencies
+- Added run all tests configuration
+- Removed Account as it will be used differently
+- Removed shaderId and added id, userPicture and hidden on the comment model
+- Removed context from ShadertoyContext
+- Removed ShadertoyWS and ShadertoySite
+- Added copyWith in the main models
+- Added missing documentation on Playlist
+- Added following and followers on User
+- Added plantuml generation
 
 ## 1.0.4
 

@@ -8,21 +8,9 @@ class User {
  +String memberSince
  +int shaders
  +int comments 
+ +int following
+ +int followers
  +String about
-}
-
-enum AccountType {
-    site
-    api
-}
-
-class Account {
-    +String name
-    +AccountType type
-    +bool system
-    +String credentials
-    +String displayName
-    +String picture
 }
 
 class Comment {
@@ -133,7 +121,6 @@ class Playlist {
     +List<String> shaders
 }
 
-Account .. AccountType
 Info  .. PublishStatus
 Sampler .. FilterType
 Sampler .. WrapType

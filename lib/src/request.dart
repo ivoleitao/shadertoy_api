@@ -3,7 +3,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'request.g.dart';
 
-/// Used to call the Shadertoy site API with the shader ids to resolve
 @JsonSerializable()
 class FindShadersRequest extends Equatable {
   @JsonKey(name: 'shaders')
@@ -11,7 +10,7 @@ class FindShadersRequest extends Equatable {
   /// The set of ids
   final Set<String> ids;
 
-  /// Builds a find shaders request
+  /// Builds a [FindShadersRequest]
   const FindShadersRequest(this.ids);
 
   @override
@@ -26,4 +25,11 @@ class FindShadersRequest extends Equatable {
 
   /// Creates a json map from a [FindShadersRequest]
   Map<String, dynamic> toJson() => _$FindShadersRequestToJson(this);
+
+  /// Builds a copy of a [FindShadersRequest]
+  FindShadersRequest copyWith({
+    Set<String> ids,
+  }) {
+    return FindShadersRequest(ids ?? this.ids);
+  }
 }

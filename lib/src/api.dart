@@ -1,5 +1,4 @@
 import 'package:shadertoy_api/src/context.dart';
-import 'package:shadertoy_api/src/model/account.dart';
 import 'package:shadertoy_api/src/model/comment.dart';
 import 'package:shadertoy_api/src/model/playlist.dart';
 import 'package:shadertoy_api/src/model/shader.dart';
@@ -46,8 +45,6 @@ const CONTEXT_PLAYLIST = 'playlist';
 /// the Shadertoy REST API. It should not be used directly
 /// prefer an implementation of [ShadertoyWS] and/or [ShadertoySite]
 abstract class ShadertoyClient {
-  ShadertoyContext get context;
-
   /// Returns a [FindShaderResponse] for the shader with [shaderId]
   ///
   /// Upon success [FindShaderResponse.shader] has the corresponding
@@ -211,75 +208,20 @@ abstract class ShadertoyExtendedClient extends ShadertoyClient {
       {int from, int num});
 }
 
-/// The base Shadertoy Client API for WS access
-///
-/// This class is marker interface that should be used for
-/// base implementations of Shadertoy REST API clients. It should be preferred
-/// to [ShadertoyClient] since it provides a natural counterpart to
-/// [ShadertoySite] class
-abstract class ShadertoyWS extends ShadertoyClient {}
-
-/// The base Shadertoy Client API for WS and site access to Shadertoy
-///
-/// This class is a base interface that should be used for
-/// for the implementations of Shadertoy REST API and site clients. It exists
-/// as a counterpart to [ShadertoyWS] class but adds a number of site only
-/// methods to the contract (which does not make sense from a API) perspective
-abstract class ShadertoySite extends ShadertoyExtendedClient {
-  /// Performs a login in shadertoy website
-  ///
-  /// Upon success [LoginResponse.error] is null
-  ///
-  /// In case of error [LoginResponse.error] has the corresponding
-  /// [ResponseError] structure
-  Future<LoginResponse> login();
-
-  /// Performs a logiout in shadertoy website
-  ///
-  /// Upon success [LogoutResponse.error] is null
-  ///
-  /// In case of error [LogoutResponse.error] has the corresponding
-  /// [ResponseError] structure
-  Future<LogoutResponse> logout();
-
-  /// Returns a [DownloadFileResponse] for a shader with id [shaderId]
-  ///
-  /// On success [DownloadFileResponse.bytes] has the corresponding
-  /// byte list and a null [DownloadFileResponse.error]
-  ///
-  /// In case of error [DownloadFileResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [DownloadFileResponse.bytes]
-  Future<DownloadFileResponse> downloadShaderPicture(String shaderId);
-
-  /// Returns a [DownloadFileResponse] for a path [inputPath]
-  ///
-  /// On success [DownloadFileResponse.bytes] has the corresponding
-  /// byte list and a null [DownloadFileResponse.error]
-  ///
-  /// In case of error [DownloadFileResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [DownloadFileResponse.bytes]
-  Future<DownloadFileResponse> downloadMedia(String inputPath);
-}
-
 /// A base implementation class for Shadertoy clients
 ///
 /// It assumes a basic implementation of the client with only the
 /// REST base API operations. It provides a contextual object to get
 /// Shadertoy website information
 abstract class ShadertoyBaseClient implements ShadertoyClient {
-  /// Default base URL for Shadertoy website
-  static const String _DefaultBaseUrl = 'https://www.shadertoy.com';
-
   /// The [ShadertoyContext] object stores Shadertoy website contextual
   /// information
-  @override
   final ShadertoyContext context;
 
   /// Builds a [ShadertoyBaseClient] object
   ///
-  /// The [baseUrl] parameter provides a way to change the standard URL
-  ShadertoyBaseClient({String baseUrl})
-      : context = ShadertoyContext(baseUrl ?? _DefaultBaseUrl);
+  /// The [baseUrl] parameter defines the base url of the Shadertoy website
+  ShadertoyBaseClient(String baseUrl) : context = ShadertoyContext(baseUrl);
 }
 
 /// A definition of a shadertoy store
@@ -294,37 +236,6 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// In case of error [SaveUserResponse.error] has the corresponding
   /// [ResponseError] structure
   Future<SaveUserResponse> saveUser(User user);
-
-  /// Returns a [FindAccountResponse] for a account with [accountId]
-  ///
-  /// On success [FindAccountResponse.account] has the corresponding
-  /// [Account] and a null [FindAccountResponse.error]
-  ///
-  /// In case of error [FindAccountResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindAccountResponse.account]
-  Future<FindAccountResponse> findAccountById(String accountId);
-
-  /// Returns a filtered [FindAccountsResponse]
-  ///
-  /// * [name]: The name of the account
-  /// * [type]: The type of the account
-  /// * [system]: If the user is a system user
-  ///
-  /// Upon success [FindAccountsResponse.accounts] has the corresponding
-  /// [Account] objects, and a null [FindAccountsResponse.error]
-  ///
-  /// In case of error [FindAccountsResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindAccountsResponse.accounts]
-  Future<FindAccountsResponse> findAccounts(
-      {String name, AccountType type, bool system});
-
-  /// Saves a [Account]
-  ///
-  /// On success [SaveAccountResponse.error] is null
-  ///
-  /// In case of error [SaveAccountResponse.error] has the corresponding
-  /// [ResponseError] structure
-  Future<SaveAccountResponse> saveAccount(Account account);
 
   /// Saves a [Shader]
   ///
@@ -356,5 +267,5 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
 ///
 /// It provides the same contextual information supported by [ShadertoyBaseClient]
 /// and additionally persistent contract through [ShadertoyStore] definition.
-abstract class ShadertoyBaseStore extends ShadertoyBaseClient
+abstract class ShadertoyBaseStore extends ShadertoyClient
     implements ShadertoyStore {}

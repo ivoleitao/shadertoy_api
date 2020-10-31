@@ -3,7 +3,7 @@ import 'package:shadertoy_api/src/response.dart';
 import 'package:test/test.dart';
 
 class ShadertoyTestClient extends ShadertoyBaseClient {
-  ShadertoyTestClient({String baseUrl}) : super(baseUrl: baseUrl);
+  ShadertoyTestClient(String baseUrl) : super(baseUrl);
 
   @override
   Future<FindShaderIdsResponse> findAllShaderIds() {
@@ -35,7 +35,7 @@ class ShadertoyTestClient extends ShadertoyBaseClient {
 
 void main() {
   final BaseUrl = 'https://www.test.com';
-  final client = ShadertoyTestClient(baseUrl: BaseUrl);
+  final client = ShadertoyTestClient(BaseUrl);
 
   test('Test a client', () {
     expect(client.context, isNotNull);

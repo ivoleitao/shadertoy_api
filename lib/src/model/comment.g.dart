@@ -8,16 +8,20 @@ part of 'comment.dart';
 
 Comment _$CommentFromJson(Map<String, dynamic> json) {
   return Comment(
-    shaderId: json['shaderId'] as String,
+    id: json['id'] as String,
     userId: json['userId'] as String,
+    userPicture: json['userPicture'] as String,
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
     text: json['text'] as String,
+    hidden: json['hidden'] as bool,
   );
 }
 
 Map<String, dynamic> _$CommentToJson(Comment instance) => <String, dynamic>{
-      'shaderId': instance.shaderId,
+      'id': instance.id,
       'userId': instance.userId,
+      'userPicture': instance.userPicture,
       'date': instance.date?.toIso8601String(),
       'text': instance.text,
+      'hidden': instance.hidden,
     };

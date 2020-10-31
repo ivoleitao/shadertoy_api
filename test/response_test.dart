@@ -228,48 +228,20 @@ void main() {
     expect(findUserResponse1, equals(findUserResponse2));
   });
 
-  var account = Account(
-      name: 'account1',
-      type: AccountType.api,
-      system: false,
-      credentials: 'password1',
-      displayName: 'Account1',
-      picture: 'Picture1');
-  var findAccountResponse1 = FindAccountResponse(account: account, error: null);
-
-  test('Test a find account response', () {
-    expect(findAccountResponse1.account, account);
-    expect(findAccountResponse1.error, isNull);
-  });
-
-  test('Convert a find account response to a JSON serializable map and back',
-      () {
-    var json = findAccountResponse1.toJson();
-    var findAccountResponse2 = FindAccountResponse.fromJson(json);
-    expect(findAccountResponse1, equals(findAccountResponse2));
-  });
-
-  var accounts = [findAccountResponse1];
-  var findAccountsResponse1 =
-      FindAccountsResponse(accounts: accounts, error: null);
-
-  test('Test a find accounts response', () {
-    expect(findAccountsResponse1.accounts, accounts);
-    expect(findAccountsResponse1.error, isNull);
-  });
-
-  test('Convert a find accounts response to a JSON serializable map and back',
-      () {
-    var json = findAccountsResponse1.toJson();
-    var findAccountsResponse2 = FindAccountsResponse.fromJson(json);
-    expect(findAccountsResponse1, equals(findAccountsResponse2));
-  });
-
   var now = DateTime.now();
   var comment1 = Comment(
-      shaderId: 'shaderId1', userId: 'userId1', date: now, text: 'text1');
+      id: 'comentId1',
+      userId: 'userId1',
+      userPicture: '/img/profile.jpg',
+      date: now,
+      text: 'text1');
   var comment2 = Comment(
-      shaderId: 'shaderId2', userId: 'userId2', date: now, text: 'text2');
+      id: 'commentId2',
+      userId: 'userId2',
+      userPicture: '/img/profile.jpg',
+      date: now,
+      text: 'text2',
+      hidden: true);
   var comments = [comment1, comment2];
   var findCommentsResponse1 =
       FindCommentsResponse(total: 2, comments: comments, error: null);

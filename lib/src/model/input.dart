@@ -5,7 +5,6 @@ import 'package:shadertoy_api/src/model/sampler.dart';
 
 part 'input.g.dart';
 
-/// The input type
 enum InputType {
   /// Texture
   texture,
@@ -107,4 +106,30 @@ class Input extends Equatable {
 
   /// Creates a json map from a [Input]
   Map<String, dynamic> toJson() => _$InputToJson(this);
+
+  /// Builds a copy of a [Input]
+  ///
+  /// * [id]: The input id
+  /// * [src]: The source
+  /// * [type]: The type
+  /// * [channel]: The channel number
+  /// * [sampler]: The sampler
+  /// * [published]: The published
+  Input copyWith({
+    String id,
+    String src,
+    InputType type,
+    int channel,
+    Sampler sampler,
+    int published,
+  }) {
+    return Input(
+      id: id ?? this.id,
+      src: src ?? this.src,
+      type: type ?? this.type,
+      channel: channel ?? this.channel,
+      sampler: sampler ?? this.sampler,
+      published: published ?? this.published,
+    );
+  }
 }

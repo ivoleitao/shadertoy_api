@@ -39,10 +39,46 @@ class ShadertoyContext extends Equatable {
   /// Builds a Shadertoy context with [baseUrl]
   const ShadertoyContext(this.baseUrl);
 
+  /// The relative path of the shader view url
+  /// * [shaderId]: The shader id
+  static String shaderViewPath(String shaderId) {
+    return '${ViewPath}/$shaderId';
+  }
+
+  /// The relative path of the shader embed url
+  /// * [shaderId]: The shader id
+  static String shaderEmbedPath(String shaderId) {
+    return '${EmbedPath}/$shaderId';
+  }
+
+  /// The relative path of the shader picture url
+  /// * [shaderId]: The shader id
+  static String shaderPicturePath(String shaderId) {
+    return '${ShaderMediaPath}/$shaderId.jpg';
+  }
+
   /// The [List] of `props` (properties) which will be used to determine whether
   /// two [Equatables] are equal.
   @override
   List<Object> get props => [baseUrl];
+
+  /// The relative path of the shader view url
+  /// * [shaderId]: The shader id
+  String getShaderViewPath(String shaderId) {
+    return shaderViewPath(shaderId);
+  }
+
+  /// The relative path of the shader embed url
+  /// * [shaderId]: The shader id
+  String getShaderEmbedPath(String shaderId) {
+    return shaderEmbedPath(shaderId);
+  }
+
+  /// The relative path of the shader picture url
+  /// * [shaderId]: The shader id
+  String getShaderPicturePath(String shaderId) {
+    return shaderPicturePath(shaderId);
+  }
 
   /// The signin url
   String get signInUrl {
@@ -59,22 +95,10 @@ class ShadertoyContext extends Equatable {
     return '$baseUrl/${BrowsePath}';
   }
 
-  /// The relative path of the shader view url
-  /// * [shaderId]: The shader id
-  String getShaderViewPath(String shaderId) {
-    return '${ViewPath}/$shaderId';
-  }
-
   /// The shader view url
   /// * [shaderId]: The shader id
   String getShaderViewUrl(String shaderId) {
     return '$baseUrl/${getShaderViewPath(shaderId)}';
-  }
-
-  /// The relative path of the shader embed url
-  /// * [shaderId]: The shader id
-  String getShaderEmbedPath(String shaderId) {
-    return '${EmbedPath}/$shaderId';
   }
 
   /// The shader embed url
@@ -85,13 +109,7 @@ class ShadertoyContext extends Equatable {
   /// * [muted]: If the sound should be muted
   String getShaderEmbedUrl(String shaderId,
       {bool gui = false, int t = 10, bool paused = false, bool muted = false}) {
-    return '$baseUrl/${getShaderEmbedPath(shaderId)}?gui=$gui&t=$t&paused=$paused&muted=$muted';
-  }
-
-  /// The relative path of the shader picture url
-  /// * [shaderId]: The shader id
-  String getShaderPicturePath(String shaderId) {
-    return '${ShaderMediaPath}/$shaderId.jpg';
+    return '$baseUrl/${shaderEmbedPath(shaderId)}?gui=$gui&t=$t&paused=$paused&muted=$muted';
   }
 
   /// The shader picture url

@@ -5,7 +5,6 @@ import 'package:shadertoy_api/src/converter/value_converter.dart';
 
 part 'sampler.g.dart';
 
-/// The filter type
 enum FilterType {
   /// None
   none,
@@ -97,4 +96,27 @@ class Sampler extends Equatable {
 
   /// Creates a json map from a [Sampler]
   Map<String, dynamic> toJson() => _$SamplerToJson(this);
+
+  /// Builds a copy of a [Sampler]
+  ///
+  /// * [filter]: Filter type
+  /// * [wrap]: Wrap type
+  /// * [vflip]: Vertical flip
+  /// * [srgb]: Srgb color space
+  /// * [internal]: Internal
+  Sampler copyWith({
+    FilterType filter,
+    WrapType wrap,
+    bool vflip,
+    bool srgb,
+    String internal,
+  }) {
+    return Sampler(
+      filter: filter ?? this.filter,
+      wrap: wrap ?? this.wrap,
+      vflip: vflip ?? this.vflip,
+      srgb: srgb ?? this.srgb,
+      internal: internal ?? this.internal,
+    );
+  }
 }

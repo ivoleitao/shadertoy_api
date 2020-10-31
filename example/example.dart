@@ -14,23 +14,6 @@ void main() {
       comments: 1);
   print(encoder.convert(user));
 
-  // Creates a anonymous site account
-  var anonymousSiteAccount =
-      Account.anonymous(displayName: 'Anonymous site user');
-  print(encoder.convert(anonymousSiteAccount));
-
-  // Creates a registered site account
-  var registeredSiteAccount = Account.registered(
-      user: 'user',
-      displayName: 'Registered site account',
-      password: 'password');
-  print(encoder.convert(registeredSiteAccount));
-
-  // Creates a api account
-  var apiAccount =
-      Account.api(user: 'user', apiKey: 'apikey', displayName: 'API account');
-  print(encoder.convert(apiAccount));
-
   // Creates a Shader with two render passes
   var shader = Shader(
       version: '0.1',
@@ -104,8 +87,9 @@ void main() {
 
   // Creates a shader comment
   var comment = Comment(
-      shaderId: 'AaA0Aa',
+      id: 'AaA0Aa',
       userId: 'userId',
+      userPicture: '/img/profile.jpg',
       date: DateTime.now(),
       text: 'Great shader!');
   print(encoder.convert(comment));

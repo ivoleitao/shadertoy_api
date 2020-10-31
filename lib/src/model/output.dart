@@ -40,4 +40,12 @@ class Output extends Equatable {
 
   /// Creates a json map from a [Output]
   Map<String, dynamic> toJson() => _$OutputToJson(this);
+
+  /// Builds a [Output]
+  ///
+  /// * [id]: The input id
+  /// * [channel]: the channel number
+  Output copyWith({String id, int channel}) {
+    return Output(id: id ?? this.id, channel: channel ?? this.channel);
+  }
 }

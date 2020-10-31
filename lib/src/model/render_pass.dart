@@ -6,7 +6,6 @@ import 'package:shadertoy_api/src/model/output.dart';
 
 part 'render_pass.g.dart';
 
-/// Render pass type
 enum RenderPassType {
   /// Sound
   sound,
@@ -91,4 +90,30 @@ class RenderPass extends Equatable {
 
   /// Creates a json map from a [RenderPass]
   Map<String, dynamic> toJson() => _$RenderPassToJson(this);
+
+  /// Builds a copy of a [RenderPass]
+  ///
+  /// * [name]: The render pass name
+  /// * [type]: The render pass type
+  /// * [description]: The render pass description
+  /// * [code]: The render pass code
+  /// * [inputs]: The list of [Input]
+  /// * [outputs]: The list of [Output]
+  RenderPass copyWith({
+    String name,
+    RenderPassType type,
+    String description,
+    String code,
+    List<Input> inputs,
+    List<Output> outputs,
+  }) {
+    return RenderPass(
+      name: name ?? this.name,
+      type: type ?? this.type,
+      description: description ?? this.description,
+      code: code ?? this.code,
+      inputs: inputs ?? this.inputs,
+      outputs: outputs ?? this.outputs,
+    );
+  }
 }
