@@ -1,4 +1,4 @@
-@startuml Shadertoy
+@startuml model
 
 hide methods
 
