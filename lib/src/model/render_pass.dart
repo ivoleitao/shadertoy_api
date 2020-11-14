@@ -79,9 +79,6 @@ class RenderPass extends Equatable {
         assert(outputs != null);
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List<Object> get props => [name, type, description, code, inputs, outputs];
 
   /// Creates a [RenderPass] from json map

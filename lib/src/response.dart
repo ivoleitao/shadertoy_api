@@ -158,9 +158,6 @@ class ResponseError with EquatableMixin {
             target: target);
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List<Object> get props => [code, message, context, target];
 
   /// Creates a json map from a [ResponseError]
@@ -208,7 +205,7 @@ abstract class APIResponse {
   final ResponseError error;
 
   /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
+  /// two Equatables are equal.
   List get props {
     return [error];
   }
@@ -282,9 +279,6 @@ class FindShaderResponse extends APIResponse with EquatableMixin {
   final Shader shader;
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List get props {
     return [shader, error];
   }
@@ -366,9 +360,6 @@ class CommentsResponse extends APIResponse with EquatableMixin {
       : super(error: error);
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List get props {
     return [texts, dates, userIds, userPictures, ids, hidden, error];
   }
@@ -409,9 +400,6 @@ class FindUserResponse extends APIResponse with EquatableMixin {
   final User user;
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List get props {
     return [user, error];
   }
@@ -449,9 +437,6 @@ class FindCommentsResponse extends APIResponse with EquatableMixin {
   final List<Comment> comments;
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List get props {
     return [total, comments, error];
   }
@@ -487,9 +472,6 @@ class FindPlaylistResponse extends APIResponse with EquatableMixin {
   final Playlist playlist;
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List get props {
     return [playlist, error];
   }
@@ -528,9 +510,6 @@ class FindShaderIdsResponse extends APIResponse with EquatableMixin {
   final List<String> ids;
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List get props {
     return [total, ids, error];
   }
@@ -571,9 +550,6 @@ class FindShadersResponse extends APIResponse with EquatableMixin {
   final List<FindShaderResponse> shaders;
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List get props {
     return [total, shaders, error];
   }
@@ -607,9 +583,6 @@ class DownloadFileResponse extends APIResponse with EquatableMixin {
   final List<int> bytes;
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List get props {
     return [bytes, error];
   }

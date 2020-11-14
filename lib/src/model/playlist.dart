@@ -42,9 +42,6 @@ class Playlist extends Equatable {
         assert(shaders != null);
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List<Object> get props => [id, name, count, shaders];
 
   /// Creates a [Playlist] from json map

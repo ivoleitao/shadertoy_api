@@ -85,9 +85,6 @@ class Sampler extends Equatable {
         assert(internal != null);
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List<Object> get props => [filter, wrap, vflip, srgb, internal];
 
   /// Creates a [Sampler] from json map

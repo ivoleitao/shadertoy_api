@@ -42,8 +42,7 @@ const CONTEXT_PLAYLIST = 'playlist';
 /// Base shadertoy client API
 ///
 /// All the basic operations supported through
-/// the Shadertoy REST API. It should not be used directly
-/// prefer an implementation of [ShadertoyWS] and/or [ShadertoySite]
+/// the Shadertoy REST API.
 abstract class ShadertoyClient {
   /// Returns a [FindShaderResponse] for the shader with [shaderId]
   ///

@@ -12,6 +12,7 @@
 - Added missing documentation on Playlist
 - Added following and followers on User
 - Added plantuml generation
+- Improved documentation removing all warnings/errors
 
 ## 1.0.4
 

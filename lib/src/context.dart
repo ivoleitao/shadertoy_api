@@ -57,8 +57,6 @@ class ShadertoyContext extends Equatable {
     return '${ShaderMediaPath}/$shaderId.jpg';
   }
 
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   @override
   List<Object> get props => [baseUrl];
 

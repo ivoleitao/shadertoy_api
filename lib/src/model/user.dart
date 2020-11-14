@@ -75,9 +75,6 @@ class User extends Equatable {
         assert(followers != null);
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List<Object> get props => [
         id,
         picture,

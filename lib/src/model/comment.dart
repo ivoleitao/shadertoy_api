@@ -45,7 +45,7 @@ class Comment extends Equatable {
   /// [userPicture]: The picture of the user who posted the comment
   /// [date]: The date the comment was posted
   /// [text]: The text of the comment
-  /// [comment]: If the current user comment is hidden
+  /// [hidden]: If the current user comment is hidden
   const Comment(
       {@required this.id,
       @required this.userId,
@@ -60,9 +60,6 @@ class Comment extends Equatable {
         assert(hidden != null);
 
   @override
-
-  /// The [List] of `props` (properties) which will be used to determine whether
-  /// two [Equatables] are equal.
   List<Object> get props => [id, userId, userPicture, date, text, hidden];
 
   /// Creates a [Comment] from json map
