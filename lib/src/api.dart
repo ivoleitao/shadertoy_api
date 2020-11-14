@@ -46,20 +46,16 @@ const CONTEXT_PLAYLIST = 'playlist';
 abstract class ShadertoyClient {
   /// Returns a [FindShaderResponse] for the shader with [shaderId]
   ///
-  /// Upon success [FindShaderResponse.shader] has the corresponding
-  /// [Shader] object and a null [FindShaderResponse.error]
+  /// Upon success a [Shader] object is provided and error is set to null
   ///
-  /// In case of error [FindShaderResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindShaderResponse.shader]
+  /// In case of error a [ResponseError] is set and no [Shader] is provided
   Future<FindShaderResponse> findShaderById(String shaderId);
 
-  /// Returns a [FindShadersResponse] for the shader id's in [shaderIds]
+  /// Returns a [FindShadersResponse] for each shader id in [shaderIds]
   ///
-  /// Upon success [FindShadersResponse.shaders] has the corresponding
-  /// [Shader] objects and a null [FindShaderResponse.error]
+  /// Upon success a list of [Shader] objects is provided and error is set to null
   ///
-  /// In case of error [FindShadersResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindShadersResponse.shaders]
+  /// In case of error a [ResponseError] is set and no [Shader] list is provided
   Future<FindShadersResponse> findShadersByIdSet(Set<String> shaderIds);
 
   /// Returns a filtered [FindShadersResponse] with a list of shaders
@@ -70,23 +66,19 @@ abstract class ShadertoyClient {
   /// * [from]: A 0 based index for results returned
   /// * [num]: The total number of results
   ///
-  /// Upon success [FindShadersResponse.shaders] has the corresponding
-  /// [Shader] objects, the overal number of records in [FindShadersResponse.total]
-  /// (not the number of shaders in [FindShadersResponse.shaders])
-  /// and a null [FindShadersResponse.error]
+  /// Upon success a list of [Shader] objects is provided as well as the overall
+  /// number of records in total (not the number of shaders in the list, the
+  /// number of total results). The error is set to null
   ///
-  /// In case of error [FindShadersResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindShadersResponse.shaders]
+  /// In case of error a [ResponseError] is set and no [Shader] list is provided
   Future<FindShadersResponse> findShaders(
       {String term, Set<String> filters, Sort sort, int from, int num});
 
   /// Returns a [FindShaderIdsResponse] with all the shader id's
   ///
-  /// Upon success [FindShaderIdsResponse.ids] has the corresponding
-  /// ids and a null [FindShaderIdsResponse.error]
+  /// Upon success a list of shader ids is provided and error is set to null
   ///
-  /// In case of error [FindShaderIdsResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindShaderIdsResponse.ids]
+  /// In case of error a [ResponseError] is set and no shader id list is provided
   Future<FindShaderIdsResponse> findAllShaderIds();
 
   /// Returns a filtered [FindShaderIdsResponse] with a list of shader ids.
@@ -97,13 +89,12 @@ abstract class ShadertoyClient {
   /// * [from]: A 0 based index for results returned
   /// * [num]: The total number of results
   ///
-  /// Upon success [FindShaderIdsResponse.ids] has the corresponding
-  /// ids, the overal number of records in [FindShaderIdsResponse.total]
-  /// (not the number of shaders in [FindShaderIdsResponse.ids])
-  /// and a null [FindShaderIdsResponse.error]
+  /// Upon success a list of shader ids is provided as well as the overall
+  /// number of records in total (not the number of shader ids in the list, the
+  /// number of total results). The error is set to null
   ///
-  /// In case of error [FindShaderIdsResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindShaderIdsResponse.ids]
+  /// In case of error a [ResponseError] is set and no shader id list is
+  /// provided
   Future<FindShaderIdsResponse> findShaderIds(
       {String term, Set<String> filters, Sort sort, int from, int num});
 }
@@ -115,11 +106,9 @@ abstract class ShadertoyClient {
 abstract class ShadertoyExtendedClient extends ShadertoyClient {
   /// Returns a [FindUserResponse] for user with [userId]
   ///
-  /// On success [FindUserResponse.user] has the corresponding
-  /// [User] and a null [FindUserResponse.error]
+  /// Upon success a [User] object is provided and error is set to null
   ///
-  /// In case of error [FindUserResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindUserResponse.user]
+  /// In case of error a [ResponseError] is set and no [User] is provided
   Future<FindUserResponse> findUserById(String userId);
 
   /// Returns a filtered [FindShadersResponse] for user [userId]
@@ -129,13 +118,11 @@ abstract class ShadertoyExtendedClient extends ShadertoyClient {
   /// * [from]: A 0 based index for results returned
   /// * [num]: The total number of results
   ///
-  /// Upon success [FindShadersResponse.shaders] has the corresponding
-  /// [Shader] objects, the overal number of records in [FindShadersResponse.total]
-  /// (not the number of shaders in [FindShadersResponse.shaders])
-  /// and a null [FindShadersResponse.error]
+  /// Upon success a list of [Shader] objects is provided as well as the overall
+  /// number of records in total (not the number of shaders in the list, the
+  /// number of total results). The error is set to null
   ///
-  /// In case of error [FindShadersResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindShadersResponse.shaders]
+  /// In case of error a [ResponseError] is set and no [Shader] list is provided
   Future<FindShadersResponse> findShadersByUserId(String userId,
       {Set<String> filters, Sort sort, int from, int num});
 
@@ -147,32 +134,28 @@ abstract class ShadertoyExtendedClient extends ShadertoyClient {
   /// * [from]: A 0 based index for results returned
   /// * [num]: The total number of results
   ///
-  /// Upon success [FindShaderIdsResponse.ids] has the corresponding
-  /// ids, the overal number of records in [FindShaderIdsResponse.total]
-  /// (not the number of shaders in [FindShaderIdsResponse.ids])
-  /// and a null [FindShaderIdsResponse.error]
+  /// Upon success a list of shader ids is provided as well as the overall
+  /// number of records in total (not the number of shader ids in the list, the
+  /// number of total results). The error is set to null
   ///
-  /// In case of error [FindShaderIdsResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindShaderIdsResponse.ids]
+  /// In case of error a [ResponseError] is set and no shader id list is
+  /// provided
   Future<FindShaderIdsResponse> findShaderIdsByUserId(String userId,
       {Set<String> filters, Sort sort, int from, int num});
 
   /// Returns a [FindCommentsResponse] for a shader with id [shaderId]
   ///
-  /// On success [FindCommentsResponse.comments] has the corresponding
-  /// list of [Comment] and a null [FindCommentsResponse.error]
+  /// On success comments has the corresponding
+  /// list of [Comment] and error set to null
   ///
-  /// In case of error [FindCommentsResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindCommentsResponse.comments]
+  /// In case of error a [ResponseError] is set and no [Comment] list is provided
   Future<FindCommentsResponse> findCommentsByShaderId(String shaderId);
 
   /// Returns a [FindPlaylistResponse] for a playlist with [playlistId]
   ///
-  /// On success [FindPlaylistResponse.playlist] has the corresponding
-  /// [Playlist] and a null [FindPlaylistResponse.error]
+  /// Upon success a [Playlist] object is provided and error is set to null
   ///
-  /// In case of error [FindPlaylistResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindPlaylistResponse.playlist]
+  /// In case of error a [ResponseError] is set and no [Playlist] is provided
   Future<FindPlaylistResponse> findPlaylistById(String playlistId);
 
   /// Returns a [FindShadersResponse] with a list of shaders.
@@ -181,13 +164,11 @@ abstract class ShadertoyExtendedClient extends ShadertoyClient {
   /// * [from]: A 0 based index for results returned
   /// * [num]: The total number of results
   ///
-  /// Upon success [FindShadersResponse.shaders] has the corresponding
-  /// shaders, the overal number of records in [FindShadersResponse.total]
-  /// (not the number of shaders in [FindShadersResponse.shaders])
-  /// and a null [FindShadersResponse.error]
+  /// Upon success a list of [Shader] objects is provided as well as the overall
+  /// number of records in total (not the number of shaders in the list, the
+  /// number of total results). The error is set to null
   ///
-  /// In case of error [FindShadersResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindShadersResponse.shaders]
+  /// In case of error a [ResponseError] is set and no [Shader] list is provided
   Future<FindShadersResponse> findShadersByPlaylistId(String playlistId,
       {int from, int num});
 
@@ -196,13 +177,12 @@ abstract class ShadertoyExtendedClient extends ShadertoyClient {
   /// * [from]: A 0 based index for results returned
   /// * [num]: The total number of results
   ///
-  /// Upon success [FindShaderIdsResponse.ids] has the corresponding
-  /// ids, the overal number of records in [FindShaderIdsResponse.total]
-  /// (not the number of shaders in [FindShaderIdsResponse.ids])
-  /// and a null [FindShaderIdsResponse.error]
+  /// Upon success a list of shader ids is provided as well as the overall
+  /// number of records in total (not the number of shader ids in the list, the
+  /// number of total results). The error is set to null
   ///
-  /// In case of error [FindShaderIdsResponse.error] has the corresponding
-  /// [ResponseError] structure and a null [FindShaderIdsResponse.ids]
+  /// In case of error a [ResponseError] is set and no shader id list is
+  /// provided
   Future<FindShaderIdsResponse> findShaderIdsByPlaylistId(String playlistId,
       {int from, int num});
 }
