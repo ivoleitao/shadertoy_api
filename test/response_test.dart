@@ -259,7 +259,7 @@ void main() {
     expect(findCommentsResponse1, equals(findCommentsResponse2));
   });
 
-  var playlist = Playlist(id: 'id1', name: 'name1', count: 1, shaders: ['1']);
+  var playlist = Playlist(id: 'id1', name: 'name1', count: 1);
   var findPlaylistResponse1 =
       FindPlaylistResponse(playlist: playlist, error: null);
 

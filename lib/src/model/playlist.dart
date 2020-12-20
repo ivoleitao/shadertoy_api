@@ -20,29 +20,18 @@ class Playlist extends Equatable {
   /// The number of shaders on the playlist
   final int count;
 
-  @JsonKey(name: 'shaders')
-
-  // The list of shaders on the playlist
-  final List<String> shaders;
-
   /// Builds a [Playlist]
   ///
   /// * [id]: The playlist id
   /// * [name]: The playlist name
   /// * [count]: The number of shaders on the playlist
-  /// * [shaders]: The list of shaders on the playlist
-  const Playlist(
-      {@required this.id,
-      @required this.name,
-      @required this.count,
-      @required this.shaders})
+  const Playlist({@required this.id, @required this.name, @required this.count})
       : assert(id != null),
         assert(name != null),
-        assert(count != null),
-        assert(shaders != null);
+        assert(count != null);
 
   @override
-  List<Object> get props => [id, name, count, shaders];
+  List<Object> get props => [id, name, count];
 
   /// Creates a [Playlist] from json map
   factory Playlist.fromJson(Map<String, dynamic> json) =>
@@ -64,10 +53,6 @@ class Playlist extends Equatable {
     List<String> shaders,
   }) {
     return Playlist(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      count: count ?? this.count,
-      shaders: shaders ?? this.shaders,
-    );
+        id: id ?? this.id, name: name ?? this.name, count: count ?? this.count);
   }
 }

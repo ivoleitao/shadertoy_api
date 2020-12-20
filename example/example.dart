@@ -95,7 +95,6 @@ void main() {
   print(encoder.convert(comment));
 
   // Creates a playlist
-  var playlist =
-      Playlist(id: 'ZzZ0Zz', name: 'Playlist', count: 1, shaders: ['ZzZ0Zz']);
+  var playlist = Playlist(id: 'ZzZ0Zz', name: 'Playlist', count: 1);
   print(encoder.convert(playlist));
 }
