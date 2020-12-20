@@ -45,7 +45,6 @@ class Playlist extends Equatable {
   /// * [id]: The playlist id
   /// * [name]: The playlist name
   /// * [count]: The number of shaders on the playlist
-  /// * [shaders]: The list of shaders on the playlist
   Playlist copyWith({
     String id,
     String name,
