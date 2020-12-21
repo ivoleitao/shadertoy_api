@@ -2,11 +2,22 @@ import 'package:shadertoy_api/src/model/playlist.dart';
 import 'package:test/test.dart';
 
 void main() {
-  var playlist1 = Playlist(id: 'id1', name: 'name1', count: 1);
+  var playlist1 = Playlist(
+      id: 'week',
+      userId: 'shadertoy',
+      name: 'Shaders of the Week',
+      description: 'Playlist with every single shader of the week ever.',
+      publishStatus: PlaylistPublishStatus.public,
+      shaders: 391);
+
   test('Test a playlist', () {
-    expect(playlist1.id, 'id1');
-    expect(playlist1.name, 'name1');
-    expect(playlist1.count, 1);
+    expect(playlist1.id, 'week');
+    expect(playlist1.userId, 'shadertoy');
+    expect(playlist1.name, 'Shaders of the Week');
+    expect(playlist1.description,
+        'Playlist with every single shader of the week ever.');
+    expect(playlist1.publishStatus, PlaylistPublishStatus.public);
+    expect(playlist1.shaders, 391);
   });
 
   test('Convert a output to a JSON serializable map and back', () {

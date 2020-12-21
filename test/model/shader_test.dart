@@ -16,7 +16,7 @@ void main() {
       userId: 'userId1',
       description: 'description1',
       likes: 1,
-      publishStatus: PublishStatus.public_api,
+      publishStatus: ShaderPublishStatus.public_api,
       flags: 1,
       tags: ['test1'],
       hasLiked: true);

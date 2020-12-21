@@ -25,7 +25,7 @@ void main() {
           userId: 'example',
           description: 'A shader example',
           likes: 570,
-          publishStatus: PublishStatus.public_api,
+          publishStatus: ShaderPublishStatus.public_api,
           flags: 32,
           tags: [
             'procedural',
@@ -95,6 +95,12 @@ void main() {
   print(encoder.convert(comment));
 
   // Creates a playlist
-  var playlist = Playlist(id: 'ZzZ0Zz', name: 'Playlist', count: 1);
+  var playlist = Playlist(
+      id: 'week',
+      userId: 'shadertoy',
+      name: 'Shaders of the Week',
+      description: 'Playlist with every single shader of the week ever.',
+      publishStatus: PlaylistPublishStatus.public,
+      shaders: 391);
   print(encoder.convert(playlist));
 }

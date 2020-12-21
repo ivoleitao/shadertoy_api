@@ -6,7 +6,7 @@ import 'package:shadertoy_api/src/converter/value_converter.dart';
 
 part 'info.g.dart';
 
-enum PublishStatus {
+enum ShaderPublishStatus {
   @JsonValue(0)
 
   /// Is not shared with anybody
@@ -71,7 +71,7 @@ class Info extends Equatable {
   @JsonKey(name: 'published')
 
   /// The publish status
-  final PublishStatus publishStatus;
+  final ShaderPublishStatus publishStatus;
 
   @JsonKey(name: 'flags')
 
@@ -167,7 +167,7 @@ class Info extends Equatable {
     String userId,
     String description,
     int likes,
-    PublishStatus publishStatus,
+    ShaderPublishStatus publishStatus,
     int flags,
     List<String> tags,
     bool hasLiked,
