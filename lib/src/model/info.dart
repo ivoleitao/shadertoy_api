@@ -6,7 +6,7 @@ import 'package:shadertoy_api/src/converter/value_converter.dart';
 
 part 'info.g.dart';
 
-enum ShaderPublishStatus {
+enum ShaderPrivacy {
   @JsonValue(0)
 
   /// Is not shared with anybody
@@ -70,8 +70,8 @@ class Info extends Equatable {
 
   @JsonKey(name: 'published')
 
-  /// The publish status
-  final ShaderPublishStatus publishStatus;
+  /// The shader privacy
+  final ShaderPrivacy privacy;
 
   @JsonKey(name: 'flags')
 
@@ -98,7 +98,7 @@ class Info extends Equatable {
   /// * [userId]: The id of the user that created the shader
   /// * [description]: The shader description
   /// * [likes]: The number of likes
-  /// * [publishStatus]: The publish status
+  /// * [privacy]: The shader privacy
   /// * [flags]: The shader flags
   /// * [tags]: The shader tags
   /// * [hasLiked]: If the current logged user liked the shader
@@ -110,7 +110,7 @@ class Info extends Equatable {
       @required this.userId,
       this.description,
       this.likes = 0,
-      @required this.publishStatus,
+      @required this.privacy,
       this.flags = 0,
       this.tags = const <String>[],
       this.hasLiked = false})
@@ -120,7 +120,7 @@ class Info extends Equatable {
         assert(name != null),
         assert(userId != null),
         assert(likes != null),
-        assert(publishStatus != null),
+        assert(privacy != null),
         assert(flags != null),
         assert(tags != null),
         assert(hasLiked != null);
@@ -134,7 +134,7 @@ class Info extends Equatable {
         userId,
         description,
         likes,
-        publishStatus,
+        privacy,
         flags,
         tags,
         hasLiked
@@ -155,7 +155,7 @@ class Info extends Equatable {
   /// * [userId]: The id of the user that created the shader
   /// * [description]: The shader description
   /// * [likes]: The number of likes
-  /// * [publishStatus]: The publish status
+  /// * [privacy]: The shader privacy
   /// * [flags]: The shader flags
   /// * [tags]: The shader tags
   /// * [hasLiked]: If the current logged user liked the shader
@@ -167,7 +167,7 @@ class Info extends Equatable {
     String userId,
     String description,
     int likes,
-    ShaderPublishStatus publishStatus,
+    ShaderPrivacy privacy,
     int flags,
     List<String> tags,
     bool hasLiked,
@@ -180,7 +180,7 @@ class Info extends Equatable {
       userId: userId ?? this.userId,
       description: description ?? this.description,
       likes: likes ?? this.likes,
-      publishStatus: publishStatus ?? this.publishStatus,
+      privacy: privacy ?? this.privacy,
       flags: flags ?? this.flags,
       tags: tags ?? this.tags,
       hasLiked: hasLiked ?? this.hasLiked,

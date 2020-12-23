@@ -12,8 +12,7 @@ Playlist _$PlaylistFromJson(Map<String, dynamic> json) {
     userId: json['userId'] as String,
     name: json['name'] as String,
     description: json['description'] as String,
-    publishStatus:
-        _$enumDecodeNullable(_$PlaylistPublishStatusEnumMap, json['published']),
+    privacy: _$enumDecodeNullable(_$PlaylistPrivacyEnumMap, json['published']),
     shaders: json['shaders'] as int,
   );
 }
@@ -23,7 +22,7 @@ Map<String, dynamic> _$PlaylistToJson(Playlist instance) => <String, dynamic>{
       'userId': instance.userId,
       'name': instance.name,
       'description': instance.description,
-      'published': _$PlaylistPublishStatusEnumMap[instance.publishStatus],
+      'published': _$PlaylistPrivacyEnumMap[instance.privacy],
       'shaders': instance.shaders,
     };
 
@@ -59,8 +58,8 @@ T _$enumDecodeNullable<T>(
   return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
 }
 
-const _$PlaylistPublishStatusEnumMap = {
-  PlaylistPublishStatus.private: 0,
-  PlaylistPublishStatus.unlisted: 1,
-  PlaylistPublishStatus.public: 2,
+const _$PlaylistPrivacyEnumMap = {
+  PlaylistPrivacy.private: 0,
+  PlaylistPrivacy.unlisted: 1,
+  PlaylistPrivacy.public: 2,
 };

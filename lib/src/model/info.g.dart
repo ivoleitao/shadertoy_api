@@ -16,8 +16,7 @@ Info _$InfoFromJson(Map<String, dynamic> json) {
     userId: json['username'] as String,
     description: json['description'] as String,
     likes: json['likes'] as int,
-    publishStatus:
-        _$enumDecodeNullable(_$ShaderPublishStatusEnumMap, json['published']),
+    privacy: _$enumDecodeNullable(_$ShaderPrivacyEnumMap, json['published']),
     flags: json['flags'] as int,
     tags: (json['tags'] as List)?.map((e) => e as String)?.toList(),
     hasLiked: const IntToBoolConverter().fromJson(json['hasliked'] as int),
@@ -32,7 +31,7 @@ Map<String, dynamic> _$InfoToJson(Info instance) => <String, dynamic>{
       'username': instance.userId,
       'description': instance.description,
       'likes': instance.likes,
-      'published': _$ShaderPublishStatusEnumMap[instance.publishStatus],
+      'published': _$ShaderPrivacyEnumMap[instance.privacy],
       'flags': instance.flags,
       'tags': instance.tags,
       'hasliked': const IntToBoolConverter().toJson(instance.hasLiked),
@@ -70,9 +69,9 @@ T _$enumDecodeNullable<T>(
   return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
 }
 
-const _$ShaderPublishStatusEnumMap = {
-  ShaderPublishStatus.private: 0,
-  ShaderPublishStatus.unlisted: 1,
-  ShaderPublishStatus.public: 2,
-  ShaderPublishStatus.public_api: 3,
+const _$ShaderPrivacyEnumMap = {
+  ShaderPrivacy.private: 0,
+  ShaderPrivacy.unlisted: 1,
+  ShaderPrivacy.public: 2,
+  ShaderPrivacy.public_api: 3,
 };

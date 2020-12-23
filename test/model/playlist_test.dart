@@ -7,7 +7,7 @@ void main() {
       userId: 'shadertoy',
       name: 'Shaders of the Week',
       description: 'Playlist with every single shader of the week ever.',
-      publishStatus: PlaylistPublishStatus.public,
+      privacy: PlaylistPrivacy.public,
       shaders: 391);
 
   test('Test a playlist', () {
@@ -16,7 +16,7 @@ void main() {
     expect(playlist1.name, 'Shaders of the Week');
     expect(playlist1.description,
         'Playlist with every single shader of the week ever.');
-    expect(playlist1.publishStatus, PlaylistPublishStatus.public);
+    expect(playlist1.privacy, PlaylistPrivacy.public);
     expect(playlist1.shaders, 391);
   });
 

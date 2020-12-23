@@ -139,7 +139,7 @@ void main() {
       userId: 'userId1',
       description: 'description1',
       likes: 1,
-      publishStatus: ShaderPublishStatus.public_api,
+      privacy: ShaderPrivacy.public_api,
       flags: 1,
       tags: ['test1'],
       hasLiked: true);
@@ -264,7 +264,7 @@ void main() {
       userId: 'shadertoy',
       name: 'Shaders of the Week',
       description: 'Playlist with every single shader of the week ever.',
-      publishStatus: PlaylistPublishStatus.public,
+      privacy: PlaylistPrivacy.public,
       shaders: 391);
   var findPlaylistResponse1 =
       FindPlaylistResponse(playlist: playlist, error: null);

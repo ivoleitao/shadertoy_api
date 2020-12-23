@@ -22,7 +22,7 @@ class Comment {
     +boolean hidden
 }
 
-enum PublishStatus {
+enum ShaderPrivacy {
     private
     unlisted
     public
@@ -37,7 +37,7 @@ class Info {
     +String userId
     +String description
     +int likes
-    +PublishStatus publishStatus
+    +ShaderPrivacy privacy
     +int flags
     +List<String> tags
     +bool hasLiked
@@ -116,28 +116,38 @@ class Shader {
     +List<RenderPass> renderPasses
 }
 
-class Playlist {
-    +String id
-    +String name
-    +int count
-    +List<String> shaders
+enum PlaylistPrivacy {
+    private
+    unlisted
+    public
 }
 
-Info  .. PublishStatus
+class Playlist {
+    +String id
+    +String userId
+    +String name
+    +String description
+    +PlaylistPrivacy privacy
+    +int shaders
+}
+
+Info  .. ShaderPrivacy
 Sampler .. FilterType
 Sampler .. WrapType
 Input .. InputType
 RenderPass .. RenderPassType
+Playlist .. PlaylistPrivacy
 
-Shader "info" o-- "1" Info
+Shader "             info" o-- "1" Info
 Shader "     renderPasses" o-- "1..*  " RenderPass
 RenderPass "inputs  " o-- "1..*" Input
 RenderPass "outputs" o-- "1..*" Output
 Input "sampler " o-- "1" Sampler
 
-Shader -- User
-Playlist -- Shader
-Comment -- Shader
+Info -- User
+Playlist -- Info
+Playlist -- User
+Comment -- Info
 Comment -- User
 
 
