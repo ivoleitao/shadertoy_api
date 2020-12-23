@@ -233,12 +233,14 @@ void main() {
       id: 'comentId1',
       userId: 'userId1',
       userPicture: '/img/profile.jpg',
+      shaderId: 'shaderId1',
       date: now,
       text: 'text1');
   var comment2 = Comment(
       id: 'commentId2',
       userId: 'userId2',
       userPicture: '/img/profile.jpg',
+      shaderId: 'shaderId2',
       date: now,
       text: 'text2',
       hidden: true);

@@ -8,11 +8,13 @@ void main() {
         id: 'commentId1',
         userId: 'userId1',
         userPicture: '/img/profile.jpg',
+        shaderId: 'shaderId1',
         date: now,
         text: 'text1');
     expect(comment.id, 'commentId1');
     expect(comment.userId, 'userId1');
     expect(comment.userPicture, '/img/profile.jpg');
+    expect(comment.shaderId, 'shaderId1');
     expect(comment.date, now);
     expect(comment.text, 'text1');
   });
@@ -23,6 +25,7 @@ void main() {
         id: 'commentId1',
         userId: 'userId1',
         userPicture: '/img/profile.jpg',
+        shaderId: 'shaderId1',
         date: now,
         text: 'text1',
         hidden: true);
