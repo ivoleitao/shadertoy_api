@@ -10,7 +10,7 @@ Comment _$CommentFromJson(Map<String, dynamic> json) {
   return Comment(
     id: json['id'] as String,
     userId: json['userId'] as String,
-    userPicture: json['userPicture'] as String,
+    picture: json['picture'] as String,
     shaderId: json['shaderId'] as String,
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
     text: json['text'] as String,
@@ -21,7 +21,7 @@ Comment _$CommentFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$CommentToJson(Comment instance) => <String, dynamic>{
       'id': instance.id,
       'userId': instance.userId,
-      'userPicture': instance.userPicture,
+      'picture': instance.picture,
       'shaderId': instance.shaderId,
       'date': instance.date?.toIso8601String(),
       'text': instance.text,

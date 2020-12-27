@@ -23,16 +23,6 @@ class User extends Equatable {
   /// Join date of the user
   final DateTime memberSince;
 
-  @JsonKey(name: 'shaders')
-
-  /// How many shaders the user contributed
-  final int shaders;
-
-  @JsonKey(name: 'comments')
-
-  /// How many comments the user contributed
-  final int comments;
-
   @JsonKey(name: 'following')
 
   /// How many users this user follows
@@ -53,8 +43,6 @@ class User extends Equatable {
   /// * [id]: The id of the user
   /// * [picture]: A link to the user picture
   /// * [memberSince]: The user join date
-  /// * [shaders]: The number of shaders
-  /// * [comments]: The number of comments
   /// * [following]: The number of users this user is following
   /// * [followers]: The number of followers this user has
   /// * [about]: More about the user
@@ -62,33 +50,45 @@ class User extends Equatable {
       {@required this.id,
       this.picture,
       @required this.memberSince,
-      this.shaders = 0,
-      this.comments = 0,
       this.following = 0,
       this.followers = 0,
       this.about})
       : assert(id != null),
         assert(memberSince != null),
-        assert(shaders != null),
-        assert(comments != null),
         assert(following != null),
         assert(followers != null);
 
   @override
-  List<Object> get props => [
-        id,
-        picture,
-        memberSince,
-        shaders,
-        comments,
-        following,
-        followers,
-        about
-      ];
+  List<Object> get props =>
+      [id, picture, memberSince, following, followers, about];
 
   /// Creates a [User] from json map
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   /// Creates a json map from a [User]
   Map<String, dynamic> toJson() => _$UserToJson(this);
+
+  /// Builds a copy of a [User]
+  ///
+  /// * [id]: The id of the user
+  /// * [picture]: A link to the user picture
+  /// * [memberSince]: The user join date
+  /// * [following]: The number of users this user is following
+  /// * [followers]: The number of followers this user has
+  /// * [about]: More about the user
+  User copyWith(
+      {String id,
+      String picture,
+      DateTime memberSince,
+      int following,
+      int followers,
+      String about}) {
+    return User(
+        id: id ?? this.id,
+        picture: picture ?? this.picture,
+        memberSince: memberSince ?? this.memberSince,
+        following: following ?? this.following,
+        followers: followers ?? this.followers,
+        about: about ?? this.about);
+  }
 }

@@ -13,7 +13,6 @@ Playlist _$PlaylistFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     description: json['description'] as String,
     privacy: _$enumDecodeNullable(_$PlaylistPrivacyEnumMap, json['published']),
-    shaders: json['shaders'] as int,
   );
 }
 
@@ -23,7 +22,6 @@ Map<String, dynamic> _$PlaylistToJson(Playlist instance) => <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'published': _$PlaylistPrivacyEnumMap[instance.privacy],
-      'shaders': instance.shaders,
     };
 
 T _$enumDecode<T>(

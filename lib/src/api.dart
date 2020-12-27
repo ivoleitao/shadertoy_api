@@ -240,6 +240,15 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// In case of error [SavePlaylistResponse.error] has the corresponding
   /// [ResponseError] structure
   Future<SavePlaylistResponse> savePlaylist(Playlist playlist);
+
+  /// Associates a list of shader is with a playlist
+  ///
+  /// On success [SavePlaylistShadersResponse.error] is null
+  ///
+  /// In case of error [SavePlaylistShadersResponse.error] has the corresponding
+  /// [ResponseError] structure
+  Future<SavePlaylistShadersResponse> savePlaylistShaders(
+      String playlistId, List<String> shaderIds);
 }
 
 /// A base implementation of Shadertoy stores

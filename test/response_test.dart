@@ -212,8 +212,6 @@ void main() {
       id: 'id1',
       picture: 'picture1',
       memberSince: memberSince,
-      shaders: 1,
-      comments: 1,
       about: 'about1');
   var findUserResponse1 = FindUserResponse(user: user, error: null);
 
@@ -232,14 +230,14 @@ void main() {
   var comment1 = Comment(
       id: 'comentId1',
       userId: 'userId1',
-      userPicture: '/img/profile.jpg',
+      picture: '/img/profile.jpg',
       shaderId: 'shaderId1',
       date: now,
       text: 'text1');
   var comment2 = Comment(
       id: 'commentId2',
       userId: 'userId2',
-      userPicture: '/img/profile.jpg',
+      picture: '/img/profile.jpg',
       shaderId: 'shaderId2',
       date: now,
       text: 'text2',
@@ -266,8 +264,7 @@ void main() {
       userId: 'shadertoy',
       name: 'Shaders of the Week',
       description: 'Playlist with every single shader of the week ever.',
-      privacy: PlaylistPrivacy.public,
-      shaders: 391);
+      privacy: PlaylistPrivacy.public);
   var findPlaylistResponse1 =
       FindPlaylistResponse(playlist: playlist, error: null);
 

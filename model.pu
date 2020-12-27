@@ -6,8 +6,6 @@ class User {
  +String id
  +String picture
  +String memberSince
- +int shaders
- +int comments 
  +int following
  +int followers
  +String about
@@ -16,7 +14,8 @@ class User {
 class Comment {
     +String id
     +String userId
-    +String userPicture
+    +String picture
+    +String shaderId
     +DateTime date
     +String text
     +boolean hidden
@@ -81,7 +80,7 @@ enum InputType {
 class Input {
     +String id
     +String src
-    +InputType ctype
+    +InputType type
     +int channel
     +Sampler sampler
     +int published
@@ -128,7 +127,6 @@ class Playlist {
     +String name
     +String description
     +PlaylistPrivacy privacy
-    +int shaders
 }
 
 Info  .. ShaderPrivacy

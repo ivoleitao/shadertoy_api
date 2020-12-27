@@ -48,11 +48,6 @@ class Playlist extends Equatable {
   /// The playlist privacy
   final PlaylistPrivacy privacy;
 
-  @JsonKey(name: 'shaders')
-
-  /// The number of shaders on the playlist
-  final int shaders;
-
   /// Builds a [Playlist]
   ///
   /// * [id]: The playlist id
@@ -60,23 +55,20 @@ class Playlist extends Equatable {
   /// * [name]: The playlist name
   /// * [description]: The playlist description
   /// * [privacy]: The playlist privacy
-  /// * [shaders]: The number of shaders on the playlist
   const Playlist(
       {@required this.id,
       @required this.userId,
       @required this.name,
       @required this.description,
-      @required this.privacy,
-      @required this.shaders})
+      @required this.privacy})
       : assert(id != null),
         assert(userId != null),
         assert(name != null),
         assert(description != null),
-        assert(privacy != null),
-        assert(shaders != null);
+        assert(privacy != null);
 
   @override
-  List<Object> get props => [id, userId, name, description, privacy, shaders];
+  List<Object> get props => [id, userId, name, description, privacy];
 
   /// Creates a [Playlist] from json map
   factory Playlist.fromJson(Map<String, dynamic> json) =>
@@ -92,7 +84,6 @@ class Playlist extends Equatable {
   /// * [name]: The playlist name
   /// * [description]: The playlist description
   /// * [privacy]: The playlist privacy
-  /// * [shaders]: The number of shaders on the playlist
   Playlist copyWith(
       {String id,
       String userId,
@@ -105,7 +96,6 @@ class Playlist extends Equatable {
         userId: userId ?? this.userId,
         name: name ?? this.name,
         description: description ?? this.description,
-        privacy: privacy ?? this.privacy,
-        shaders: shaders ?? this.shaders);
+        privacy: privacy ?? this.privacy);
   }
 }

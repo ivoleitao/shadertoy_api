@@ -96,14 +96,13 @@ class RenderPass extends Equatable {
   /// * [code]: The render pass code
   /// * [inputs]: The list of [Input]
   /// * [outputs]: The list of [Output]
-  RenderPass copyWith({
-    String name,
-    RenderPassType type,
-    String description,
-    String code,
-    List<Input> inputs,
-    List<Output> outputs,
-  }) {
+  RenderPass copyWith(
+      {String name,
+      RenderPassType type,
+      String description,
+      String code,
+      List<Input> inputs,
+      List<Output> outputs}) {
     return RenderPass(
       name: name ?? this.name,
       type: type ?? this.type,

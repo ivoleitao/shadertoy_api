@@ -6,12 +6,8 @@ void main() {
   var encoder = JsonEncoder.withIndent('  ');
 
   // Create a user
-  var user = User(
-      id: 'userid',
-      about: 'About this user',
-      memberSince: DateTime.now(),
-      shaders: 1,
-      comments: 1);
+  var user =
+      User(id: 'userid', about: 'About this user', memberSince: DateTime.now());
   print(encoder.convert(user));
 
   // Creates a Shader with two render passes
@@ -89,7 +85,7 @@ void main() {
   var comment = Comment(
       id: 'AaA0Aa',
       userId: 'userId',
-      userPicture: '/img/profile.jpg',
+      picture: '/img/profile.jpg',
       shaderId: 'XxX0Xx',
       date: DateTime.now(),
       text: 'Great shader!');
@@ -101,7 +97,6 @@ void main() {
       userId: 'shadertoy',
       name: 'Shaders of the Week',
       description: 'Playlist with every single shader of the week ever.',
-      privacy: PlaylistPrivacy.public,
-      shaders: 391);
+      privacy: PlaylistPrivacy.public);
   print(encoder.convert(playlist));
 }

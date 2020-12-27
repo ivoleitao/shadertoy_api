@@ -18,10 +18,10 @@ class Comment extends Equatable {
   /// The user who posted the comment
   final String userId;
 
-  @JsonKey(name: 'userPicture')
+  @JsonKey(name: 'picture')
 
   /// The picture of the user who posted the comment
-  final String userPicture;
+  final String picture;
 
   @JsonKey(name: 'shaderId')
 
@@ -47,7 +47,7 @@ class Comment extends Equatable {
   ///
   /// [id]: The id of the comment
   /// [userId]: The user id of user that posted the comment
-  /// [userPicture]: The picture of the user who posted the comment
+  /// [picture]: The picture of the user who posted the comment
   /// [shaderId]: The shader id of the comment
   /// [date]: The date the comment was posted
   /// [text]: The text of the comment
@@ -55,7 +55,7 @@ class Comment extends Equatable {
   const Comment(
       {@required this.id,
       @required this.userId,
-      this.userPicture,
+      this.picture,
       @required this.shaderId,
       @required this.date,
       @required this.text,
@@ -68,8 +68,7 @@ class Comment extends Equatable {
         assert(hidden != null);
 
   @override
-  List<Object> get props =>
-      [id, userId, userPicture, shaderId, date, text, hidden];
+  List<Object> get props => [id, userId, picture, shaderId, date, text, hidden];
 
   /// Creates a [Comment] from json map
   factory Comment.fromJson(Map<String, dynamic> json) =>
@@ -82,7 +81,7 @@ class Comment extends Equatable {
   ///
   /// [id]: The id of the comment
   /// [userId]: The user id of user that posted the comment
-  /// [userPicture]: The picture of the user who posted the comment
+  /// [picture]: The picture of the user who posted the comment
   /// [shaderId]: The shader id of the comment
   /// [date]: The date the comment was posted
   /// [text]: The text of the comment
@@ -90,7 +89,7 @@ class Comment extends Equatable {
   Comment copyWith(
       {String id,
       String userId,
-      String userPicture,
+      String picture,
       String shaderId,
       DateTime date,
       String text,
@@ -98,7 +97,7 @@ class Comment extends Equatable {
     return Comment(
         id: id ?? this.id,
         userId: userId ?? this.userId,
-        userPicture: userPicture ?? this.userPicture,
+        picture: picture ?? this.picture,
         shaderId: shaderId ?? this.shaderId,
         date: date ?? this.date,
         text: text ?? this.text,
