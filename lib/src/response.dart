@@ -31,6 +31,12 @@ enum ErrorCode {
   /// Operation aborted error
   ABORTED,
 
+  /// Conflict error
+  CONFLICT,
+
+  /// Unprocessable error
+  UNPROCESSABLE_ENTITY,
+
   /// Unknowkn error
   UNKNOWN
 }
@@ -141,6 +147,31 @@ class ResponseError with EquatableMixin {
   ResponseError.aborted({String message, String context, String target})
       : this(
             code: ErrorCode.ABORTED,
+            message: message,
+            context: context,
+            target: target);
+
+  /// Builds a unprocessable entity [ResponseError] with [ErrorCode.UNPROCESSABLE_ENTITY] and:
+  ///
+  /// * [message]: The error message
+  /// * [context]: The context of execution when the error ocurred
+  /// * [target]: The target entity of the API that triggered this error
+  ResponseError.unprocessableEntity(
+      {String message, String context, String target})
+      : this(
+            code: ErrorCode.UNPROCESSABLE_ENTITY,
+            message: message,
+            context: context,
+            target: target);
+
+  /// Builds a conflict [ResponseError] with [ErrorCode.CONFLICT] and:
+  ///
+  /// * [message]: The error message
+  /// * [context]: The context of execution when the error ocurred
+  /// * [target]: The target entity of the API that triggered this error
+  ResponseError.conflict({String message, String context, String target})
+      : this(
+            code: ErrorCode.CONFLICT,
             message: message,
             context: context,
             target: target);
@@ -606,6 +637,18 @@ class SaveUserResponse extends APIResponse with EquatableMixin {
   SaveUserResponse({ResponseError error}) : super(error: error);
 }
 
+/// Save users API response
+///
+/// The response returned upon the execution of the save users API call
+/// When [SaveUsersResponse.error] is *not null* there was an error in the save shader call
+/// When [SaveUsersResponse.error] is *null* the save was sucessful
+class SaveUsersResponse extends APIResponse with EquatableMixin {
+  /// Builds a [SaveUsersResponse]
+  ///
+  /// [error]: An error if there was error while saving the user
+  SaveUsersResponse({ResponseError error}) : super(error: error);
+}
+
 /// Save account API response
 ///
 /// The response returned upon the execution of the save account API call
@@ -628,6 +671,18 @@ class SaveShaderResponse extends APIResponse with EquatableMixin {
   ///
   /// [error]: An error if there was error while saving the shader
   SaveShaderResponse({ResponseError error}) : super(error: error);
+}
+
+/// Save shaders API response
+///
+/// The response returned upon the execution of the save shaders API call
+/// When [SaveShadersResponse.error] is *not null* there was an error in the save shader call
+/// When [SaveShadersResponse.error] is *null* the save was sucessful
+class SaveShadersResponse extends APIResponse with EquatableMixin {
+  /// Builds a [SaveShadersResponse]
+  ///
+  /// [error]: An error if there was error while saving the shader
+  SaveShadersResponse({ResponseError error}) : super(error: error);
 }
 
 /// Save shader comments API response

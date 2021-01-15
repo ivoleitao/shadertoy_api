@@ -1,3 +1,4 @@
+import 'package:meta/meta.dart';
 import 'package:shadertoy_api/src/context.dart';
 import 'package:shadertoy_api/src/model/comment.dart';
 import 'package:shadertoy_api/src/model/playlist.dart';
@@ -39,11 +40,56 @@ const CONTEXT_COMMENT = 'comment';
 /// Playlist context
 const CONTEXT_PLAYLIST = 'playlist';
 
+/// The exception handling mode
+enum ErrorMode {
+  /// The errors should be handled and returned on the response error
+  HandleAndReturn,
+
+  /// The errors should be handled and returned on retrown
+  HandleAndRetrow
+}
+
+/// Base class for the client options
+///
+/// It provides a number of options that can be configured regardless the specific implementation
+abstract class ShadertoyClientOptions {
+  /// The default error handling mode
+  static const ErrorMode DefaultErrorHandling = ErrorMode.HandleAndReturn;
+
+  /// The selected error handling mode
+  final ErrorMode errorHandling;
+
+  /// Builds a [ShadertoyClientOptions]
+  ///
+  /// * [errorHandling]: The error handling mode
+  ShadertoyClientOptions({@required this.errorHandling})
+      : assert(errorHandling != null);
+}
+
 /// Base shadertoy client API
 ///
 /// All the basic operations supported through
 /// the Shadertoy REST API.
 abstract class ShadertoyClient {
+  /// Catches and handles a specific type of error in a future
+  ///
+  /// * [future]: The future
+  /// * [handle]: The error handling function
+  static Future<R> catchError<R extends APIResponse, E>(
+      Future<R> future, R Function(E) handle, ErrorMode errorMode) {
+    return future.catchError((e) {
+      if (e is E) {
+        final apiResponse = handle(e);
+        if (errorMode == ErrorMode.HandleAndReturn) {
+          return Future.value(apiResponse);
+        } else if (errorMode == ErrorMode.HandleAndRetrow) {
+          return Future.error(apiResponse.error);
+        }
+      }
+      return Future.error(e);
+    });
+  }
+
   /// Returns a [FindShaderResponse] for the shader with [shaderId]
   ///
   /// Upon success a [Shader] object is provided and error is set to null
@@ -143,6 +189,14 @@ abstract class ShadertoyExtendedClient extends ShadertoyClient {
   Future<FindShaderIdsResponse> findShaderIdsByUserId(String userId,
       {Set<String> filters, Sort sort, int from, int num});
 
+  /// Returns a [FindShaderIdsResponse] with all the shader id's
+  /// for the user [userId]
+  ///
+  /// Upon success a list of shader ids is provided and error is set to null
+  ///
+  /// In case of error a [ResponseError] is set and no shader id list is provided
+  Future<FindShaderIdsResponse> findAllShaderIdsByUserId(String userId);
+
   /// Returns a [FindCommentsResponse] for a shader with id [shaderId]
   ///
   /// On success comments has the corresponding
@@ -185,6 +239,14 @@ abstract class ShadertoyExtendedClient extends ShadertoyClient {
   /// provided
   Future<FindShaderIdsResponse> findShaderIdsByPlaylistId(String playlistId,
       {int from, int num});
+
+  /// Returns a [FindShaderIdsResponse] with all the shader id's
+  /// for the playlist [playlistId]
+  ///
+  /// Upon success a list of shader ids is provided and error is set to null
+  ///
+  /// In case of error a [ResponseError] is set and no shader id list is provided
+  Future<FindShaderIdsResponse> findAllShaderIdsByPlaylistId(String playlistId);
 }
 
 /// A base implementation class for Shadertoy clients
@@ -216,6 +278,14 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// [ResponseError] structure
   Future<SaveUserResponse> saveUser(User user);
 
+  /// Saves a list of [User]'s
+  ///
+  /// On success [SaveUsersResponse.error] is null
+  ///
+  /// In case of error [SaveUsersResponse.error] has the corresponding
+  /// [ResponseError] structure
+  Future<SaveUsersResponse> saveUsers(List<User> users);
+
   /// Saves a [Shader]
   ///
   /// On success [SaveShaderResponse.error] is null
@@ -223,6 +293,14 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// In case of error [SaveShaderResponse.error] has the corresponding
   /// [ResponseError] structure
   Future<SaveShaderResponse> saveShader(Shader shader);
+
+  /// Saves a list of [Shader]'s
+  ///
+  /// On success [SaveShadersResponse.error] is null
+  ///
+  /// In case of error [SaveShadersResponse.error] has the corresponding
+  /// [ResponseError] structure
+  Future<SaveShadersResponse> saveShaders(List<Shader> shaders);
 
   /// Saves a list of [Comment]
   ///
@@ -252,8 +330,4 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
 }
 
 /// A base implementation of Shadertoy stores
-///
-/// It provides the same contextual information supported by [ShadertoyBaseClient]
-/// and additionally persistent contract through [ShadertoyStore] definition.
-abstract class ShadertoyBaseStore extends ShadertoyClient
-    implements ShadertoyStore {}
+abstract class ShadertoyBaseStore implements ShadertoyStore {}

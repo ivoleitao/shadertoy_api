@@ -90,7 +90,8 @@ class Playlist extends Equatable {
       String name,
       String description,
       PlaylistPrivacy privacy,
-      int shaders}) {
+      int shaders,
+      List<String> shaderIds}) {
     return Playlist(
         id: id ?? this.id,
         userId: userId ?? this.userId,

@@ -86,7 +86,6 @@ void main() {
       id: 'AaA0Aa',
       userId: 'userId',
       picture: '/img/profile.jpg',
-      shaderId: 'XxX0Xx',
       date: DateTime.now(),
       text: 'Great shader!');
   print(encoder.convert(comment));

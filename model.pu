@@ -15,7 +15,6 @@ class Comment {
     +String id
     +String userId
     +String picture
-    +String shaderId
     +DateTime date
     +String text
     +boolean hidden

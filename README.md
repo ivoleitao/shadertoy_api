@@ -1,5 +1,5 @@
 # shadertoy_api
-A Shadertoy client API definition for Dart compatible with all platforms
+A Shadertoy client API definition for Dart
 
 [![Pub Package](https://img.shields.io/pub/v/shadertoy_api.svg?style=flat-square)](https://pub.dartlang.org/packages/shadertoy_api)
 [![Build Status](https://github.com/ivoleitao/shadertoy_api/workflows/build/badge.svg)](https://github.com/ivoleitao/shadertoy_api/actions)
@@ -9,51 +9,48 @@ A Shadertoy client API definition for Dart compatible with all platforms
 
 ## Introduction
 
-Provides a definition of the contracts and entities needed to create a dart client to the Shadertoy API.
+Provides a definition of the contracts and entities needed to create a dart client to Shadertoy.
 
-The contracts defined in this library allow the creation of clients to the:
-* **Shadertoy REST API**, which as presented in the [howto](https://www.shadertoy.com/howto#q2), provides a number of operations that allow the user to browse the shaders currently available with `public+api` privacy settings. Note that the number of operations available with this API are limited albeit enough for simple browsing usage. To start using this type of client a API key should be obtained for a properly registered user on the [apps](https://www.shadertoy.com/myapps) page and the client implementation should support providing it at the time of the construction
-* **Shadertoy Site API**, provides access to the same methods as the previous API but adds more data namely users, playlists, shader comments and website media. Not that The shaders returned by this API should are not constrained by the `public+api` privacy settings. With that said, the client implementation should support the usage of a suitable user and password providing sign in and out methods or, in alternative, anonymous access.
+The contracts defined in this library allow the creation of clients to:
+* **Shadertoy Client API**, which as presented in the [howto](https://www.shadertoy.com/howto#q2), provides a number of operations that allow the user to browse shaders available with `public+api` privacy settings. Note that the number of operations available with this API are limited albeit enough for simple browsing usage. To start using this type of client a API key should be obtained for a properly registered user on the [apps](https://www.shadertoy.com/myapps) page and the client implementation should support providing it at the time of the construction
+* **Shadertoy Extended Client API**, provides access to the same methods as the previous API but adds more data namely users, playlists, shader comments and website media. Note that the shaders returned by this API are not constrained by the `public+api` privacy settings.
 
-Finally, this library defines contracts supporting the creation of data stores thus providing a way to work offline with the downloaded shaders instead of hitting the REST or Site APIs
+Finally, this library defines contracts supporting the creation of data stores through the **Shadertoy Store API** thus providing a way to work offline with the downloaded shaders instead of hitting the client or extended client APIs
 
 ## Capabilities
 
 This package provides a number of operations through two types of clients:
 
-**REST API**
+**Base Client API**
 
 * `Find shader` by id
-* `Find shaders` from a list of id's
-* `Query shaders by term`, tags and sort them by *name*, *likes*, *views*, *newness* and by *hotness* (proportional to popularity and inversely proportional to lifetime). All the query results are paginated.
+* `Find shaders` by a list of id's
+* `Query shaders` by term, tags and sort them by *name*, *likes*, *views*, *newness* and by *hotness* (proportional to popularity and inversely proportional to lifetime). All the query results are paginated through the `from` and `num` parameters
 * `Find all shader ids`
-* `Find shaders ids by term`, tags and sort them by *name*, *likes*, *views*, *newness* and by *hotness* (proportional to popularity and inversely proportional to lifetime). All the query results are paginated.
+* `Query shader ids` by term, tags and sort them by *name*, *likes*, *views*, *newness* and by *hotness* (proportional to popularity and inversely proportional to lifetime). All the query results are paginated through the `from` and `num` parameters
 
-**Site API**
+**Extended Client API**
 
-All the REST API features plus the following:
-* `Login`
-* `Logout`
+All the Base API features plus the following available on a extended interface API:
 * `Find user` by id
-* `Find shaders by user id`
-* `Query shaders by user id`, tags and sort them by *name*, *likes*, *views*, *newness* and by *hotness* (proportional to popularity and inversely proportional to lifetime). All the query results are paginated as well.
+* `Query shaders by user id`, tags and sort them by *name*, *likes*, *views*, *newness* and by *hotness* (proportional to popularity and inversely proportional to lifetime). All the query results are paginated through the `from` and `num` parameters
+* `Query shaders by user id`, tags and sort them by *name*, *likes*, *views*, *newness* and by *hotness* (proportional to popularity and inversely proportional to lifetime). All the query results are paginated through the `from` and `num` parameters
+* `Find all shader ids by user id`
 * `Find comments` by shader id
 * `Find playlist` by id.
-* `Query shaders by playlist id`. All the query results are paginated.
-* `Query shader ids by playlist id`. All the query results are paginated. 
-* `Download preview`, i.e. the the shader thumbnails
-* `Download media`, any other media provided by the Shadertoy website
+* `Query shaders by playlist id`. All the query results are paginated through the `from` and `num` parameters
+* `Query shader ids by playlist id`. All the query results are paginated through the `from` and `num` parameters 
 
 **Store API**
 
-All the REST and Site API features except `login`, `logout`, `download preview` and `download media` plus the following:
+All the base and extended client API features plus the following:
 * `Save user`
-* `Find account by id`
-* `Query account` by name, type and system
-* `Save account`
+* `Save users`
 * `Save shader`
+* `Save shaders`
 * `Save shader comments`
 * `Save playlist`
+* `Save playlist shaders`
 
 ## Getting Started
 
@@ -67,7 +64,13 @@ dependencies:
 Run the following command to install dependencies:
 
 ```dart
-pub install
+pub get
+```
+
+Run the following command to generate sources:
+
+```dart
+pub run build_runner build
 ```
 
 Optionally use the following command to run the tests:
@@ -84,10 +87,10 @@ import 'package:shadertoy_api/shadertoy_api.dart';
 
 ## Usage
 
-Instantiate a `ShadertoyWS` implementation, for example the one provided by the package [shadertoy_client](https://pub.dev/packages/shadertoy_client), to access the REST API:
+Instantiate a `ShadertoyWS` implementation, for example the one provided by the package [shadertoy_client](https://pub.dev/packages/shadertoy_client), to access the client API:
 
 ```dart
-ShadertoyWS ws = ...
+final ws = newShadertoyWSClient(ShadertoyWSOptions(apiKey: 'xx'));
 ```
 and execute one of the methods provided, for example to obtain a shader by id execute `findShaderById` providing the id of the shader as parameter:
 
@@ -101,7 +104,7 @@ if (fsr.ok) {
 ```
 In alternative instantiate a `ShadertoySite` implementation, for example the one provided by the package [shadertoy_client](https://pub.dev/packages/shadertoy_client), to access the Site API:
 ```dart
-ShadertoySite site = ...
+final site = newShadertoySiteClient();
 ```
 and execute one of the methods provided, for example to obtain the shader comments by shader id execute `findCommentsByShaderId` providing the id of the shader as parameter:
 
