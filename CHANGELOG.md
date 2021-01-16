@@ -1,6 +1,6 @@
 ## 1.0.5
 
-- Upgrade sdk to 2.9.0
+- Upgrade sdk to 2.10.0
 - Improved coverage
 - Updated dependencies
 - Added run all tests configuration
