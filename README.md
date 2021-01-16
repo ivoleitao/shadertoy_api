@@ -9,19 +9,18 @@ A Shadertoy client API definition for Dart
 
 ## Introduction
 
-Provides a definition of the contracts and entities needed to create a dart client to Shadertoy.
+Provides a definition of the contracts and entities needed to create a Shadertoy dart client.
 
-The contracts defined in this library allow the creation of clients to:
-* **Shadertoy Client API**, which as presented in the [howto](https://www.shadertoy.com/howto#q2), provides a number of operations that allow the user to browse shaders available with `public+api` privacy settings. Note that the number of operations available with this API are limited albeit enough for simple browsing usage. To start using this type of client a API key should be obtained for a properly registered user on the [apps](https://www.shadertoy.com/myapps) page and the client implementation should support providing it at the time of the construction
-* **Shadertoy Extended Client API**, provides access to the same methods as the previous API but adds more data namely users, playlists, shader comments and website media. Note that the shaders returned by this API are not constrained by the `public+api` privacy settings.
-
-Finally, this library defines contracts supporting the creation of data stores through the **Shadertoy Store API** thus providing a way to work offline with the downloaded shaders instead of hitting the client or extended client APIs
+Three main types of contracts are defined in this library:
+* A **Client API**, for the REST interfaces defined in the Shadertoy [howto](https://www.shadertoy.com/howto#q2) that allow the user to browse shaders available with `public+api` privacy settings. Note that the number of operations available with this API are limited albeit enough for simple browsing usage. To start using this type of client a API key should be obtained for a properly registered user on the [apps](https://www.shadertoy.com/myapps) page and the client implementation should support providing it at the time of the construction
+* **Extended Client API**, provides access to the same methods as the previous API but adds methods namely users, playlists, shader comments and website media. Note that the shaders returned by this API should not be constrained by the `public+api` privacy settings.
+* **Store API**, defines contracts supporting the creation of data stores thus providing a way to work offline with the downloaded shaders instead of hitting the client or extended client APIs. It supports all the methods as the previous API plus the storage primitives.
 
 ## Capabilities
 
 This package provides a number of operations through two types of clients:
 
-**Base Client API**
+**Client API**
 
 * `Find shader` by id
 * `Find shaders` by a list of id's
@@ -31,7 +30,7 @@ This package provides a number of operations through two types of clients:
 
 **Extended Client API**
 
-All the Base API features plus the following available on a extended interface API:
+All the client API features plus the following available on a extended API:
 * `Find user` by id
 * `Query shaders by user id`, tags and sort them by *name*, *likes*, *views*, *newness* and by *hotness* (proportional to popularity and inversely proportional to lifetime). All the query results are paginated through the `from` and `num` parameters
 * `Query shaders by user id`, tags and sort them by *name*, *likes*, *views*, *newness* and by *hotness* (proportional to popularity and inversely proportional to lifetime). All the query results are paginated through the `from` and `num` parameters
@@ -67,30 +66,25 @@ Run the following command to install dependencies:
 pub get
 ```
 
-Run the following command to generate sources:
-
-```dart
-pub run build_runner build
-```
-
-Optionally use the following command to run the tests:
-
-```dart
-pub run test
-```
-
 Finally, to start developing import the library:
 
 ```dart
 import 'package:shadertoy_api/shadertoy_api.dart';
 ```
 
+The following client and storage API implementations are available
+
+| Plugins                                                    | Status                                                       | Description                                                  |
+| ---------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [shadertoy_client](https://github.com/ivoleitao/shadertoy_client) | [![Pub](https://img.shields.io/pub/v/shadertoy_client.svg?style=flat-square)](https://pub.dartlang.org/packages/shadertoy_client) | HTTP client to the Shadertoy REST and Site API                                      |
+| [shadertoy_moor](https://github.com/ivoleitao/shadertoy_moor) | [![Pub](https://img.shields.io/pub/v/shadertoy_moor.svg?style=flat-square)](https://pub.dartlang.org/packages/shadertoy_moor) | A Moor storage implementation using the [moor](https://pub.dev/packages/moor) package                                     |
+
 ## Usage
 
-Instantiate a `ShadertoyWS` implementation, for example the one provided by the package [shadertoy_client](https://pub.dev/packages/shadertoy_client), to access the client API:
+Instantiate a `ShadertoyClient` implementation, for example the one provided by the package [shadertoy_client](https://pub.dev/packages/shadertoy_client), to access the client API:
 
 ```dart
-final ws = newShadertoyWSClient(ShadertoyWSOptions(apiKey: 'xx'));
+final ws = newShadertoyWSClient('xx');
 ```
 and execute one of the methods provided, for example to obtain a shader by id execute `findShaderById` providing the id of the shader as parameter:
 
@@ -102,14 +96,14 @@ if (fsr.ok) {
     print('Error: ${fsr.error.message}')
 }
 ```
-In alternative instantiate a `ShadertoySite` implementation, for example the one provided by the package [shadertoy_client](https://pub.dev/packages/shadertoy_client), to access the Site API:
+In alternative instantiate a `ShadertoyExtendedClient` implementation, for example the one provided by the package [shadertoy_client](https://pub.dev/packages/shadertoy_client), to access the Site API:
 ```dart
 final site = newShadertoySiteClient();
 ```
 and execute one of the methods provided, for example to obtain the shader comments by shader id execute `findCommentsByShaderId` providing the id of the shader as parameter:
 
 ```dart
-var fsr = await site.findCommentsByShaderId('...');
+final fsr = await site.findCommentsByShaderId('...');
 if (fsr.ok) {
     fsr.comments.forEach((c)=> print(c.text));
 } else {

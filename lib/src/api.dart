@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:shadertoy_api/src/context.dart';
 import 'package:shadertoy_api/src/model/comment.dart';
 import 'package:shadertoy_api/src/model/playlist.dart';
@@ -62,8 +61,8 @@ abstract class ShadertoyClientOptions {
   /// Builds a [ShadertoyClientOptions]
   ///
   /// * [errorHandling]: The error handling mode
-  ShadertoyClientOptions({@required this.errorHandling})
-      : assert(errorHandling != null);
+  ShadertoyClientOptions({ErrorMode errorHandling})
+      : errorHandling = errorHandling ?? DefaultErrorHandling;
 }
 
 /// Base shadertoy client API
@@ -272,59 +271,52 @@ abstract class ShadertoyBaseClient implements ShadertoyClient {
 abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// Saves a [User]
   ///
-  /// On success [SaveUserResponse.error] is null
+  /// On success the [User] is saved
   ///
-  /// In case of error [SaveUserResponse.error] has the corresponding
-  /// [ResponseError] structure
+  /// In case of error a [ResponseError] is set on [SaveUserResponse]
   Future<SaveUserResponse> saveUser(User user);
 
-  /// Saves a list of [User]'s
+  /// Saves a list of [User]
   ///
-  /// On success [SaveUsersResponse.error] is null
+  /// On success the list of [User] was saved
   ///
-  /// In case of error [SaveUsersResponse.error] has the corresponding
-  /// [ResponseError] structure
+  /// In case of error a [ResponseError] is set on [SaveUsersResponse]
   Future<SaveUsersResponse> saveUsers(List<User> users);
 
   /// Saves a [Shader]
   ///
-  /// On success [SaveShaderResponse.error] is null
+  /// On success the [Shader] is saved
   ///
-  /// In case of error [SaveShaderResponse.error] has the corresponding
-  /// [ResponseError] structure
+  /// In case of error a [ResponseError] is set on [SaveShaderResponse]
   Future<SaveShaderResponse> saveShader(Shader shader);
 
-  /// Saves a list of [Shader]'s
+  /// Saves a list of [Shader]
   ///
-  /// On success [SaveShadersResponse.error] is null
+  /// On success the list of [Shader] was saved
   ///
-  /// In case of error [SaveShadersResponse.error] has the corresponding
-  /// [ResponseError] structure
+  /// In case of error a [ResponseError] is set on [SaveShadersResponse]
   Future<SaveShadersResponse> saveShaders(List<Shader> shaders);
 
-  /// Saves a list of [Comment]
+  /// Saves a list of shaders [Comment]
   ///
-  /// On success [SaveShaderCommentsResponse.error] is null
+  /// On success the list of [Comment] was saved
   ///
-  /// In case of error [SaveShaderCommentsResponse.error] has the corresponding
-  /// [ResponseError] structure
+  /// In case of error a [ResponseError] is set on [SaveShaderCommentsResponse]
   Future<SaveShaderCommentsResponse> saveShaderComments(
       String shaderId, List<Comment> comments);
 
   /// Saves a [Playlist]
   ///
-  /// On success [SavePlaylistResponse.error] is null
+  /// On success the [Playlist] is saved
   ///
-  /// In case of error [SavePlaylistResponse.error] has the corresponding
-  /// [ResponseError] structure
+  /// In case of error a [ResponseError] is set on [SavePlaylistResponse]
   Future<SavePlaylistResponse> savePlaylist(Playlist playlist);
 
   /// Associates a list of shader is with a playlist
   ///
-  /// On success [SavePlaylistShadersResponse.error] is null
+  /// On success the list of shader ids was saved
   ///
-  /// In case of error [SavePlaylistShadersResponse.error] has the corresponding
-  /// [ResponseError] structure
+  /// In case of error a [ResponseError] is set on [SavePlaylistShadersResponse]
   Future<SavePlaylistShadersResponse> savePlaylistShaders(
       String playlistId, List<String> shaderIds);
 }
