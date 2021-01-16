@@ -1,6 +1,7 @@
 ## 1.0.6
 
-- TBD
+- Added the generated files again. There's no way to publish a package without adding them to source control. See https://github.com/dart-lang/pub/issues/2222
+
 ## 1.0.5
 
 - Upgrade sdk to 2.10.0
