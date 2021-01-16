@@ -1,5 +1,7 @@
 @startuml model
 
+skinparam backgroundcolor white
+
 hide methods
 
 class User {
