@@ -57,7 +57,7 @@ Add this to your `pubspec.yaml` (or create it):
 
 ```dart
 dependencies:
-    shadertoy_api: ^1.0.6
+    shadertoy_api: ^1.0.7
 ```
 
 Run the following command to install dependencies:
