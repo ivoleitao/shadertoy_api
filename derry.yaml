@@ -4,7 +4,8 @@ analyze: dartanalyzer .
 coverage: pub run test_coverage --print-test-output
 prepare:
   (execution): once
-  (scripts): pub global activate remove_from_coverage
+  (scripts):
+    - pub global activate remove_from_coverage
 build:
   (execution): once
   (scripts):
