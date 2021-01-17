@@ -11,11 +11,15 @@ jobs:
       image: google/dart:latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Add pub to the path
         run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Install derry
         run: pub global activate derry
+      - name: Prepare
+        run: derry prepare
       - name: Build
         run: derry build
+      - name: Verify
+        run: derry verify
