@@ -15,7 +15,6 @@ verify:
   (scripts):
     - dartfmt -n --set-exit-if-changed .
     - dartanalyzer . --fatal-warnings
-    - pub run test
     - pub run test_coverage --print-test-output
     - remove_from_coverage -f coverage/lcov.info -r '.g.dart$'
 publish:
