@@ -11,14 +11,12 @@ jobs:
       image: google/dart:latest
 
     steps:
-      - name: Add pub to the path
-        run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-      - name: Add pub Credentials
-        run: echo '${{ secrets.PUB_CREDENTIALS }}' > ~/.pub-cache/credentials.json
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Install derry
         run: pub global activate derry
+      - name: Add pub to the path
+        run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Prepare
         run: derry prepare
       - name: Build
@@ -30,5 +28,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: coverage/lcov.info
+      - name: Add pub Credentials
+        run: echo '${{ secrets.PUB_CREDENTIALS }}' > ~/.pub-cache/credentials.json
       - name: Publish
         run: derry publish
