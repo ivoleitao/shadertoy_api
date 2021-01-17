@@ -3,15 +3,15 @@ import 'dart:convert';
 import 'package:shadertoy_api/shadertoy_api.dart';
 
 void main() {
-  var encoder = JsonEncoder.withIndent('  ');
+  final encoder = JsonEncoder.withIndent('  ');
 
   // Create a user
-  var user =
+  final user =
       User(id: 'userid', about: 'About this user', memberSince: DateTime.now());
   print(encoder.convert(user));
 
   // Creates a Shader with two render passes
-  var shader = Shader(
+  final shader = Shader(
       version: '0.1',
       info: Info(
           id: 'ZzZ0Zz',
@@ -82,7 +82,7 @@ void main() {
   print(encoder.convert(shader));
 
   // Creates a shader comment
-  var comment = Comment(
+  final comment = Comment(
       id: 'AaA0Aa',
       userId: 'userId',
       picture: '/img/profile.jpg',
@@ -91,7 +91,7 @@ void main() {
   print(encoder.convert(comment));
 
   // Creates a playlist
-  var playlist = Playlist(
+  final playlist = Playlist(
       id: 'week',
       userId: 'shadertoy',
       name: 'Shaders of the Week',
