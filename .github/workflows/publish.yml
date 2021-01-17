@@ -13,10 +13,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Replace .gitignore with publish version
+        run: \cp publish.gitignore .gitignore
       - name: Install dependencies
         run: pub get
       - name: Install tools
         run: pub global activate remove_from_coverage
+      - name: Generate sources
+        run: pub run build_runner build
       - name: Run Formatter
         run: dartfmt -n --set-exit-if-changed .
       - name: Run Analyser

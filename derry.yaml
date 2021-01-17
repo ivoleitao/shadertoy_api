@@ -1,0 +1,12 @@
+generate: pub run build_runner build --delete-conflicting-outputs
+format: dartfmt -w .
+analyze: dartanalyzer .
+test: pub run test
+build:
+  (execution): once
+  (scripts):
+    - pub get
+    - pub run build_runner build
+    - dartfmt -n --set-exit-if-changed .
+    - dartanalyzer . --fatal-warnings
+    - pub run test
