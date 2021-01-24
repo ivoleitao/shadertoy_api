@@ -269,6 +269,13 @@ abstract class ShadertoyBaseClient implements ShadertoyClient {
 /// It supports the same operations as [ShadertoyExtendedClient] plus
 /// persistence specific operations.
 abstract class ShadertoyStore extends ShadertoyExtendedClient {
+  /// Returns a [FindUserIdsResponse] with all the user id's
+  ///
+  /// Upon success a list of user ids is provided and error is set to null
+  ///
+  /// In case of error a [ResponseError] is set and no user id list is provided
+  Future<FindShaderIdsResponse> findAllUserIds();
+
   /// Saves a [User]
   ///
   /// On success the [User] is saved

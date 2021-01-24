@@ -1,6 +1,7 @@
 ## 1.0.8
 
-- TBD
+- Added find all user ids to the ShadertoyStore API
+
 ## 1.0.7
 
 - Added derry support
