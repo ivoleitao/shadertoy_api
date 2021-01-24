@@ -1,6 +1,6 @@
 ## 1.0.9
 
-- TBD
+- Fixed the return type of find all user ids
 
 ## 1.0.8
 

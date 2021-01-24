@@ -274,7 +274,7 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// Upon success a list of user ids is provided and error is set to null
   ///
   /// In case of error a [ResponseError] is set and no user id list is provided
-  Future<FindShaderIdsResponse> findAllUserIds();
+  Future<FindUserIdsResponse> findAllUserIds();
 
   /// Saves a [User]
   ///
