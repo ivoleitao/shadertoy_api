@@ -82,10 +82,10 @@ abstract class ShadertoyClient {
         if (errorMode == ErrorMode.HandleAndReturn) {
           return Future.value(apiResponse);
         } else if (errorMode == ErrorMode.HandleAndRetrow) {
-          return Future.error(apiResponse.error);
+          return Future<R>.error(apiResponse.error);
         }
       }
-      return Future.error(e);
+      return Future<R>.error(e);
     });
   }
 
