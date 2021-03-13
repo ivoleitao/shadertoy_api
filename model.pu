@@ -79,6 +79,8 @@ enum InputType {
 class Input {
     +String id
     +String src
+    +String filePath
+    +String previewFilePath
     +InputType type
     +int channel
     +Sampler sampler
