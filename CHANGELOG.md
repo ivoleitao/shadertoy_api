@@ -1,6 +1,6 @@
 ## 1.0.13
 
-- TODO 
+- `catchError` is not an extension of the ShadertoyClient 
 
 ## 1.0.12
 

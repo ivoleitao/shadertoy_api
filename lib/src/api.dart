@@ -243,7 +243,10 @@ abstract class ShadertoyBaseClient implements ShadertoyClient {
   ///
   /// The [baseUrl] parameter defines the base url of the Shadertoy website
   ShadertoyBaseClient(String baseUrl) : context = ShadertoyContext(baseUrl);
+}
 
+/// Extensions for [ShadertoyClient] implementors
+extension ShadertoyClientExtension on ShadertoyClient {
   /// Catches and handles a specific type of error in a future
   ///
   /// * [future]: The future
