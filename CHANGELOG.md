@@ -1,3 +1,6 @@
+## 1.0.11
+
+- TODO
 ## 1.0.10
 
 - Added filePath and previewFilePath in the Input object
