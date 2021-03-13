@@ -1,6 +1,7 @@
 ## 1.0.11
 
-- TODO
+- Corrected some lint errors
+
 ## 1.0.10
 
 - Added filePath and previewFilePath in the Input object

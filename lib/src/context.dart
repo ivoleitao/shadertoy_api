@@ -42,19 +42,19 @@ class ShadertoyContext extends Equatable {
   /// The relative path of the shader view url
   /// * [shaderId]: The shader id
   static String shaderViewPath(String shaderId) {
-    return '${ViewPath}/$shaderId';
+    return '$ViewPath/$shaderId';
   }
 
   /// The relative path of the shader embed url
   /// * [shaderId]: The shader id
   static String shaderEmbedPath(String shaderId) {
-    return '${EmbedPath}/$shaderId';
+    return '$EmbedPath/$shaderId';
   }
 
   /// The relative path of the shader picture url
   /// * [shaderId]: The shader id
   static String shaderPicturePath(String shaderId) {
-    return '${ShaderMediaPath}/$shaderId.jpg';
+    return '$ShaderMediaPath/$shaderId.jpg';
   }
 
   @override
@@ -80,17 +80,17 @@ class ShadertoyContext extends Equatable {
 
   /// The signin url
   String get signInUrl {
-    return '$baseUrl/${SignInPath}';
+    return '$baseUrl/$SignInPath';
   }
 
   /// The signout url
   String get signOutUrl {
-    return '$baseUrl/${SignOutPath}';
+    return '$baseUrl/$SignOutPath';
   }
 
   /// The browse url
   String get shaderBrowseUrl {
-    return '$baseUrl/${BrowsePath}';
+    return '$baseUrl/$BrowsePath';
   }
 
   /// The shader view url
