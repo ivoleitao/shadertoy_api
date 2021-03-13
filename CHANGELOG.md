@@ -1,3 +1,7 @@
+## 1.0.12
+
+- Corrected some lint errors
+
 ## 1.0.11
 
 - Corrected some lint errors
