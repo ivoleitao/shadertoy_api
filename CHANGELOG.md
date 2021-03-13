@@ -1,6 +1,6 @@
 ## 1.0.12
 
-- Corrected some lint errors
+- The `catchError` method as a static method on ShadertoyClient was triggering analyser errors in shadertoy_client moving to a base class
 
 ## 1.0.11
 

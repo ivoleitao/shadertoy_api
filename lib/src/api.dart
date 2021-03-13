@@ -70,25 +70,6 @@ abstract class ShadertoyClientOptions {
 /// All the basic operations supported through
 /// the Shadertoy REST API.
 abstract class ShadertoyClient {
-  /// Catches and handles a specific type of error in a future
-  ///
-  /// * [future]: The future
-  /// * [handle]: The error handling function
-  static Future<R> catchError<R extends APIResponse, E>(
-      Future<R> future, R Function(E) handle, ErrorMode errorMode) {
-    return future.catchError((e) {
-      if (e is E) {
-        final apiResponse = handle(e);
-        if (errorMode == ErrorMode.HandleAndReturn) {
-          return Future.value(apiResponse);
-        } else if (errorMode == ErrorMode.HandleAndRetrow) {
-          return Future<R>.error(apiResponse.error);
-        }
-      }
-      return Future<R>.error(e);
-    });
-  }
-
   /// Returns a [FindShaderResponse] for the shader with [shaderId]
   ///
   /// Upon success a [Shader] object is provided and error is set to null
@@ -262,6 +243,25 @@ abstract class ShadertoyBaseClient implements ShadertoyClient {
   ///
   /// The [baseUrl] parameter defines the base url of the Shadertoy website
   ShadertoyBaseClient(String baseUrl) : context = ShadertoyContext(baseUrl);
+
+  /// Catches and handles a specific type of error in a future
+  ///
+  /// * [future]: The future
+  /// * [handle]: The error handling function
+  Future<R> catchError<R extends APIResponse, E>(
+      Future<R> future, R Function(E) handle, ErrorMode errorMode) {
+    return future.catchError((e) {
+      if (e is E) {
+        final apiResponse = handle(e);
+        if (errorMode == ErrorMode.HandleAndReturn) {
+          return Future.value(apiResponse);
+        } else if (errorMode == ErrorMode.HandleAndRetrow) {
+          return Future<R>.error(apiResponse.error);
+        }
+      }
+      return Future<R>.error(e);
+    });
+  }
 }
 
 /// A definition of a shadertoy store
