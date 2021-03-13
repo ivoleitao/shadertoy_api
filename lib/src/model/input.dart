@@ -55,6 +55,16 @@ class Input extends Equatable {
   /// The source
   final String src;
 
+  @JsonKey(name: 'filepath')
+
+  /// The filepath
+  final String filePath;
+
+  @JsonKey(name: 'previewfilepath')
+
+  /// The preview file path
+  final String previewFilePath;
+
   @JsonKey(name: 'ctype')
 
   /// The input type
@@ -79,6 +89,8 @@ class Input extends Equatable {
   ///
   /// * [id]: The input id
   /// * [src]: The source
+  /// * [filePath]: The file path
+  /// * [previewFilePath]: The preview file path
   /// * [type]: The type
   /// * [channel]: The channel number
   /// * [sampler]: The sampler
@@ -86,6 +98,8 @@ class Input extends Equatable {
   const Input(
       {@required this.id,
       this.src,
+      this.filePath,
+      this.previewFilePath,
       this.type,
       @required this.channel,
       @required this.sampler,
@@ -115,6 +129,8 @@ class Input extends Equatable {
   Input copyWith({
     String id,
     String src,
+    String filePath,
+    String previewFilePath,
     InputType type,
     int channel,
     Sampler sampler,
@@ -123,6 +139,8 @@ class Input extends Equatable {
     return Input(
       id: id ?? this.id,
       src: src ?? this.src,
+      filePath: filePath ?? this.filePath,
+      previewFilePath: previewFilePath ?? this.previewFilePath,
       type: type ?? this.type,
       channel: channel ?? this.channel,
       sampler: sampler ?? this.sampler,

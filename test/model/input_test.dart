@@ -12,6 +12,8 @@ void main() {
   var input1 = Input(
       id: 'id1',
       src: 'src1',
+      filePath: 'filePath1',
+      previewFilePath: 'previewFilePath1',
       type: InputType.buffer,
       channel: 1,
       sampler: sampler,
@@ -20,6 +22,8 @@ void main() {
   test('Test a input', () {
     expect(input1.id, 'id1');
     expect(input1.src, 'src1');
+    expect(input1.filePath, 'filePath1');
+    expect(input1.previewFilePath, 'previewFilePath1');
     expect(input1.type, InputType.buffer);
     expect(input1.channel, 1);
     expect(input1.sampler, sampler);
@@ -55,8 +59,10 @@ void main() {
   test('Create a input from a json map with a invalid type', () {
     var json = {
       'id': '20250',
-      'src':
-          'https://soundcloud.com/giorgioiannelli/yann_tiersen-amelie_piano_version',
+      'filepath':
+          '/media/a/f735bee5b64ef98879dc618b016ecf7939a5756040c2cde21ccb15e69a6e1cfb.png',
+      'previewfilepath':
+          '/media/ap/f735bee5b64ef98879dc618b016ecf7939a5756040c2cde21ccb15e69a6e1cfb.png',
       'ctype': 'xxx',
       'channel': 0,
       'sampler': {

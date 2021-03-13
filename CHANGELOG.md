@@ -1,6 +1,6 @@
 ## 1.0.10
 
-- TBD
+- Added filePath and previewFilePath in the Input object
 
 ## 1.0.9
 
