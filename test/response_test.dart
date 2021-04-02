@@ -319,14 +319,8 @@ void main() {
 
   var saveUserResponse1 = SaveUserResponse(error: null);
 
-  test('Test save account response', () {
+  test('Test save user response', () {
     expect(saveUserResponse1.error, isNull);
-  });
-
-  var saveAccountResponse1 = SaveAccountResponse(error: null);
-
-  test('Test save account response', () {
-    expect(saveAccountResponse1.error, isNull);
   });
 
   var saveShaderResponse1 = SaveShaderResponse(error: null);

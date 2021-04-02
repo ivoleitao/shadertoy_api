@@ -24,9 +24,6 @@ enum Sort {
   hot
 }
 
-/// Account context
-const CONTEXT_ACCOUNT = 'account';
-
 /// User context
 const CONTEXT_USER = 'user';
 
@@ -293,6 +290,13 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// In case of error a [ResponseError] is set on [SaveUsersResponse]
   Future<SaveUsersResponse> saveUsers(List<User> users);
 
+  /// Deletes a [User] by [userId]
+  ///
+  /// On success the [User] identified by [userId] is deleted
+  ///
+  /// In case of error a [ResponseError] is set on [DeleteUserResponse]
+  Future<DeleteUserResponse> deleteUserById(String userId);
+
   /// Saves a [Shader]
   ///
   /// On success the [Shader] is saved
@@ -307,6 +311,13 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// In case of error a [ResponseError] is set on [SaveShadersResponse]
   Future<SaveShadersResponse> saveShaders(List<Shader> shaders);
 
+  /// Deletes a [Shader] by [shaderId]
+  ///
+  /// On success the [Shader] identified by [shaderId] is deleted
+  ///
+  /// In case of error a [ResponseError] is set on [DeleteShaderResponse]
+  Future<DeleteShaderResponse> deleteShaderById(String shaderId);
+
   /// Saves a list of shaders [Comment]
   ///
   /// On success the list of [Comment] was saved
@@ -314,6 +325,13 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// In case of error a [ResponseError] is set on [SaveShaderCommentsResponse]
   Future<SaveShaderCommentsResponse> saveShaderComments(
       String shaderId, List<Comment> comments);
+
+  /// Deletes a [Comment] by [commentId]
+  ///
+  /// On success the [Comment] identified by [commentId] is deleted
+  ///
+  /// In case of error a [ResponseError] is set on [DeleteCommentResponse]
+  Future<DeleteCommentResponse> deleteCommentById(String commentId);
 
   /// Saves a [Playlist]
   ///
@@ -329,6 +347,13 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// In case of error a [ResponseError] is set on [SavePlaylistShadersResponse]
   Future<SavePlaylistShadersResponse> savePlaylistShaders(
       String playlistId, List<String> shaderIds);
+
+  /// Deletes a [Playlist] by [playlistId]
+  ///
+  /// On success the [Playlist] identified by [playlistId] is deleted
+  ///
+  /// In case of error a [ResponseError] is set on [DeletePlaylistResponse]
+  Future<DeletePlaylistResponse> deletePlaylistById(String playlistId);
 }
 
 /// A base implementation of Shadertoy stores

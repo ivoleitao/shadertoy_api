@@ -449,13 +449,25 @@ class FindUserResponse extends APIResponse with EquatableMixin {
   Map<String, dynamic> toJson() => _$FindUserResponseToJson(this);
 }
 
+/// Delete user API response
+///
+/// The response returned upon the execution of the delete user API call
+/// When [DeleteUserResponse.error] is *not null* there was an error in the delete user call
+/// When [DeleteUserResponse.error] is *null* the delete was sucessful
+class DeleteUserResponse extends APIResponse with EquatableMixin {
+  /// Builds a [DeleteUserResponse]
+  ///
+  /// [error]: An error if there was error while deleting the user
+  DeleteUserResponse({ResponseError error}) : super(error: error);
+}
+
 @JsonSerializable()
 
 /// Find comments API response
 ///
 /// The response returned upon the execution of a find comments API call
-/// When [FindCommentsResponse.error] is *not null* there was an error in the find accounts call
-/// When [FindCommentsResponse.error] is *null* the [FindCommentsResponse.comments] has the returned accounts
+/// When [FindCommentsResponse.error] is *not null* there was an error in the find comments call
+/// When [FindCommentsResponse.error] is *null* the [FindCommentsResponse.comments] has the returned comments
 class FindCommentsResponse extends APIResponse with EquatableMixin {
   @JsonKey(name: 'Comments')
 
@@ -489,12 +501,24 @@ class FindCommentsResponse extends APIResponse with EquatableMixin {
   Map<String, dynamic> toJson() => _$FindCommentsResponseToJson(this);
 }
 
+/// Delete comment API response
+///
+/// The response returned upon the execution of the delete comment API call
+/// When [DeleteCommentResponse.error] is *not null* there was an error in the delete comment call
+/// When [DeleteCommentResponse.error] is *null* the delete was sucessful
+class DeleteCommentResponse extends APIResponse with EquatableMixin {
+  /// Builds a [DeleteCommentResponse]
+  ///
+  /// [error]: An error if there was error while deleting the comment
+  DeleteCommentResponse({ResponseError error}) : super(error: error);
+}
+
 @JsonSerializable()
 
 /// Find playlist API response
 ///
 /// The response returned upon the execution of a find playlist API call
-/// When [FindPlaylistResponse.error] is *not null* there was an error in the find account call
+/// When [FindPlaylistResponse.error] is *not null* there was an error in the find playlist call
 /// When [FindPlaylistResponse.error] is *null* the [FindPlaylistResponse.playlist] has the returned playlist
 class FindPlaylistResponse extends APIResponse with EquatableMixin {
   @JsonKey(name: 'Playlist')
@@ -520,6 +544,18 @@ class FindPlaylistResponse extends APIResponse with EquatableMixin {
 
   /// Creates a json map from a [FindPlaylistResponse]
   Map<String, dynamic> toJson() => _$FindPlaylistResponseToJson(this);
+}
+
+/// Delete playlist API response
+///
+/// The response returned upon the execution of the delete playlist API call
+/// When [DeletePlaylistResponse.error] is *not null* there was an error in the delete playlist call
+/// When [DeletePlaylistResponse.error] is *null* the delete was sucessful
+class DeletePlaylistResponse extends APIResponse with EquatableMixin {
+  /// Builds a [DeletePlaylistResponse]
+  ///
+  /// [error]: An error if there was error while deleting the playlist
+  DeletePlaylistResponse({ResponseError error}) : super(error: error);
 }
 
 @JsonSerializable()
@@ -689,18 +725,6 @@ class SaveUsersResponse extends APIResponse with EquatableMixin {
   SaveUsersResponse({ResponseError error}) : super(error: error);
 }
 
-/// Save account API response
-///
-/// The response returned upon the execution of the save account API call
-/// When [SaveAccountResponse.error] is *not null* there was an error in the save account call
-/// When [SaveAccountResponse.error] is *null* the save was sucessful
-class SaveAccountResponse extends APIResponse with EquatableMixin {
-  /// Builds a [SaveAccountResponse]
-  ///
-  /// [error]: An error if there was error while saving the account
-  SaveAccountResponse({ResponseError error}) : super(error: error);
-}
-
 /// Save shader API response
 ///
 /// The response returned upon the execution of the save shader API call
@@ -723,6 +747,18 @@ class SaveShadersResponse extends APIResponse with EquatableMixin {
   ///
   /// [error]: An error if there was error while saving the shader
   SaveShadersResponse({ResponseError error}) : super(error: error);
+}
+
+/// Delete shader API response
+///
+/// The response returned upon the execution of the delete shader API call
+/// When [DeleteShaderResponse.error] is *not null* there was an error in the delete shader call
+/// When [DeleteShaderResponse.error] is *null* the delete was sucessful
+class DeleteShaderResponse extends APIResponse with EquatableMixin {
+  /// Builds a [DeleteShaderResponse]
+  ///
+  /// [error]: An error if there was error while deleting the shader
+  DeleteShaderResponse({ResponseError error}) : super(error: error);
 }
 
 /// Save shader comments API response
