@@ -6,14 +6,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        sdk: [stable]    
 
     steps:
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: ${{ matrix.sdk }}
+          sdk: stable
       - name: Add pub Credentials
         run: echo '${{ secrets.PUB_CREDENTIALS }}' > ~/.pub-cache/credentials.json
       - name: Checkout code

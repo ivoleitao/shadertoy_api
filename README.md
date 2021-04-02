@@ -43,13 +43,17 @@ All the client API features plus the following available on a extended API:
 **Store API**
 
 All the base and extended client API features plus the following:
+* `Find all user ids`
 * `Save user`
 * `Save users`
+* `Delete user by id`
 * `Save shader`
 * `Save shaders`
+* `Delete shader by id`
 * `Save shader comments`
 * `Save playlist`
 * `Save playlist shaders`
+* `Delete playlist by id`
 
 ## Getting Started
 

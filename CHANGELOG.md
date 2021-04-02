@@ -5,6 +5,7 @@
 - Start using dart format instead of dartfmt which was deprecated
 - Started using dart analize instead of dartanalyzer which was deprecated
 - Now using the new setup-dart github action from the dart team introducing multi os tests
+- Removed a comment inside a extension method as it was causing errors on dartdoc
 
 ## 1.0.13
 

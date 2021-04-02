@@ -244,10 +244,6 @@ abstract class ShadertoyBaseClient implements ShadertoyClient {
 
 /// Extensions for [ShadertoyClient] implementors
 extension ShadertoyClientExtension on ShadertoyClient {
-  /// Catches and handles a specific type of error in a future
-  ///
-  /// * [future]: The future
-  /// * [handle]: The error handling function
   Future<R> catchError<R extends APIResponse, E>(
       Future<R> future, R Function(E) handle, ErrorMode errorMode) {
     return future.catchError((e) {
