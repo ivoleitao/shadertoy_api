@@ -11,8 +11,6 @@ jobs:
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
-      - name: Add pub Credentials
-        run: echo '${{ secrets.PUB_CREDENTIALS }}' > ~/.pub-cache/credentials.json
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install derry
@@ -28,5 +26,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: coverage/lcov.info
+      - name: Add pub Credentials
+        run: echo '${{ secrets.PUB_CREDENTIALS }}' > ~/.pub-cache/credentials.json
       - name: Publish
         run: derry publish
