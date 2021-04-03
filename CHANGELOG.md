@@ -1,6 +1,11 @@
 ## 1.0.17
 
+- TODO
+
+## 1.0.17
+
 - Removed grinder
+- Simplified derry script
 
 ## 1.0.16
 
