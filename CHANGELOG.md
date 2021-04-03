@@ -1,6 +1,6 @@
 ## 1.0.16
 
-- TODO
+- Added grinder support
 
 ## 1.0.15
 
