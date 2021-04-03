@@ -1,6 +1,6 @@
 ## 1.0.17
 
-- TODO
+- Removed grinder
 
 ## 1.0.16
 

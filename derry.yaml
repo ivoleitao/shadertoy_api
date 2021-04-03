@@ -25,7 +25,7 @@ verify:
 prepublish:
   (execution): once
   (scripts):
-    - pub run grinder prepublish
+    - \cp publish.gitignore .gitignore
 publish:
   (execution): once
   (scripts):
