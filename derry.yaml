@@ -4,16 +4,10 @@ format: dart format .
 analyze: dart analyze .
 coverage: dart test --coverage=coverage && dart run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.packages --report-on=lib
 prebuild:
-  (execution): once
-  (scripts):
     - pub get
 build:
-  (execution): once
-  (scripts):
     - pub run build_runner build --delete-conflicting-outputs
 preverify:
-  (execution): once
-  (scripts):
     - pub global activate remove_from_coverage
 verify:
   (execution): once
@@ -23,10 +17,6 @@ verify:
     - dart test --coverage=coverage && dart run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.packages --report-on=lib
     - remove_from_coverage -f coverage/lcov.info -r '.g.dart$'
 prepublish:
-  (execution): once
-  (scripts):
     - \cp publish.gitignore .gitignore
 publish:
-  (execution): once
-  (scripts):
     - pub publish -f
