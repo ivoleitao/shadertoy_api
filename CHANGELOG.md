@@ -1,6 +1,7 @@
-## 1.0.14
+## 1.0.15
 
-- TODO
+- Updated dart sdk
+- Improved derry script
 
 ## 1.0.14
 
