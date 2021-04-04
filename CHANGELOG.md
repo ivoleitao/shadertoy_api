@@ -1,6 +1,7 @@
-## 1.0.17
+## 1.0.18
 
-- TODO
+- Added new unit tests
+- Added find comment by id
 
 ## 1.0.17
 

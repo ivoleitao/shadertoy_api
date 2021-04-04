@@ -317,10 +317,36 @@ void main() {
     expect(donwloadFileResponse1.error, isNull);
   });
 
+  var findUserIdsResponse1 = FindUserIdsResponse(ids: ids, error: null);
+
+  test('Test a find user ids response', () {
+    expect(findUserIdsResponse1.ids, ids);
+    expect(findUserIdsResponse1.error, isNull);
+  });
+
+  test('Convert a find user ids response to a JSON serializable map and back',
+      () {
+    var json = findUserIdsResponse1.toJson();
+    var findUserIdsResponse2 = FindUserIdsResponse.fromJson(json);
+    expect(findUserIdsResponse1, equals(findUserIdsResponse2));
+  });
+
   var saveUserResponse1 = SaveUserResponse(error: null);
 
   test('Test save user response', () {
     expect(saveUserResponse1.error, isNull);
+  });
+
+  var saveUsersResponse1 = SaveUsersResponse(error: null);
+
+  test('Test save users response', () {
+    expect(saveUsersResponse1.error, isNull);
+  });
+
+  var deleteUserResponse1 = DeleteUserResponse(error: null);
+
+  test('Test delete user response', () {
+    expect(deleteUserResponse1.error, isNull);
   });
 
   var saveShaderResponse1 = SaveShaderResponse(error: null);
@@ -329,15 +355,67 @@ void main() {
     expect(saveShaderResponse1.error, isNull);
   });
 
+  var saveShadersResponse1 = SaveShadersResponse(error: null);
+
+  test('Test save shaders response', () {
+    expect(saveShadersResponse1.error, isNull);
+  });
+
+  var deleteShaderResponse1 = DeleteShaderResponse(error: null);
+
+  test('Test delete shader response', () {
+    expect(deleteShaderResponse1.error, isNull);
+  });
+
+  final comment = Comment(
+      id: 'XlGcRK',
+      userId: 'Cubex',
+      picture: '\/media\/users\/Cubex\/profile.png',
+      date: DateTime(2000, 1, 1),
+      text: 'I have to admit that it makes an amazing impression!',
+      hidden: false);
+  var findCommentResponse1 = FindCommentResponse(comment: comment, error: null);
+
+  test('Test find commment by id response', () {
+    expect(findCommentResponse1.comment, comment);
+    expect(findCommentResponse1.error, isNull);
+  });
+
+  test(
+      'Convert a find comment by id response to a JSON serializable map and back',
+      () {
+    var json = findCommentResponse1.toJson();
+    var findCommentResponse2 = FindCommentResponse.fromJson(json);
+    expect(findCommentResponse1, equals(findCommentResponse2));
+  });
+
   var saveShaderCommentsResponse1 = SaveShaderCommentsResponse(error: null);
 
   test('Test save shader comments response', () {
     expect(saveShaderCommentsResponse1.error, isNull);
   });
 
+  var deleteCommentResponse1 = DeleteCommentResponse(error: null);
+
+  test('Test delete comment response', () {
+    expect(deleteCommentResponse1.error, isNull);
+  });
+
   var savePlaylistResponse1 = SavePlaylistResponse(error: null);
 
   test('Test save playlist response', () {
     expect(savePlaylistResponse1.error, isNull);
+  });
+
+  var savePlaylistShadersResponse1 = SavePlaylistShadersResponse(error: null);
+
+  test('Test save playlist shaders response', () {
+    expect(savePlaylistShadersResponse1.error, isNull);
+  });
+
+  var deletePlaylistResponse1 = DeletePlaylistResponse(error: null);
+
+  test('Test delete playlist response', () {
+    expect(deletePlaylistResponse1.error, isNull);
   });
 }

@@ -50,6 +50,7 @@ All the base and extended client API features plus the following:
 * `Save shader`
 * `Save shaders`
 * `Delete shader by id`
+* `Find comment by id`
 * `Save shader comments`
 * `Save playlist`
 * `Save playlist shaders`

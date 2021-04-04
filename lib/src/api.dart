@@ -314,6 +314,13 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// In case of error a [ResponseError] is set on [DeleteShaderResponse]
   Future<DeleteShaderResponse> deleteShaderById(String shaderId);
 
+  /// Returns a [FindCommentResponse] for a comment with id [commentId]
+  ///
+  /// Upon success a [Comment] object is provided and error is set to null
+  ///
+  /// In case of error a [ResponseError] is set and no [Comment] is provided
+  Future<FindCommentResponse> findCommentById(String commentId);
+
   /// Saves a list of shaders [Comment]
   ///
   /// On success the list of [Comment] was saved
