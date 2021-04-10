@@ -363,12 +363,13 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// In case of error a [ResponseError] is set on [DeleteCommentResponse]
   Future<DeleteCommentResponse> deleteCommentById(String commentId);
 
-  /// Saves a [Playlist]
+  /// Saves a [Playlist] and optionally the playlist shaders
   ///
-  /// On success the [Playlist] is saved
+  /// On success the [Playlist] and optionally the playlist shaders are saved
   ///
   /// In case of error a [ResponseError] is set on [SavePlaylistResponse]
-  Future<SavePlaylistResponse> savePlaylist(Playlist playlist);
+  Future<SavePlaylistResponse> savePlaylist(Playlist playlist,
+      {List<String> shaderIds});
 
   /// Associates a list of shader is with a playlist
   ///
