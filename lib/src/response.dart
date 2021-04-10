@@ -906,8 +906,8 @@ class FindPlaylistsResponse extends APIResponse with EquatableMixin {
 
   @JsonKey(name: 'Results')
 
-  /// The list of [Playlist] returned
-  final List<Playlist> playlists;
+  /// The list of playlists returned
+  final List<FindPlaylistResponse> playlists;
 
   @override
   List get props {
