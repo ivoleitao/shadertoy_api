@@ -1,3 +1,7 @@
+## 1.0.22
+
+- TODO
+
 ## 1.0.21
 
 - savePlaylist now optionally saves the shaderIds of the playlist as well
