@@ -1,6 +1,12 @@
 ## 1.0.19
 
-- TODO
+- Updated derry with test action
+- Added find all users method
+- Added find all shaders method
+- Added find all comment ids method
+- Added find all comments method
+- Added find all playlist ids method
+- Added find all playlists method 
 
 ## 1.0.18
 

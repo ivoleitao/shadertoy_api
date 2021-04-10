@@ -384,6 +384,20 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   ///
   /// In case of error a [ResponseError] is set on [DeletePlaylistResponse]
   Future<DeletePlaylistResponse> deletePlaylistById(String playlistId);
+
+  /// Returns a [FindPlaylistIdsResponse] with all the playlist id's
+  ///
+  /// Upon success a list of playlist ids is provided and error is set to null
+  ///
+  /// In case of error a [ResponseError] is set and no playlist id list is provided
+  Future<FindPlaylistIdsResponse> findAllPlaylistIds();
+
+  /// Returns a [FindPlaylistsResponse] with all the playlists
+  ///
+  /// Upon success a list of playlists is provided and error is set to null
+  ///
+  /// In case of error a [ResponseError] is set and no playlist list is provided
+  Future<FindPlaylistsResponse> findAllPlaylists();
 }
 
 /// A base implementation of Shadertoy stores

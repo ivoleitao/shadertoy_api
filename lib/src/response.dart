@@ -298,6 +298,154 @@ class LogoutResponse extends APIResponse with EquatableMixin {
 
 @JsonSerializable()
 
+/// Find user API response
+///
+/// The response returned upon the execution of a find user API call
+/// When [FindUserResponse.error] is *not null* there was an error in the find user call
+/// When [FindUserResponse.error] is *null* the [FindUserResponse.user] has the returned user
+class FindUserResponse extends APIResponse with EquatableMixin {
+  @JsonKey(name: 'User')
+
+  /// The user returned, null when there is an error
+  final User user;
+
+  @override
+  List get props {
+    return [user, error];
+  }
+
+  /// Builds a [FindUserResponse]
+  ///
+  /// [user]: The user
+  /// [error]: An error if there was error while fetching the user
+  FindUserResponse({this.user, ResponseError error}) : super(error: error);
+
+  /// Creates a [FindUserResponse] from json map
+  factory FindUserResponse.fromJson(Map<String, dynamic> json) =>
+      _$FindUserResponseFromJson(json);
+
+  /// Creates a json map from a [FindUserResponse]
+  Map<String, dynamic> toJson() => _$FindUserResponseToJson(this);
+}
+
+@JsonSerializable()
+
+/// Find users API response
+///
+/// The response returned upon the execution of a find users API call
+/// When [FindUsersResponse.error] is *not null* there was an error in the find users call
+/// When [FindUsersResponse.error] is *null* the [FindUsersResponse.shaders] has the returned users
+class FindUsersResponse extends APIResponse with EquatableMixin {
+  @JsonKey(name: 'Users')
+
+  /// The total number of users
+  final int total;
+
+  @JsonKey(name: 'Results')
+
+  /// The list of the users returned
+  final List<FindUserResponse> users;
+
+  @override
+  List get props {
+    return [total, users, error];
+  }
+
+  /// Builds a [FindUsersResponse]
+  ///
+  /// [total]: The total number of users returned
+  /// [users]: The list of users
+  /// [error]: An error if there was error while fetching the shaders
+  FindUsersResponse({int total, this.users, ResponseError error})
+      : total = total ?? users?.length,
+        super(error: error);
+
+  /// Creates a [FindUsersResponse] from json map
+  factory FindUsersResponse.fromJson(Map<String, dynamic> json) =>
+      _$FindUsersResponseFromJson(json);
+
+  /// Creates a json map from a [FindUsersResponse]
+  Map<String, dynamic> toJson() => _$FindUsersResponseToJson(this);
+}
+
+@JsonSerializable()
+
+/// Find user ids API response
+///
+/// The response returned upon the execution of a find user ids API call
+/// When [FindUserIdsResponse.error] is *not null* there was an error in the find user ids call
+/// When [FindUserIdsResponse.error] is *null* the [FindUserIdsResponse.ids] has the returned use ids
+class FindUserIdsResponse extends APIResponse with EquatableMixin {
+  @JsonKey(name: 'Users')
+
+  /// The total number of user ids
+  final int total;
+
+  @JsonKey(name: 'Results')
+
+  /// The list of user ids returned
+  final List<String> ids;
+
+  @override
+  List get props {
+    return [total, ids, error];
+  }
+
+  /// Builds a [FindUserIdsResponse]
+  ///
+  /// [total]: The total number of user ids returned
+  /// [ids]: The list of ids
+  /// [error]: An error if there was error while fetching the shader ids
+  FindUserIdsResponse({int count, this.ids, ResponseError error})
+      : total = count ?? ids?.length,
+        super(error: error);
+
+  /// Creates a [FindUserIdsResponse] from json map
+  factory FindUserIdsResponse.fromJson(Map<String, dynamic> json) =>
+      _$FindUserIdsResponseFromJson(json);
+
+  /// Creates a json map from a [FindUserIdsResponse]
+  Map<String, dynamic> toJson() => _$FindUserIdsResponseToJson(this);
+}
+
+/// Save user API response
+///
+/// The response returned upon the execution of the save user API call
+/// When [SaveUserResponse.error] is *not null* there was an error in the save user call
+/// When [SaveUserResponse.error] is *null* the save was sucessful
+class SaveUserResponse extends APIResponse with EquatableMixin {
+  /// Builds a [SaveUserResponse]
+  ///
+  /// [error]: An error if there was error while saving the user
+  SaveUserResponse({ResponseError error}) : super(error: error);
+}
+
+/// Save users API response
+///
+/// The response returned upon the execution of the save users API call
+/// When [SaveUsersResponse.error] is *not null* there was an error in the save shader call
+/// When [SaveUsersResponse.error] is *null* the save was sucessful
+class SaveUsersResponse extends APIResponse with EquatableMixin {
+  /// Builds a [SaveUsersResponse]
+  ///
+  /// [error]: An error if there was error while saving the user
+  SaveUsersResponse({ResponseError error}) : super(error: error);
+}
+
+/// Delete user API response
+///
+/// The response returned upon the execution of the delete user API call
+/// When [DeleteUserResponse.error] is *not null* there was an error in the delete user call
+/// When [DeleteUserResponse.error] is *null* the delete was sucessful
+class DeleteUserResponse extends APIResponse with EquatableMixin {
+  /// Builds a [DeleteUserResponse]
+  ///
+  /// [error]: An error if there was error while deleting the user
+  DeleteUserResponse({ResponseError error}) : super(error: error);
+}
+
+@JsonSerializable()
+
 /// Find shader API response
 ///
 /// The response returned upon the execution of a find shader API call
@@ -328,6 +476,122 @@ class FindShaderResponse extends APIResponse with EquatableMixin {
 
   /// Creates a json map from a [FindShaderResponse]
   Map<String, dynamic> toJson() => _$FindShaderResponseToJson(this);
+}
+
+@JsonSerializable()
+
+/// Find shader ids API response
+///
+/// The response returned upon the execution of a find shader ids API call
+/// When [FindShaderIdsResponse.error] is *not null* there was an error in the find shader ids call
+/// When [FindShaderIdsResponse.error] is *null* the [FindShaderIdsResponse.ids] has the returned shader ids
+class FindShaderIdsResponse extends APIResponse with EquatableMixin {
+  @JsonKey(name: 'Shaders')
+
+  /// The total number of shader ids
+  final int total;
+
+  @JsonKey(name: 'Results')
+
+  /// The list of shader ids returned
+  final List<String> ids;
+
+  @override
+  List get props {
+    return [total, ids, error];
+  }
+
+  /// Builds a [FindShaderIdsResponse]
+  ///
+  /// [total]: The total number of shader ids returned
+  /// [ids]: The list of ids
+  /// [error]: An error if there was error while fetching the shader ids
+  FindShaderIdsResponse({int count, this.ids, ResponseError error})
+      : total = count ?? ids?.length,
+        super(error: error);
+
+  /// Creates a [FindShaderIdsResponse] from json map
+  factory FindShaderIdsResponse.fromJson(Map<String, dynamic> json) =>
+      _$FindShaderIdsResponseFromJson(json);
+
+  /// Creates a json map from a [FindShaderIdsResponse]
+  Map<String, dynamic> toJson() => _$FindShaderIdsResponseToJson(this);
+}
+
+@JsonSerializable()
+
+/// Find shaders API response
+///
+/// The response returned upon the execution of a find shaders API call
+/// When [FindShadersResponse.error] is *not null* there was an error in the find shaders call
+/// When [FindShadersResponse.error] is *null* the [FindShadersResponse.shaders] has the returned shaders
+class FindShadersResponse extends APIResponse with EquatableMixin {
+  @JsonKey(name: 'Shaders')
+
+  /// The total number of shaders
+  final int total;
+
+  @JsonKey(name: 'Results')
+
+  /// The list of the shaders returned
+  final List<FindShaderResponse> shaders;
+
+  @override
+  List get props {
+    return [total, shaders, error];
+  }
+
+  /// Builds a [FindShadersResponse]
+  ///
+  /// [total]: The total number of shader returned
+  /// [shaders]: The list of shaders
+  /// [error]: An error if there was error while fetching the shaders
+  FindShadersResponse({int total, this.shaders, ResponseError error})
+      : total = total ?? shaders?.length,
+        super(error: error);
+
+  /// Creates a [FindShadersResponse] from json map
+  factory FindShadersResponse.fromJson(Map<String, dynamic> json) =>
+      _$FindShadersResponseFromJson(json);
+
+  /// Creates a json map from a [FindShadersResponse]
+  Map<String, dynamic> toJson() => _$FindShadersResponseToJson(this);
+}
+
+/// Save shader API response
+///
+/// The response returned upon the execution of the save shader API call
+/// When [SaveShaderResponse.error] is *not null* there was an error in the save shader call
+/// When [SaveShaderResponse.error] is *null* the save was sucessful
+class SaveShaderResponse extends APIResponse with EquatableMixin {
+  /// Builds a [SaveShaderResponse]
+  ///
+  /// [error]: An error if there was error while saving the shader
+  SaveShaderResponse({ResponseError error}) : super(error: error);
+}
+
+/// Save shaders API response
+///
+/// The response returned upon the execution of the save shaders API call
+/// When [SaveShadersResponse.error] is *not null* there was an error in the save shader call
+/// When [SaveShadersResponse.error] is *null* the save was sucessful
+class SaveShadersResponse extends APIResponse with EquatableMixin {
+  /// Builds a [SaveShadersResponse]
+  ///
+  /// [error]: An error if there was error while saving the shader
+  SaveShadersResponse({ResponseError error}) : super(error: error);
+}
+
+/// Delete shader API response
+///
+/// The response returned upon the execution of the delete shader API call
+/// When [DeleteShaderResponse.error] is *not null* there was an error in the delete shader call
+/// When [DeleteShaderResponse.error] is *null* the delete was sucessful
+class DeleteShaderResponse extends APIResponse with EquatableMixin {
+  /// Builds a [DeleteShaderResponse]
+  ///
+  /// [error]: An error if there was error while deleting the shader
+  DeleteShaderResponse({ResponseError error}) : super(error: error);
 }
 
 @JsonSerializable()
@@ -415,90 +679,6 @@ class CommentsResponse extends APIResponse with EquatableMixin {
 
   /// Creates a json map from a [CommentsResponse]
   Map<String, dynamic> toJson() => _$CommentsResponseToJson(this);
-}
-
-@JsonSerializable()
-
-/// Find user API response
-///
-/// The response returned upon the execution of a find user API call
-/// When [FindUserResponse.error] is *not null* there was an error in the find user call
-/// When [FindUserResponse.error] is *null* the [FindUserResponse.user] has the returned user
-class FindUserResponse extends APIResponse with EquatableMixin {
-  @JsonKey(name: 'User')
-
-  /// The user returned, null when there is an error
-  final User user;
-
-  @override
-  List get props {
-    return [user, error];
-  }
-
-  /// Builds a [FindUserResponse]
-  ///
-  /// [user]: The user
-  /// [error]: An error if there was error while fetching the user
-  FindUserResponse({this.user, ResponseError error}) : super(error: error);
-
-  /// Creates a [FindUserResponse] from json map
-  factory FindUserResponse.fromJson(Map<String, dynamic> json) =>
-      _$FindUserResponseFromJson(json);
-
-  /// Creates a json map from a [FindUserResponse]
-  Map<String, dynamic> toJson() => _$FindUserResponseToJson(this);
-}
-
-@JsonSerializable()
-
-/// Find users API response
-///
-/// The response returned upon the execution of a find users API call
-/// When [FindUsersResponse.error] is *not null* there was an error in the find users call
-/// When [FindUsersResponse.error] is *null* the [FindUsersResponse.shaders] has the returned users
-class FindUsersResponse extends APIResponse with EquatableMixin {
-  @JsonKey(name: 'Users')
-
-  /// The total number of users
-  final int total;
-
-  @JsonKey(name: 'Results')
-
-  /// The list of the users returned
-  final List<FindUserResponse> users;
-
-  @override
-  List get props {
-    return [total, users, error];
-  }
-
-  /// Builds a [FindUsersResponse]
-  ///
-  /// [total]: The total number of users returned
-  /// [users]: The list of users
-  /// [error]: An error if there was error while fetching the shaders
-  FindUsersResponse({int total, this.users, ResponseError error})
-      : total = total ?? users?.length,
-        super(error: error);
-
-  /// Creates a [FindUsersResponse] from json map
-  factory FindUsersResponse.fromJson(Map<String, dynamic> json) =>
-      _$FindUsersResponseFromJson(json);
-
-  /// Creates a json map from a [FindUsersResponse]
-  Map<String, dynamic> toJson() => _$FindUsersResponseToJson(this);
-}
-
-/// Delete user API response
-///
-/// The response returned upon the execution of the delete user API call
-/// When [DeleteUserResponse.error] is *not null* there was an error in the delete user call
-/// When [DeleteUserResponse.error] is *null* the delete was sucessful
-class DeleteUserResponse extends APIResponse with EquatableMixin {
-  /// Builds a [DeleteUserResponse]
-  ///
-  /// [error]: An error if there was error while deleting the user
-  DeleteUserResponse({ResponseError error}) : super(error: error);
 }
 
 @JsonSerializable()
@@ -614,6 +794,18 @@ class FindCommentsResponse extends APIResponse with EquatableMixin {
   Map<String, dynamic> toJson() => _$FindCommentsResponseToJson(this);
 }
 
+/// Save shader comments API response
+///
+/// The response returned upon the execution of the save shader comments API call
+/// When [SaveShaderCommentsResponse.error] is *not null* there was an error in the save shader comments call
+/// When [SaveShaderCommentsResponse.error] is *null* the save was sucessful
+class SaveShaderCommentsResponse extends APIResponse with EquatableMixin {
+  /// Builds a [SaveShaderCommentsResponse]
+  ///
+  /// [error]: An error if there was error while saving the shader comments
+  SaveShaderCommentsResponse({ResponseError error}) : super(error: error);
+}
+
 /// Delete comment API response
 ///
 /// The response returned upon the execution of the delete comment API call
@@ -659,34 +851,22 @@ class FindPlaylistResponse extends APIResponse with EquatableMixin {
   Map<String, dynamic> toJson() => _$FindPlaylistResponseToJson(this);
 }
 
-/// Delete playlist API response
-///
-/// The response returned upon the execution of the delete playlist API call
-/// When [DeletePlaylistResponse.error] is *not null* there was an error in the delete playlist call
-/// When [DeletePlaylistResponse.error] is *null* the delete was sucessful
-class DeletePlaylistResponse extends APIResponse with EquatableMixin {
-  /// Builds a [DeletePlaylistResponse]
-  ///
-  /// [error]: An error if there was error while deleting the playlist
-  DeletePlaylistResponse({ResponseError error}) : super(error: error);
-}
-
 @JsonSerializable()
 
-/// Find shader ids API response
+/// Find playlist ids API response
 ///
-/// The response returned upon the execution of a find shader ids API call
-/// When [FindShaderIdsResponse.error] is *not null* there was an error in the find shader ids call
-/// When [FindShaderIdsResponse.error] is *null* the [FindShaderIdsResponse.ids] has the returned shader ids
-class FindShaderIdsResponse extends APIResponse with EquatableMixin {
-  @JsonKey(name: 'Shaders')
+/// The response returned upon the execution of a find playlist ids API call
+/// When [FindPlaylistIdsResponse.error] is *not null* there was an error in the find playlist ids call
+/// When [FindPlaylistIdsResponse.error] is *null* the [FindPlaylistIdsResponse.ids] has the returned playlist ids
+class FindPlaylistIdsResponse extends APIResponse with EquatableMixin {
+  @JsonKey(name: 'Playlists')
 
-  /// The total number of shader ids
+  /// The total number of playlist ids
   final int total;
 
   @JsonKey(name: 'Results')
 
-  /// The list of shader ids returned
+  /// The list of playlist ids returned
   final List<String> ids;
 
   @override
@@ -694,196 +874,61 @@ class FindShaderIdsResponse extends APIResponse with EquatableMixin {
     return [total, ids, error];
   }
 
-  /// Builds a [FindShaderIdsResponse]
+  /// Builds a [FindPlaylistIdsResponse]
   ///
-  /// [total]: The total number of shader ids returned
+  /// [total]: The total number of playlist ids returned
   /// [ids]: The list of ids
-  /// [error]: An error if there was error while fetching the shader ids
-  FindShaderIdsResponse({int count, this.ids, ResponseError error})
+  /// [error]: An error if there was error while fetching the playlist ids
+  FindPlaylistIdsResponse({int count, this.ids, ResponseError error})
       : total = count ?? ids?.length,
         super(error: error);
 
-  /// Creates a [FindShaderIdsResponse] from json map
-  factory FindShaderIdsResponse.fromJson(Map<String, dynamic> json) =>
-      _$FindShaderIdsResponseFromJson(json);
+  /// Creates a [FindPlaylistIdsResponse] from json map
+  factory FindPlaylistIdsResponse.fromJson(Map<String, dynamic> json) =>
+      _$FindPlaylistIdsResponseFromJson(json);
 
-  /// Creates a json map from a [FindShaderIdsResponse]
-  Map<String, dynamic> toJson() => _$FindShaderIdsResponseToJson(this);
+  /// Creates a json map from a [FindPlaylistIdsResponse]
+  Map<String, dynamic> toJson() => _$FindPlaylistIdsResponseToJson(this);
 }
 
 @JsonSerializable()
 
-/// Find shaders API response
+/// Find playlists API response
 ///
-/// The response returned upon the execution of a find shaders API call
-/// When [FindShadersResponse.error] is *not null* there was an error in the find shaders call
-/// When [FindShadersResponse.error] is *null* the [FindShadersResponse.shaders] has the returned shaders
-class FindShadersResponse extends APIResponse with EquatableMixin {
-  @JsonKey(name: 'Shaders')
+/// The response returned upon the execution of a find playlists API call
+/// When [FindPlaylistsResponse.error] is *not null* there was an error in the find playlists call
+/// When [FindPlaylistsResponse.error] is *null* the [FindPlaylistsResponse.playlists] has the returned playlists
+class FindPlaylistsResponse extends APIResponse with EquatableMixin {
+  @JsonKey(name: 'Playlists')
 
-  /// The total number of shaders
+  /// The total number of playlists
   final int total;
 
   @JsonKey(name: 'Results')
 
-  /// The list of the shaders returned
-  final List<FindShaderResponse> shaders;
+  /// The list of [Playlist] returned
+  final List<Playlist> playlists;
 
   @override
   List get props {
-    return [total, shaders, error];
+    return [total, playlists, error];
   }
 
-  /// Builds a [FindShadersResponse]
+  /// Builds a [FindPlaylistsResponse]
   ///
-  /// [total]: The total number of shader returned
-  /// [shaders]: The list of shaders
-  /// [error]: An error if there was error while fetching the shaders
-  FindShadersResponse({int total, this.shaders, ResponseError error})
-      : total = total ?? shaders?.length,
+  /// [total]: The total number of playlists returned
+  /// [playlists]: The list of [Playlist]
+  /// [error]: An error if there was error while fetching the playlists
+  FindPlaylistsResponse({int total, this.playlists, ResponseError error})
+      : total = total ?? playlists?.length,
         super(error: error);
 
-  /// Creates a [FindShadersResponse] from json map
-  factory FindShadersResponse.fromJson(Map<String, dynamic> json) =>
-      _$FindShadersResponseFromJson(json);
+  /// Creates a [FindPlaylistsResponse] from json map
+  factory FindPlaylistsResponse.fromJson(Map<String, dynamic> json) =>
+      _$FindPlaylistsResponseFromJson(json);
 
-  /// Creates a json map from a [FindShadersResponse]
-  Map<String, dynamic> toJson() => _$FindShadersResponseToJson(this);
-}
-
-@JsonSerializable()
-
-/// Find user ids API response
-///
-/// The response returned upon the execution of a find user ids API call
-/// When [FindUserIdsResponse.error] is *not null* there was an error in the find user ids call
-/// When [FindUserIdsResponse.error] is *null* the [FindUserIdsResponse.ids] has the returned use ids
-class FindUserIdsResponse extends APIResponse with EquatableMixin {
-  @JsonKey(name: 'Users')
-
-  /// The total number of user ids
-  final int total;
-
-  @JsonKey(name: 'Results')
-
-  /// The list of user ids returned
-  final List<String> ids;
-
-  @override
-  List get props {
-    return [total, ids, error];
-  }
-
-  /// Builds a [FindUserIdsResponse]
-  ///
-  /// [total]: The total number of user ids returned
-  /// [ids]: The list of ids
-  /// [error]: An error if there was error while fetching the shader ids
-  FindUserIdsResponse({int count, this.ids, ResponseError error})
-      : total = count ?? ids?.length,
-        super(error: error);
-
-  /// Creates a [FindUserIdsResponse] from json map
-  factory FindUserIdsResponse.fromJson(Map<String, dynamic> json) =>
-      _$FindUserIdsResponseFromJson(json);
-
-  /// Creates a json map from a [FindUserIdsResponse]
-  Map<String, dynamic> toJson() => _$FindUserIdsResponseToJson(this);
-}
-
-/// Download file API response
-///
-/// The response returned upon the execution of the download file API call
-/// When [DownloadFileResponse.error] is *not null* there was an error in the donwload file call
-/// When [DownloadFileResponse.error] is *null* the [DownloadFileResponse.bytes] has the bytes of the file
-class DownloadFileResponse extends APIResponse with EquatableMixin {
-  @JsonKey(name: 'Bytes')
-
-  /// File bytes
-  final List<int> bytes;
-
-  @override
-  List get props {
-    return [bytes, error];
-  }
-
-  /// Builds a [DownloadFileResponse]
-  ///
-  /// [bytes]: The bytes of the file
-  /// [error]: An error if there was error while fetching the file
-  DownloadFileResponse({this.bytes, ResponseError error}) : super(error: error);
-}
-
-/// Save user API response
-///
-/// The response returned upon the execution of the save user API call
-/// When [SaveUserResponse.error] is *not null* there was an error in the save user call
-/// When [SaveUserResponse.error] is *null* the save was sucessful
-class SaveUserResponse extends APIResponse with EquatableMixin {
-  /// Builds a [SaveUserResponse]
-  ///
-  /// [error]: An error if there was error while saving the user
-  SaveUserResponse({ResponseError error}) : super(error: error);
-}
-
-/// Save users API response
-///
-/// The response returned upon the execution of the save users API call
-/// When [SaveUsersResponse.error] is *not null* there was an error in the save shader call
-/// When [SaveUsersResponse.error] is *null* the save was sucessful
-class SaveUsersResponse extends APIResponse with EquatableMixin {
-  /// Builds a [SaveUsersResponse]
-  ///
-  /// [error]: An error if there was error while saving the user
-  SaveUsersResponse({ResponseError error}) : super(error: error);
-}
-
-/// Save shader API response
-///
-/// The response returned upon the execution of the save shader API call
-/// When [SaveShaderResponse.error] is *not null* there was an error in the save shader call
-/// When [SaveShaderResponse.error] is *null* the save was sucessful
-class SaveShaderResponse extends APIResponse with EquatableMixin {
-  /// Builds a [SaveShaderResponse]
-  ///
-  /// [error]: An error if there was error while saving the shader
-  SaveShaderResponse({ResponseError error}) : super(error: error);
-}
-
-/// Save shaders API response
-///
-/// The response returned upon the execution of the save shaders API call
-/// When [SaveShadersResponse.error] is *not null* there was an error in the save shader call
-/// When [SaveShadersResponse.error] is *null* the save was sucessful
-class SaveShadersResponse extends APIResponse with EquatableMixin {
-  /// Builds a [SaveShadersResponse]
-  ///
-  /// [error]: An error if there was error while saving the shader
-  SaveShadersResponse({ResponseError error}) : super(error: error);
-}
-
-/// Delete shader API response
-///
-/// The response returned upon the execution of the delete shader API call
-/// When [DeleteShaderResponse.error] is *not null* there was an error in the delete shader call
-/// When [DeleteShaderResponse.error] is *null* the delete was sucessful
-class DeleteShaderResponse extends APIResponse with EquatableMixin {
-  /// Builds a [DeleteShaderResponse]
-  ///
-  /// [error]: An error if there was error while deleting the shader
-  DeleteShaderResponse({ResponseError error}) : super(error: error);
-}
-
-/// Save shader comments API response
-///
-/// The response returned upon the execution of the save shader comments API call
-/// When [SaveShaderCommentsResponse.error] is *not null* there was an error in the save shader comments call
-/// When [SaveShaderCommentsResponse.error] is *null* the save was sucessful
-class SaveShaderCommentsResponse extends APIResponse with EquatableMixin {
-  /// Builds a [SaveShaderCommentsResponse]
-  ///
-  /// [error]: An error if there was error while saving the shader comments
-  SaveShaderCommentsResponse({ResponseError error}) : super(error: error);
+  /// Creates a json map from a [FindPlaylistsResponse]
+  Map<String, dynamic> toJson() => _$FindPlaylistsResponseToJson(this);
 }
 
 /// Save playlist API response
@@ -908,4 +953,39 @@ class SavePlaylistShadersResponse extends APIResponse with EquatableMixin {
   ///
   /// [error]: An error if there was error while saving the playlist shaders
   SavePlaylistShadersResponse({ResponseError error}) : super(error: error);
+}
+
+/// Delete playlist API response
+///
+/// The response returned upon the execution of the delete playlist API call
+/// When [DeletePlaylistResponse.error] is *not null* there was an error in the delete playlist call
+/// When [DeletePlaylistResponse.error] is *null* the delete was sucessful
+class DeletePlaylistResponse extends APIResponse with EquatableMixin {
+  /// Builds a [DeletePlaylistResponse]
+  ///
+  /// [error]: An error if there was error while deleting the playlist
+  DeletePlaylistResponse({ResponseError error}) : super(error: error);
+}
+
+/// Download file API response
+///
+/// The response returned upon the execution of the download file API call
+/// When [DownloadFileResponse.error] is *not null* there was an error in the donwload file call
+/// When [DownloadFileResponse.error] is *null* the [DownloadFileResponse.bytes] has the bytes of the file
+class DownloadFileResponse extends APIResponse with EquatableMixin {
+  @JsonKey(name: 'Bytes')
+
+  /// File bytes
+  final List<int> bytes;
+
+  @override
+  List get props {
+    return [bytes, error];
+  }
+
+  /// Builds a [DownloadFileResponse]
+  ///
+  /// [bytes]: The bytes of the file
+  /// [error]: An error if there was error while fetching the file
+  DownloadFileResponse({this.bytes, ResponseError error}) : super(error: error);
 }

@@ -130,6 +130,58 @@ void main() {
     expect(logoutResponse1, equals(logoutResponse2));
   });
 
+  var memberSince = DateTime(2000, 1, 1, 0, 0, 0);
+  var user = User(
+      id: 'id1',
+      picture: 'picture1',
+      memberSince: memberSince,
+      about: 'about1');
+  var findUserResponse1 = FindUserResponse(user: user, error: null);
+
+  test('Test a find user response', () {
+    expect(findUserResponse1.user, user);
+    expect(findUserResponse1.error, isNull);
+  });
+
+  test('Convert a find user response to a JSON serializable map and back', () {
+    var json = findUserResponse1.toJson();
+    var findUserResponse2 = FindUserResponse.fromJson(json);
+    expect(findUserResponse1, equals(findUserResponse2));
+  });
+
+  var userIds = ['iq', 'shaderflix'];
+  var findUserIdsResponse1 = FindUserIdsResponse(ids: userIds, error: null);
+
+  test('Test a find user ids response', () {
+    expect(findUserIdsResponse1.ids, userIds);
+    expect(findUserIdsResponse1.error, isNull);
+  });
+
+  test('Convert a find user ids response to a JSON serializable map and back',
+      () {
+    var json = findUserIdsResponse1.toJson();
+    var findUserIdsResponse2 = FindUserIdsResponse.fromJson(json);
+    expect(findUserIdsResponse1, equals(findUserIdsResponse2));
+  });
+
+  var saveUserResponse1 = SaveUserResponse(error: null);
+
+  test('Test save user response', () {
+    expect(saveUserResponse1.error, isNull);
+  });
+
+  var saveUsersResponse1 = SaveUsersResponse(error: null);
+
+  test('Test save users response', () {
+    expect(saveUsersResponse1.error, isNull);
+  });
+
+  var deleteUserResponse1 = DeleteUserResponse(error: null);
+
+  test('Test delete user response', () {
+    expect(deleteUserResponse1.error, isNull);
+  });
+
   var date = DateTime(2000, 1, 1, 0, 0, 0);
   var info = Info(
       id: 'id1',
@@ -179,112 +231,12 @@ void main() {
     expect(findShaderResponse1, equals(findShaderResponse2));
   });
 
-  var texts = ['comment1', 'comment2'];
-  var dates = ['1548620329', '1551293191'];
-  var userIds = ['felipunkerito', 'webber'];
-  var userPictures = [
-    '/img/profile.jpg',
-    '/media/users/scratch13764/profile.png'
-  ];
-  var commentsResponse1 = CommentsResponse(
-      texts: texts,
-      dates: dates,
-      userIds: userIds,
-      userPictures: userPictures,
-      error: null);
-
-  test('Test a comments response', () {
-    expect(commentsResponse1.texts, texts);
-    expect(commentsResponse1.dates, dates);
-    expect(commentsResponse1.userIds, userIds);
-    expect(commentsResponse1.userPictures, userPictures);
-    expect(commentsResponse1.error, isNull);
-  });
-
-  test('Convert a comments response to a JSON serializable map and back', () {
-    var json = commentsResponse1.toJson();
-    var commentsResponse2 = CommentsResponse.fromMap(json);
-    expect(commentsResponse1, equals(commentsResponse2));
-  });
-
-  var memberSince = DateTime(2000, 1, 1, 0, 0, 0);
-  var user = User(
-      id: 'id1',
-      picture: 'picture1',
-      memberSince: memberSince,
-      about: 'about1');
-  var findUserResponse1 = FindUserResponse(user: user, error: null);
-
-  test('Test a find user response', () {
-    expect(findUserResponse1.user, user);
-    expect(findUserResponse1.error, isNull);
-  });
-
-  test('Convert a find user response to a JSON serializable map and back', () {
-    var json = findUserResponse1.toJson();
-    var findUserResponse2 = FindUserResponse.fromJson(json);
-    expect(findUserResponse1, equals(findUserResponse2));
-  });
-
-  var now = DateTime.now();
-  var comment1 = Comment(
-      id: 'comentId1',
-      shaderId: 'shaderId1',
-      userId: 'userId1',
-      picture: '/img/profile.jpg',
-      date: now,
-      text: 'text1');
-  var comment2 = Comment(
-      id: 'commentId2',
-      shaderId: 'shaderId2',
-      userId: 'userId2',
-      picture: '/img/profile.jpg',
-      date: now,
-      text: 'text2',
-      hidden: true);
-  var comments = [comment1, comment2];
-  var findCommentsResponse1 =
-      FindCommentsResponse(total: 2, comments: comments, error: null);
-
-  test('Test a find comments response', () {
-    expect(findCommentsResponse1.total, 2);
-    expect(findCommentsResponse1.comments, comments);
-    expect(findCommentsResponse1.error, isNull);
-  });
-
-  test('Convert a find comments response to a JSON serializable map and back',
-      () {
-    var json = findCommentsResponse1.toJson();
-    var findCommentsResponse2 = FindCommentsResponse.fromJson(json);
-    expect(findCommentsResponse1, equals(findCommentsResponse2));
-  });
-
-  var playlist = Playlist(
-      id: 'week',
-      userId: 'shadertoy',
-      name: 'Shaders of the Week',
-      description: 'Playlist with every single shader of the week ever.',
-      privacy: PlaylistPrivacy.public);
-  var findPlaylistResponse1 =
-      FindPlaylistResponse(playlist: playlist, error: null);
-
-  test('Test a find playlist response', () {
-    expect(findPlaylistResponse1.playlist, playlist);
-    expect(findPlaylistResponse1.error, isNull);
-  });
-
-  test('Convert a find playlist response to a JSON serializable map and back',
-      () {
-    var json = findPlaylistResponse1.toJson();
-    var findPlaylistResponse2 = FindPlaylistResponse.fromJson(json);
-    expect(findPlaylistResponse1, equals(findPlaylistResponse2));
-  });
-
-  var ids = ['wtd3zs', 'XlcBRX'];
-  var findShaderIdsResponse1 = FindShaderIdsResponse(ids: ids, error: null);
+  var shaderIds = ['wtd3zs', 'XlcBRX'];
+  var findShaderIdsResponse1 =
+      FindShaderIdsResponse(ids: shaderIds, error: null);
 
   test('Test a find shader ids response', () {
-    expect(findShaderIdsResponse1.ids, ids);
+    expect(findShaderIdsResponse1.ids, shaderIds);
     expect(findShaderIdsResponse1.error, isNull);
   });
 
@@ -311,46 +263,6 @@ void main() {
     expect(findShadersResponse1, equals(findShadersResponse2));
   });
 
-  var bytes = utf8.encode('bytes');
-  var donwloadFileResponse1 = DownloadFileResponse(bytes: bytes, error: null);
-
-  test('Test download file response', () {
-    expect(donwloadFileResponse1.bytes, bytes);
-    expect(donwloadFileResponse1.error, isNull);
-  });
-
-  var findUserIdsResponse1 = FindUserIdsResponse(ids: ids, error: null);
-
-  test('Test a find user ids response', () {
-    expect(findUserIdsResponse1.ids, ids);
-    expect(findUserIdsResponse1.error, isNull);
-  });
-
-  test('Convert a find user ids response to a JSON serializable map and back',
-      () {
-    var json = findUserIdsResponse1.toJson();
-    var findUserIdsResponse2 = FindUserIdsResponse.fromJson(json);
-    expect(findUserIdsResponse1, equals(findUserIdsResponse2));
-  });
-
-  var saveUserResponse1 = SaveUserResponse(error: null);
-
-  test('Test save user response', () {
-    expect(saveUserResponse1.error, isNull);
-  });
-
-  var saveUsersResponse1 = SaveUsersResponse(error: null);
-
-  test('Test save users response', () {
-    expect(saveUsersResponse1.error, isNull);
-  });
-
-  var deleteUserResponse1 = DeleteUserResponse(error: null);
-
-  test('Test delete user response', () {
-    expect(deleteUserResponse1.error, isNull);
-  });
-
   var saveShaderResponse1 = SaveShaderResponse(error: null);
 
   test('Test save shader response', () {
@@ -369,27 +281,97 @@ void main() {
     expect(deleteShaderResponse1.error, isNull);
   });
 
-  final comment = Comment(
-      id: 'XlGcRK',
-      shaderId: 'MtSBRw',
-      userId: 'Cubex',
-      picture: '\/media\/users\/Cubex\/profile.png',
-      date: DateTime(2000, 1, 1),
-      text: 'I have to admit that it makes an amazing impression!',
-      hidden: false);
-  var findCommentResponse1 = FindCommentResponse(comment: comment, error: null);
+  var texts = ['comment1', 'comment2'];
+  var dates = ['1548620329', '1551293191'];
+  var userPictures = [
+    '/img/profile.jpg',
+    '/media/users/scratch13764/profile.png'
+  ];
+  var commentsResponse1 = CommentsResponse(
+      texts: texts,
+      dates: dates,
+      userIds: userIds,
+      userPictures: userPictures,
+      error: null);
 
-  test('Test find commment by id response', () {
-    expect(findCommentResponse1.comment, comment);
+  test('Test a comments response', () {
+    expect(commentsResponse1.texts, texts);
+    expect(commentsResponse1.dates, dates);
+    expect(commentsResponse1.userIds, userIds);
+    expect(commentsResponse1.userPictures, userPictures);
+    expect(commentsResponse1.error, isNull);
+  });
+
+  test('Convert a comments response to a JSON serializable map and back', () {
+    var json = commentsResponse1.toJson();
+    var commentsResponse2 = CommentsResponse.fromMap(json);
+    expect(commentsResponse1, equals(commentsResponse2));
+  });
+
+  var now = DateTime.now();
+  var comment1 = Comment(
+      id: 'comentId1',
+      shaderId: 'shaderId1',
+      userId: 'userId1',
+      picture: '/img/profile.jpg',
+      date: now,
+      text: 'text1');
+
+  var findCommentResponse1 =
+      FindCommentResponse(comment: comment1, error: null);
+
+  test('Test find commment response', () {
+    expect(findCommentResponse1.comment, comment1);
     expect(findCommentResponse1.error, isNull);
   });
 
-  test(
-      'Convert a find comment by id response to a JSON serializable map and back',
+  test('Convert a find comment response to a JSON serializable map and back',
       () {
     var json = findCommentResponse1.toJson();
     var findCommentResponse2 = FindCommentResponse.fromJson(json);
     expect(findCommentResponse1, equals(findCommentResponse2));
+  });
+
+  var commentIds = ['week', 'featured'];
+  var findCommentIdsResponse1 =
+      FindCommentIdsResponse(ids: commentIds, error: null);
+
+  test('Test a find comment ids response', () {
+    expect(findCommentIdsResponse1.ids, commentIds);
+    expect(findCommentIdsResponse1.error, isNull);
+  });
+
+  test(
+      'Convert a find comment ids response to a JSON serializable map and back',
+      () {
+    var json = findCommentIdsResponse1.toJson();
+    var findCommentIdsResponse2 = FindCommentIdsResponse.fromJson(json);
+    expect(findCommentIdsResponse1, equals(findCommentIdsResponse2));
+  });
+
+  var comment2 = Comment(
+      id: 'commentId2',
+      shaderId: 'shaderId2',
+      userId: 'userId2',
+      picture: '/img/profile.jpg',
+      date: now,
+      text: 'text2',
+      hidden: true);
+  var comments = [comment1, comment2];
+  var findCommentsResponse1 =
+      FindCommentsResponse(total: 2, comments: comments, error: null);
+
+  test('Test a find comments response', () {
+    expect(findCommentsResponse1.total, 2);
+    expect(findCommentsResponse1.comments, comments);
+    expect(findCommentsResponse1.error, isNull);
+  });
+
+  test('Convert a find comments response to a JSON serializable map and back',
+      () {
+    var json = findCommentsResponse1.toJson();
+    var findCommentsResponse2 = FindCommentsResponse.fromJson(json);
+    expect(findCommentsResponse1, equals(findCommentsResponse2));
   });
 
   var saveShaderCommentsResponse1 = SaveShaderCommentsResponse(error: null);
@@ -402,6 +384,65 @@ void main() {
 
   test('Test delete comment response', () {
     expect(deleteCommentResponse1.error, isNull);
+  });
+
+  var playlist1 = Playlist(
+      id: 'week',
+      userId: 'shadertoy',
+      name: 'Shaders of the Week',
+      description: 'Playlist with every single shader of the week ever.',
+      privacy: PlaylistPrivacy.public);
+  var findPlaylistResponse1 =
+      FindPlaylistResponse(playlist: playlist1, error: null);
+
+  test('Test a find playlist response', () {
+    expect(findPlaylistResponse1.playlist, playlist1);
+    expect(findPlaylistResponse1.error, isNull);
+  });
+
+  test('Convert a find playlist response to a JSON serializable map and back',
+      () {
+    var json = findPlaylistResponse1.toJson();
+    var findPlaylistResponse2 = FindPlaylistResponse.fromJson(json);
+    expect(findPlaylistResponse1, equals(findPlaylistResponse2));
+  });
+
+  var playlistIds = ['week', 'featured'];
+  var findPlaylistIdsResponse1 =
+      FindPlaylistIdsResponse(ids: playlistIds, error: null);
+
+  test('Test a find playlist ids response', () {
+    expect(findPlaylistIdsResponse1.ids, playlistIds);
+    expect(findPlaylistIdsResponse1.error, isNull);
+  });
+
+  test(
+      'Convert a find playlist ids response to a JSON serializable map and back',
+      () {
+    var json = findPlaylistIdsResponse1.toJson();
+    var findPlaylistIdsResponse2 = FindPlaylistIdsResponse.fromJson(json);
+    expect(findPlaylistIdsResponse1, equals(findPlaylistIdsResponse2));
+  });
+
+  var playlist2 = Playlist(
+      id: 'featured',
+      userId: 'shadertoy',
+      name: 'Featured Shaders',
+      description: 'Playlist with every single featured shader ever.',
+      privacy: PlaylistPrivacy.public);
+  var findPlaylistsResponse1 =
+      FindPlaylistsResponse(playlists: [playlist1, playlist2], error: null);
+
+  test('Test a find playlists response', () {
+    expect(findPlaylistsResponse1.playlists, [playlist1, playlist2]);
+    expect(findPlaylistsResponse1.error, isNull);
+  });
+
+  test('Convert a find playlists response to a JSON serializable map and back',
+      () {
+    var json = findPlaylistsResponse1.toJson();
+    var findPlaylistsResponse2 = FindPlaylistsResponse.fromJson(json);
+    expect(findPlaylistsResponse1, equals(findPlaylistsResponse2));
   });
 
   var savePlaylistResponse1 = SavePlaylistResponse(error: null);
@@ -420,5 +461,13 @@ void main() {
 
   test('Test delete playlist response', () {
     expect(deletePlaylistResponse1.error, isNull);
+  });
+
+  var bytes = utf8.encode('bytes');
+  var donwloadFileResponse1 = DownloadFileResponse(bytes: bytes, error: null);
+
+  test('Test download file response', () {
+    expect(donwloadFileResponse1.bytes, bytes);
+    expect(donwloadFileResponse1.error, isNull);
   });
 }
