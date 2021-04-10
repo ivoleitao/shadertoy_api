@@ -1,6 +1,6 @@
 ## 1.0.20
 
-- TODO
+- Corrected the response of the FindPlaylistsResponse
 
 ## 1.0.19
 
