@@ -84,6 +84,7 @@ void main() {
   // Creates a shader comment
   final comment = Comment(
       id: 'AaA0Aa',
+      shaderId: 'ZzZ0Zz',
       userId: 'userId',
       picture: '/img/profile.jpg',
       date: DateTime.now(),

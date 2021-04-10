@@ -449,6 +449,46 @@ class FindUserResponse extends APIResponse with EquatableMixin {
   Map<String, dynamic> toJson() => _$FindUserResponseToJson(this);
 }
 
+@JsonSerializable()
+
+/// Find users API response
+///
+/// The response returned upon the execution of a find users API call
+/// When [FindUsersResponse.error] is *not null* there was an error in the find users call
+/// When [FindUsersResponse.error] is *null* the [FindUsersResponse.shaders] has the returned users
+class FindUsersResponse extends APIResponse with EquatableMixin {
+  @JsonKey(name: 'Users')
+
+  /// The total number of users
+  final int total;
+
+  @JsonKey(name: 'Results')
+
+  /// The list of the users returned
+  final List<FindUserResponse> users;
+
+  @override
+  List get props {
+    return [total, users, error];
+  }
+
+  /// Builds a [FindUsersResponse]
+  ///
+  /// [total]: The total number of users returned
+  /// [users]: The list of users
+  /// [error]: An error if there was error while fetching the shaders
+  FindUsersResponse({int total, this.users, ResponseError error})
+      : total = total ?? users?.length,
+        super(error: error);
+
+  /// Creates a [FindUsersResponse] from json map
+  factory FindUsersResponse.fromJson(Map<String, dynamic> json) =>
+      _$FindUsersResponseFromJson(json);
+
+  /// Creates a json map from a [FindUsersResponse]
+  Map<String, dynamic> toJson() => _$FindUsersResponseToJson(this);
+}
+
 /// Delete user API response
 ///
 /// The response returned upon the execution of the delete user API call
@@ -492,6 +532,46 @@ class FindCommentResponse extends APIResponse with EquatableMixin {
 
   /// Creates a json map from a [FindCommentResponse]
   Map<String, dynamic> toJson() => _$FindCommentResponseToJson(this);
+}
+
+@JsonSerializable()
+
+/// Find comment ids API response
+///
+/// The response returned upon the execution of a find comment ids API call
+/// When [FindCommentIdsResponse.error] is *not null* there was an error in the find comment ids call
+/// When [FindCommentIdsResponse.error] is *null* the [FindCommentIdsResponse.ids] has the returned comment ids
+class FindCommentIdsResponse extends APIResponse with EquatableMixin {
+  @JsonKey(name: 'Comments')
+
+  /// The total number of comment ids
+  final int total;
+
+  @JsonKey(name: 'Results')
+
+  /// The list of comment ids returned
+  final List<String> ids;
+
+  @override
+  List get props {
+    return [total, ids, error];
+  }
+
+  /// Builds a [FindCommentIdsResponse]
+  ///
+  /// [total]: The total number of comment ids returned
+  /// [ids]: The list of ids
+  /// [error]: An error if there was error while fetching the comment ids
+  FindCommentIdsResponse({int count, this.ids, ResponseError error})
+      : total = count ?? ids?.length,
+        super(error: error);
+
+  /// Creates a [FindCommentIdsResponse] from json map
+  factory FindCommentIdsResponse.fromJson(Map<String, dynamic> json) =>
+      _$FindCommentIdsResponseFromJson(json);
+
+  /// Creates a json map from a [FindCommentIdsResponse]
+  Map<String, dynamic> toJson() => _$FindCommentIdsResponseToJson(this);
 }
 
 @JsonSerializable()

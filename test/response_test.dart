@@ -229,12 +229,14 @@ void main() {
   var now = DateTime.now();
   var comment1 = Comment(
       id: 'comentId1',
+      shaderId: 'shaderId1',
       userId: 'userId1',
       picture: '/img/profile.jpg',
       date: now,
       text: 'text1');
   var comment2 = Comment(
       id: 'commentId2',
+      shaderId: 'shaderId2',
       userId: 'userId2',
       picture: '/img/profile.jpg',
       date: now,
@@ -369,6 +371,7 @@ void main() {
 
   final comment = Comment(
       id: 'XlGcRK',
+      shaderId: 'MtSBRw',
       userId: 'Cubex',
       picture: '\/media\/users\/Cubex\/profile.png',
       date: DateTime(2000, 1, 1),

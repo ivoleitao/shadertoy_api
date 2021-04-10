@@ -13,6 +13,7 @@ class User {
 
 class Comment {
     +String id
+    +String shaderId
     +String userId
     +String picture
     +DateTime date

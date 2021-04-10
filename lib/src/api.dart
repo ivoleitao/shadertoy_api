@@ -272,6 +272,13 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// In case of error a [ResponseError] is set and no user id list is provided
   Future<FindUserIdsResponse> findAllUserIds();
 
+  /// Returns a [FindUsersResponse] with all the users
+  ///
+  /// Upon success a list of users is provided and error is set to null
+  ///
+  /// In case of error a [ResponseError] is set and no user list is provided
+  Future<FindUsersResponse> findAllUsers();
+
   /// Saves a [User]
   ///
   /// On success the [User] is saved
@@ -292,6 +299,13 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   ///
   /// In case of error a [ResponseError] is set on [DeleteUserResponse]
   Future<DeleteUserResponse> deleteUserById(String userId);
+
+  /// Returns a [FindShadersResponse] with all the shaders
+  ///
+  /// Upon success a list of shaders is provided and error is set to null
+  ///
+  /// In case of error a [ResponseError] is set and no shader list is provided
+  Future<FindShadersResponse> findAllShaders();
 
   /// Saves a [Shader]
   ///
@@ -321,13 +335,26 @@ abstract class ShadertoyStore extends ShadertoyExtendedClient {
   /// In case of error a [ResponseError] is set and no [Comment] is provided
   Future<FindCommentResponse> findCommentById(String commentId);
 
+  /// Returns a [FindCommentIdsResponse] with all the comment id's
+  ///
+  /// Upon success a list of comment ids is provided and error is set to null
+  ///
+  /// In case of error a [ResponseError] is set and no comment id list is provided
+  Future<FindCommentIdsResponse> findAllCommentIds();
+
+  /// Returns a [FindCommentsResponse] with all the comments
+  ///
+  /// Upon success a list of comments is provided and error is set to null
+  ///
+  /// In case of error a [ResponseError] is set and no comment list is provided
+  Future<FindCommentsResponse> findAllComments();
+
   /// Saves a list of shaders [Comment]
   ///
   /// On success the list of [Comment] was saved
   ///
   /// In case of error a [ResponseError] is set on [SaveShaderCommentsResponse]
-  Future<SaveShaderCommentsResponse> saveShaderComments(
-      String shaderId, List<Comment> comments);
+  Future<SaveShaderCommentsResponse> saveShaderComments(List<Comment> comments);
 
   /// Deletes a [Comment] by [commentId]
   ///

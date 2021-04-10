@@ -6,11 +6,13 @@ void main() {
     var now = DateTime.now();
     var comment = Comment(
         id: 'commentId1',
+        shaderId: 'shaderId1',
         userId: 'userId1',
         picture: '/img/profile.jpg',
         date: now,
         text: 'text1');
     expect(comment.id, 'commentId1');
+    expect(comment.shaderId, 'shaderId1');
     expect(comment.userId, 'userId1');
     expect(comment.picture, '/img/profile.jpg');
     expect(comment.date, now);
@@ -21,6 +23,7 @@ void main() {
     var now = DateTime.now();
     var comment1 = Comment(
         id: 'commentId1',
+        shaderId: 'shaderId1',
         userId: 'userId1',
         picture: '/img/profile.jpg',
         date: now,
